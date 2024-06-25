@@ -23,40 +23,42 @@ exports.createUser = async ({
     return rows[0];
 };
 
-exports.updateUser = async (
-    id,
-    { email, password, first_name, last_name, gender, last_logged_in }
-) => {
+exports.updateUser = async (id, updatedFields) => {
     const updates = [];
-    const values = [id];
-    let query = "UPDATE users SET ";
+    const values = [];
+    let queryIndex = 1;
 
-    if (email) {
-        updates.push("email = $2");
-        values.push(email);
-    }
-    if (password) {
-        const hashedPassword = await bcrypt.hash(password, 10);
-        updates.push("password = $3");
-        values.push(hashedPassword);
-    }
-    if (first_name) {
-        updates.push("first_name = $4");
-        values.push(first_name);
-    }
-    if (last_name) {
-        updates.push("last_name = $5");
-        values.push(last_name);
-    }
-    if (gender) {
-        updates.push("gender = $6");
-        values.push(gender);
-    }
-    if (last_logged_in) {
-        updates.push("last_logged_in = $7");
-        values.push(last_logged_in);
+    const allowedFields = [
+        "email",
+        "password",
+        "first_name",
+        "last_name",
+        "gender",
+        "last_logged_in",
+    ];
+
+    for (const [key, value] of Object.entries(updatedFields)) {
+        if (allowedFields.includes(key) && value !== undefined) {
+            if (key === "password") {
+                const hashedPassword = await bcrypt.hash(value, 10);
+                updates.push(`${key} = $${queryIndex++}`);
+                values.push(hashedPassword);
+            } else {
+                updates.push(`${key} = $${queryIndex++}`);
+                values.push(value);
+            }
+        }
     }
 
-    query += updates.join(", ") + ` WHERE user_id = $1`;
-    await pool.query(query, values);
+    if (updates.length === 0) {
+        throw new Error("No valid fields provided for update");
+    }
+
+    values.push(id);
+    const query = `UPDATE users SET ${updates.join(
+        ", "
+    )} WHERE user_id = $${queryIndex} RETURNING *`;
+
+    const { rows } = await pool.query(query, values);
+    return rows.length;
 };
