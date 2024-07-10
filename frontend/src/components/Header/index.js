@@ -16,8 +16,8 @@ export default function Header() {
                             </Link>
                         </li>
                         <li className="navbar-item">
-                            <Link to="/link2" className="navbar-link">
-                                Link 2
+                            <Link to="/login" className="navbar-link">
+                                login
                             </Link>
                         </li>
                         <li className="navbar-item">
