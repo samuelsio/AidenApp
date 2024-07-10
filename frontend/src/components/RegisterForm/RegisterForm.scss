@@ -1,0 +1,88 @@
+.parent{
+    text-align: center;
+    display: flex;
+
+    .container{
+        display: flex;
+        justify-content: center;
+        background-color: #2A2A2A;
+        flex-direction: column;
+        align-items: center;
+        width: 50vw;
+
+        .login-link{
+            color: white;
+
+            a {
+                color: #44A4DA;
+                text-decoration: none;
+
+                &:hover{
+                    color: #44a3da9a;
+                }
+            }
+        }
+        .card-top{
+            display: flex;
+            justify-content: space-evenly;
+            background: white;
+            border-radius: 20px;
+            flex-direction: column;
+
+            .title{
+                margin: 5px 15px;
+                font-size: 2rem;
+            }
+
+            .paragraph{
+                margin: 5px 15px;
+                font-size: 1rem;
+            }
+        }
+
+        .login-form{
+            display: flex;
+            padding: 13px;
+            align-items: stretch;
+            align-content: flex-start;
+            justify-content: center;
+            flex-wrap: wrap;
+
+            .form-input{
+                width: 100%;
+                padding: 16px 4px;
+                margin: 8px 0;
+                display: block;
+                border: 1px solid #ccc;
+                border-radius: 14px;
+                box-sizing: border-box;
+           
+            }
+        }
+    }
+
+    .image-container{
+        display: flex;
+        width: 50vw;
+        background-color: #2a2a2a;
+        justify-content: flex-end;
+        .login-image{
+            max-height: 100vh;
+            border-radius: 30px 0 0 30px;
+            max-width: 50vw;
+        }
+    }
+}
+
+.form-button{
+    display: flex;
+    width: 75%;
+    background-color: #44A4DA;
+    padding: 12px 8px;
+    margin: 4px 0;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    flex-direction: column;
+    align-items: center;
+    }
