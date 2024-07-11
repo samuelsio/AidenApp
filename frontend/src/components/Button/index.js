@@ -1,13 +1,19 @@
-import React from 'react'
+import React from 'react';
+import './Button.scss';
 
 export default function Button({ variant, large, label, fullWidth, onClick, disabled, type }) {
     // Variant could be "Primary", "Secondary", "Outline"
 
-    function getStyle() {
+    const btnClassName = [
+      'btnBaseStyle',
+      variant,
+      large ? 'large' : '',
+      fullWidth ? 'fullWidth' : ''
+  ].join(' ');
 
-    }
+
   return (
     // <input type="button" className={variant} value="Click me" />
-    <input type="button" style={variant === "Primary" ? {backgroundColor: "red"}} value="Click me" />
+    <input type={type} className={btnClassName} value={label} onClick={onClick} disabled={disabled}/>
   )
 }
