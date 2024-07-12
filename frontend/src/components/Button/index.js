@@ -7,8 +7,8 @@ export default function Button({ variant, large, label, fullWidth, onClick, disa
     const btnClassName = [
       'btnBaseStyle',
       variant,
-      large ? 'large' : '',
-      fullWidth ? 'fullWidth' : ''
+      fullWidth,
+      large,
   ].join(' ');
 
 
