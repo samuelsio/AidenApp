@@ -52,12 +52,13 @@ export default function RegisterForm() {
               <input className='form-input' type="password" name='confirm-password' id='confirm-password'  placeholder='Confirm Password' onChange={(event) => {setPassword(event.target.value)}} />
               <input className='form-input' type="password" name='password' id='password'pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder='Password' title='Password must contain: at least 8 characters, an Uppercase, a Lowercase letterm and a number' onChange={(event) => {setConfirmPassword(event.target.value)}} />
               <input className='form-input' type="date" name='dob' id='dob' onChange={(event) => {setDOB(event.target.value)}} />
-                <input className='form-input' type='radio' name='gender' id='male' value='Male' onChange={(event) => {setGender(event.target.value)}}/>
-                  <label htmlFor="male">Male</label>
-                <input className='form-input' type='radio' name='gender' id='female' value='Female' onChange={(event) => {setGender(event.target.value)}}/>
-                  <label htmlFor="female">Female</label>  
-                <input className='form-input' type='radio' name='gender' id='other' value='Other' onChange={(event) => {setGender(event.target.value)}}/>
-                  <label htmlFor="other">Other</label>
+              <div className='switch'>
+                <label className='switch__male'><input className='form-switch' type='radio' name='gender' id='male' value='Male' onChange={(event) => {setGender(event.target.value)}}/>Male</label>
+                  
+                <label className='switch__female'> <input className='form-switch' type='radio' name='gender' id='female' value='Female' onChange={(event) => {setGender(event.target.value)}}/>Female</label> 
+                  
+                <label className='switch__other'><input className='form-switch' type='radio' name='gender' id='other' value='Other' onChange={(event) => {setGender(event.target.value)}}/>Other</label>
+              </div>
               <Button variant="primary" large={false} disabled={(password === confirmPassword) ? false : true} label='Create Account' type='button' fontSize='large' fullWidth={false}/>  
 
               </form>

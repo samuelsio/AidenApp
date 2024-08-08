@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import "./LoginForm.scss";
 import poster from "../../images/HelldiversPoster.png";
+import Button from '../Button';
 
 export default function LoginForm() {
   return (
@@ -14,7 +15,7 @@ export default function LoginForm() {
         <form className='login-form'>
             <input className='form-input' type="email" id='email' placeholder='Email' />
             <input className='form-input' type="password" placeholder='Password' />
-            <button className='form-button' type='submit'>Login In</button>
+            <Button variant="primary" large={false} label='Create Account' type='button' fontSize='large' fullWidth={false}/>
         </form>
         <p className='register-link'>Don't have an account? <Link to="/register">Register</Link></p>
     </div>

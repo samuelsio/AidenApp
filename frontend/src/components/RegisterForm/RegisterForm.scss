@@ -57,7 +57,56 @@
                 border: 1px solid #ccc;
                 border-radius: 14px;
                 box-sizing: border-box;
-           
+            }
+            .switch{
+                display: inline-block;
+                border-radius: 5px;
+                padding: 15px;
+
+                .switch__male{
+                    background-color: #2A2A2A;
+                    color: white;
+                    border-radius: 5px;
+                    padding: 1rem;
+                    transition: 0.4s;
+                    &:hover {
+                        background-color: #4c85f8;
+                        color: black;
+                        opacity: 1; 
+                        transform: translateY(7px); 
+                    }
+                }
+                .switch__female{
+                    background-color: #2A2A2A;
+                    color: white;
+                    border-radius: 5px;
+                    padding: 1rem;
+                    transition: 0.4s;
+                    &:hover {
+                        background-color: #fe73fb;
+                        color: black;
+                        opacity: 1; 
+                        transform: translateY(7px); 
+                    }
+                }
+                .switch__other{
+                    background-color: #2A2A2A;
+                    color: white;
+                    border-radius: 5px;
+                    padding: 1rem;
+                    transition: 0.4s;
+                    &:hover {
+                        background-color: #b8b8b8;
+                        color: black;
+                        opacity: 1; 
+                        transform: translateY(7px); 
+                    }
+                }
+                .form-switch{
+                    display: none;
+                    padding: 15px;
+                    
+                }
             }
         }
     }
