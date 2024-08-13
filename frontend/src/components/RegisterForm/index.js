@@ -38,7 +38,7 @@ export default function RegisterForm() {
     if (!registerData.fName) errors.push('First Name')
     if (!registerData.lName) errors.push('Last Name')
     if (!registerData.password) errors.push('Password')
-    if (!registerData.confrimPassword) errors.push('Confirm Password')
+    if (!registerData.confirmPassword) errors.push('Confirm Password')
     if (!registerData.dob) errors.push('Date of Birth')
     if (!registerData.gender) errors.push('Gender')
     
@@ -49,18 +49,6 @@ export default function RegisterForm() {
 
   }
 
-  useEffect(() => {
-    console.log({
-      password,
-      confirmPassword,
-      username,
-      email,
-      fName,
-      lName,
-      dob,
-      gender
-    })
-  })
 
   return (
       <div className='parent'>
@@ -76,15 +64,15 @@ export default function RegisterForm() {
               <input className='form-input' type='text' id='lName' placeholder='Last Name' value={registerData.lName} onChange={handleChange} />
               <input className='form-input' type="password" name='confirm-password' id='confirm-password'  placeholder='Confirm Password' value={registerData.confirmPassword} onChange={handleChange} />
               <input className='form-input' type="password" name='password' id='password'pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder='Password' title='Password must contain: at least 8 characters, an Uppercase, a Lowercase letterm and a number' value={registerData.password} onChange={handleChange} />
-              <input className='form-input' type="date" name='dob' id='dob' onChange={(event) => {setDOB(event.target.value)}} />
+              <input className='form-input' type="date" name='dob' id='dob' value={registerData.dob} onChange={handleChange} />
               <div className='switch'>
-                <label className='switch__male'><input className='form-switch' type='radio' name='gender' id='male' value='Male' onChange={(event) => {setGender(event.target.value)}}/>Male</label>
+                <label className='switch__male'><input className='form-switch' type='radio' name='gender' id='male' value='Male' />Male</label>
                   
-                <label className='switch__female'> <input className='form-switch' type='radio' name='gender' id='female' value='Female' onChange={(event) => {setGender(event.target.value)}}/>Female</label> 
+                <label className='switch__female'> <input className='form-switch' type='radio' name='gender' id='female' value='Female' />Female</label> 
                   
-                <label className='switch__other'><input className='form-switch' type='radio' name='gender' id='other' value='Other' onChange={(event) => {setGender(event.target.value)}}/>Other</label>
+                <label className='switch__other'><input className='form-switch' type='radio' name='gender' id='other' value='Other' />Other</label>
               </div>
-              <Button variant="primary" large={false} disabled={(password === confirmPassword) ? false : true} label='Create Account' type='button' fontSize='large' fullWidth={false}/>  
+              <Button variant="primary" large={false} label='Create Account' type='button' fontSize='large' fullWidth={false}/>  
 
               </form>
           <p className='register-link'>Already have an account? <Link to="/login">Sign in</Link></p>
