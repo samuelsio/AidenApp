@@ -7,23 +7,48 @@ import "./RegisterForm.scss"
 
 
 export default function RegisterForm() {
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [fName, setFName] = useState("");
-  const [lName, setLName] = useState("");
-  const [dob, setDOB] = useState("");
-  const [gender, setGender] = useState("");
+  const [registerData, setRegisterData] = useState({
+    username:'',
+    email:'',
+    fName:'',
+    lName:'',
+    password:'',
+    confirmPassword:'',
+    dob:'',
+    gender:'',
+  })
 
-  useEffect(() => {
-    if (password === confirmPassword) {
-      console.log("it matches");
-    } else {
-      console.log("No match")
+  const [formError, setFormError] = useState([]);
+
+  const handleChange = (e) => {
+    const {name, value} = e.target;
+    setRegisterData({
+      ...registerData,
+      [name]: value
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefualt();
+
+    const errors = [];
+
+    if (!registerData.username) errors.push('Username')
+    if (!registerData.email) errors.push('Email')
+    if (!registerData.fName) errors.push('First Name')
+    if (!registerData.lName) errors.push('Last Name')
+    if (!registerData.password) errors.push('Password')
+    if (!registerData.confrimPassword) errors.push('Confirm Password')
+    if (!registerData.dob) errors.push('Date of Birth')
+    if (!registerData.gender) errors.push('Gender')
+    
+    setFormError(errors);
+    if (errors.length === 0) {
+      console.log('sucess', registerData)
     }
-  }, [password, confirmPassword])
-  
+
+  }
+
   useEffect(() => {
     console.log({
       password,
@@ -41,16 +66,16 @@ export default function RegisterForm() {
       <div className='parent'>
       <div className='container'>
           <div className='card-top'>
-              <h1 className='title' >Welcome {username}!</h1>
+              <h1 className='title' >Welcome new person!</h1>
               <p className='paragraph'>Sign up now and start searching for new friends, join public events, create new clans, meet people to play the games you enjoy, and find related games on sale</p>
           </div>
-          <form className='register-form'>
-              <input className='form-input' type="text" placeholder='Username' onChange={(event) => {setUsername(event.target.value)}} />
-              <input className='form-input' type="text" id='email' placeholder='Email' onChange={(event) => {setEmail(event.target.value)}} />
-              <input className='form-input' type='text' id='fName' placeholder='First Name' onChange={(event) => {setFName(event.target.value)}} />
-              <input className='form-input' type='text' id='lName' placeholder='Last Name' onChange={(event) => {setLName(event.target.value)}} />
-              <input className='form-input' type="password" name='confirm-password' id='confirm-password'  placeholder='Confirm Password' onChange={(event) => {setPassword(event.target.value)}} />
-              <input className='form-input' type="password" name='password' id='password'pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder='Password' title='Password must contain: at least 8 characters, an Uppercase, a Lowercase letterm and a number' onChange={(event) => {setConfirmPassword(event.target.value)}} />
+          <form className='register-form' onSubmit={handleSubmit}>
+              <input className='form-input' type="text" placeholder='Username' value={registerData.username} onChange={handleChange} />
+              <input className='form-input' type="text" id='email' placeholder='Email' value={registerData.email} onChange={handleChange} />
+              <input className='form-input' type='text' id='fName' placeholder='First Name' value={registerData.fName} onChange={handleChange} />
+              <input className='form-input' type='text' id='lName' placeholder='Last Name' value={registerData.lName} onChange={handleChange} />
+              <input className='form-input' type="password" name='confirm-password' id='confirm-password'  placeholder='Confirm Password' value={registerData.confirmPassword} onChange={handleChange} />
+              <input className='form-input' type="password" name='password' id='password'pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder='Password' title='Password must contain: at least 8 characters, an Uppercase, a Lowercase letterm and a number' value={registerData.password} onChange={handleChange} />
               <input className='form-input' type="date" name='dob' id='dob' onChange={(event) => {setDOB(event.target.value)}} />
               <div className='switch'>
                 <label className='switch__male'><input className='form-switch' type='radio' name='gender' id='male' value='Male' onChange={(event) => {setGender(event.target.value)}}/>Male</label>
