@@ -48,7 +48,7 @@ export default function RegisterForm() {
               <input className='form-input' type="text" placeholder='Username' onChange={(event) => {setUsername(event.target.value)}} />
               <input className='form-input' type="text" id='email' placeholder='Email' onChange={(event) => {setEmail(event.target.value)}} />
               <input className='form-input' type='text' id='fName' placeholder='First Name' onChange={(event) => {setFName(event.target.value)}} />
-              <input className='form-input' type='text' id='Name' placeholder='Last Name' onChange={(event) => {setLName(event.target.value)}} />
+              <input className='form-input' type='text' id='lName' placeholder='Last Name' onChange={(event) => {setLName(event.target.value)}} />
               <input className='form-input' type="password" name='confirm-password' id='confirm-password'  placeholder='Confirm Password' onChange={(event) => {setPassword(event.target.value)}} />
               <input className='form-input' type="password" name='password' id='password'pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder='Password' title='Password must contain: at least 8 characters, an Uppercase, a Lowercase letterm and a number' onChange={(event) => {setConfirmPassword(event.target.value)}} />
               <input className='form-input' type="date" name='dob' id='dob' onChange={(event) => {setDOB(event.target.value)}} />

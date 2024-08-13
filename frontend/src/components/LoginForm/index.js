@@ -15,7 +15,7 @@ export default function LoginForm() {
         <form className='login-form'>
             <input className='form-input' type="email" id='email' placeholder='Email' />
             <input className='form-input' type="password" placeholder='Password' />
-            <Button variant="primary" large={false} label='Create Account' type='button' fontSize='large' fullWidth={false}/>
+            <Button variant="primary" large={false} label='Sign In' type='button' fontSize='large' fullWidth={false}/>
         </form>
         <p className='register-link'>Don't have an account? <Link to="/register">Register</Link></p>
     </div>
