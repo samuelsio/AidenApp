@@ -58,11 +58,19 @@
             border-radius: 14px;
             box-sizing: border-box;
         }
+
+        .dob{
+            padding: 6px;
+            border-radius: 12px;
+            font-style: normal;
+            color: #757575;
+        }
+
         .switch{
             display: inline-block;
             border-radius: 5px;
             padding: 15px;
-
+            
             .switch__male{
                 background-color: #2A2A2A;
                 color: white;
@@ -75,6 +83,11 @@
                     opacity: 1; 
                     transform: translateY(7px); 
                 }
+                &:has(input[type="radio"]:checked){
+                    background-color: #7ecefc;
+                    color: black;
+                }
+
             }
             .switch__female{
                 background-color: #2A2A2A;
@@ -88,6 +101,11 @@
                     opacity: 1; 
                     transform: translateY(7px); 
                 }
+                &:has(input[type="radio"]:checked){
+                    background-color: #ff9ffd;
+                    color: black;
+                }
+                
             }
             .switch__other{
                 background-color: #2A2A2A;
@@ -100,6 +118,10 @@
                     color: black;
                     opacity: 1; 
                     transform: translateY(7px); 
+                }
+                &:has(input[type="radio"]:checked){
+                    background-color: #e4e4e4;
+                    color: black;
                 }
             }
             .form-switch{
@@ -124,3 +146,22 @@
     }
 }
 
+.errors{
+    display: inline;
+    text-decoration: none;
+    color: rgb(177, 0, 0);
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 0 16px;   
+    cursor: default;
+
+    .errorsHeader{
+        text-decoration: underline;
+    }
+    
+    .errorField{
+        cursor: pointer;
+        text-decoration: none;
+        color: rgb(230, 0, 0);
+    }
+}

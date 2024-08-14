@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState} from 'react';
 import { Link } from 'react-router-dom';
 import regPoster from "../../images/RegisterPoster.jpg";
 import Button from '../Button';
@@ -18,10 +18,12 @@ export default function RegisterForm() {
     gender:'',
   })
 
+
+
   const [formError, setFormError] = useState([]);
 
   const handleChange = (e) => {
-    const {name, value} = e.target;
+    const { name, value } = e.target;
     setRegisterData({
       ...registerData,
       [name]: value
@@ -29,24 +31,24 @@ export default function RegisterForm() {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefualt();
+    e.preventDefault();
 
     const errors = [];
 
-    if (!registerData.username) errors.push('Username')
-    if (!registerData.email) errors.push('Email')
-    if (!registerData.fName) errors.push('First Name')
-    if (!registerData.lName) errors.push('Last Name')
-    if (!registerData.password) errors.push('Password')
-    if (!registerData.confirmPassword) errors.push('Confirm Password')
-    if (!registerData.dob) errors.push('Date of Birth')
-    if (!registerData.gender) errors.push('Gender')
+    if (!registerData.username) errors.push({fieldName: 'Username', id:'username'})
+    if (!registerData.email) errors.push({fieldName: 'Email', id:'email'})
+    if (!registerData.fName) errors.push({fieldName: 'First Name', id:'fName'})
+    if (!registerData.lName) errors.push({fieldName: 'Last Name', id:'lName'})
+    if (!registerData.password) errors.push({fieldName: 'Password', id:'password'})
+    if (!registerData.confirmPassword) errors.push({fieldName: 'Confirm Password', id:'confirmPassword'})
+    if (!registerData.dob) errors.push({fieldName: 'Date of Birth', id:'dob'})
+    if (!registerData.gender) errors.push({fieldName: 'Gender', id:'gender'})
     
     setFormError(errors);
+
     if (errors.length === 0) {
       console.log('sucess', registerData)
     }
-
   }
 
 
@@ -57,24 +59,45 @@ export default function RegisterForm() {
               <h1 className='title' >Welcome new person!</h1>
               <p className='paragraph'>Sign up now and start searching for new friends, join public events, create new clans, meet people to play the games you enjoy, and find related games on sale</p>
           </div>
+          {formError.length > 0 &&(
+            <div className='errors'>
+              <h3 className='errorsHeader'>Fucko Wucko Occured:</h3>
+              <ul>
+                {formError.map((error, index) => (
+                  <li key={index}>
+                  <a className='errorField' href={`#${error.id}`} >{error.fieldName} is missing</a>
+                  </li>
+                  
+                  ))}
+              </ul>
+            </div>
+          )}
           <form className='register-form' onSubmit={handleSubmit}>
-              <input className='form-input' type="text" placeholder='Username' value={registerData.username} onChange={handleChange} />
-              <input className='form-input' type="text" id='email' placeholder='Email' value={registerData.email} onChange={handleChange} />
-              <input className='form-input' type='text' id='fName' placeholder='First Name' value={registerData.fName} onChange={handleChange} />
-              <input className='form-input' type='text' id='lName' placeholder='Last Name' value={registerData.lName} onChange={handleChange} />
-              <input className='form-input' type="password" name='confirm-password' id='confirm-password'  placeholder='Confirm Password' value={registerData.confirmPassword} onChange={handleChange} />
-              <input className='form-input' type="password" name='password' id='password'pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder='Password' title='Password must contain: at least 8 characters, an Uppercase, a Lowercase letterm and a number' value={registerData.password} onChange={handleChange} />
-              <input className='form-input' type="date" name='dob' id='dob' value={registerData.dob} onChange={handleChange} />
-              <div className='switch'>
-                <label className='switch__male'><input className='form-switch' type='radio' name='gender' id='male' value='Male' />Male</label>
+              <input className='form-input' type="text" name='username' id='username' placeholder='Username' value={registerData.username} onChange={handleChange} />
+              <input className='form-input' type="text"  name='email' id='email' placeholder='Email' value={registerData.email} onChange={handleChange} />
+              <input className='form-input' type='text' name='fName' id='fName' placeholder='First Name' value={registerData.fName} onChange={handleChange} />
+              <input className='form-input' type='text' name='lName' id='lName' placeholder='Last Name' value={registerData.lName} onChange={handleChange} />
+              <input className='form-input' type="password" name='password' id='password' pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder='Password' title='Password must contain: at least 8 characters, an Uppercase, a Lowercase letterm and a number' value={registerData.password} onChange={handleChange} />
+              <input className='form-input' type="password" name='confirmPassword' id='confirmPassword'  placeholder='Confirm Password' value={registerData.confirmPassword} onChange={handleChange} />
+              
+              <input className='dob' type="date" name='dob' id='dob' value={registerData.dob} onChange={handleChange} />
+              <div className='switch' id='gender'>
+                <label className='switch__male' >
+                  <input className='form-switch' type='radio' name='gender' id='male' value='Male' checked={registerData.gender === 'Male'} onChange={handleChange} />Male
+                </label>
                   
-                <label className='switch__female'> <input className='form-switch' type='radio' name='gender' id='female' value='Female' />Female</label> 
+                <label className='switch__female' >
+                  <input className='form-switch' type='radio' name='gender' id='female' value='Female' checked={registerData.gender === 'Female'} onChange={handleChange}/>Female
+                </label> 
                   
-                <label className='switch__other'><input className='form-switch' type='radio' name='gender' id='other' value='Other' />Other</label>
-              </div>
-              <Button variant="primary" large={false} label='Create Account' type='button' fontSize='large' fullWidth={false}/>  
+                <label className='switch__other' >
+                  <input className='form-switch' type='radio' name='gender' id='other' value='Other' checked={registerData.gender === 'Other'} onChange={handleChange}/>Other
+                </label>
 
+              </div>
+              <Button variant="primary" large={false} label='Create Account' type='submit' fontSize='large' fullWidth={false}/>  
               </form>
+              
           <p className='register-link'>Already have an account? <Link to="/login">Sign in</Link></p>
       </div>
       <div className='image-container'>
