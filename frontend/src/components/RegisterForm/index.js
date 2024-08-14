@@ -35,15 +35,26 @@ export default function RegisterForm() {
 
     const errors = [];
 
-    if (!registerData.username) errors.push({fieldName: 'Username', id:'username'})
-    if (!registerData.email) errors.push({fieldName: 'Email', id:'email'})
-    if (!registerData.fName) errors.push({fieldName: 'First Name', id:'fName'})
-    if (!registerData.lName) errors.push({fieldName: 'Last Name', id:'lName'})
-    if (!registerData.password) errors.push({fieldName: 'Password', id:'password'})
-    if (!registerData.confirmPassword) errors.push({fieldName: 'Confirm Password', id:'confirmPassword'})
-    if (!registerData.dob) errors.push({fieldName: 'Date of Birth', id:'dob'})
-    if (!registerData.gender) errors.push({fieldName: 'Gender', id:'gender'})
+    if (!registerData.username) errors.push({fieldName: 'Username is not filled', id:'username'})
+    if (!registerData.email) errors.push({fieldName: 'Email is not filled', id:'email'})
+    if (!registerData.fName) errors.push({fieldName: 'First Name is not filled', id:'fName'})
+    if (!registerData.lName) errors.push({fieldName: 'Last Name is not filled', id:'lName'})
+    if (!registerData.password) errors.push({fieldName: 'Password is not filled', id:'password'})
+    if (!registerData.confirmPassword) errors.push({fieldName: 'Confirm Password is not filled', id:'confirmPassword'})
+    if (!registerData.dob) errors.push({fieldName: 'Date of Birth is not filled', id:'dob'})
+    if (!registerData.gender) errors.push({fieldName: 'Gender is not filled', id:'gender'})
+    if (registerData.password !== registerData.confirmPassword) errors.push({fieldName: 'Passwords dont match', id:'confirmPassword'})
     
+    const checkEmail = /^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_-]+)(\.[a-zA-Z]{2,8}){1,2}$/;
+    if (!checkEmail.test(registerData.email)) {
+      errors.push({fieldName: 'Email', id:'email'})
+    }
+
+    const checkPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/;
+    if (!checkPassword.test(registerData.password)) {
+      errors.push({fieldName:` Password must contain a number, a lower AND uppercase letter, must be over 8 characters long, and contain a symbol (&!./)`, id:'password'})
+    }
+
     setFormError(errors);
 
     if (errors.length === 0) {
@@ -65,9 +76,8 @@ export default function RegisterForm() {
               <ul>
                 {formError.map((error, index) => (
                   <li key={index}>
-                  <a className='errorField' href={`#${error.id}`} >{error.fieldName} is missing</a>
+                  <a className='errorField' href={`#${error.id}`} >{error.fieldName}</a>
                   </li>
-                  
                   ))}
               </ul>
             </div>
@@ -77,7 +87,7 @@ export default function RegisterForm() {
               <input className='form-input' type="text"  name='email' id='email' placeholder='Email' value={registerData.email} onChange={handleChange} />
               <input className='form-input' type='text' name='fName' id='fName' placeholder='First Name' value={registerData.fName} onChange={handleChange} />
               <input className='form-input' type='text' name='lName' id='lName' placeholder='Last Name' value={registerData.lName} onChange={handleChange} />
-              <input className='form-input' type="password" name='password' id='password' pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder='Password' title='Password must contain: at least 8 characters, an Uppercase, a Lowercase letterm and a number' value={registerData.password} onChange={handleChange} />
+              <input className='form-input' type="password" name='password' id='password' placeholder='Password' title='Password must contain: at least 8 characters, an Uppercase, a Lowercase letterm and a number' value={registerData.password} onChange={handleChange} />
               <input className='form-input' type="password" name='confirmPassword' id='confirmPassword'  placeholder='Confirm Password' value={registerData.confirmPassword} onChange={handleChange} />
               
               <input className='dob' type="date" name='dob' id='dob' value={registerData.dob} onChange={handleChange} />
