@@ -35,24 +35,24 @@ export default function RegisterForm() {
 
     const errors = [];
 
-    if (!registerData.username) errors.push({fieldName: 'Username is not filled', id:'username'})
-    if (!registerData.email) errors.push({fieldName: 'Email is not filled', id:'email'})
-    if (!registerData.fName) errors.push({fieldName: 'First Name is not filled', id:'fName'})
-    if (!registerData.lName) errors.push({fieldName: 'Last Name is not filled', id:'lName'})
-    if (!registerData.password) errors.push({fieldName: 'Password is not filled', id:'password'})
-    if (!registerData.confirmPassword) errors.push({fieldName: 'Confirm Password is not filled', id:'confirmPassword'})
-    if (!registerData.dob) errors.push({fieldName: 'Date of Birth is not filled', id:'dob'})
-    if (!registerData.gender) errors.push({fieldName: 'Gender is not filled', id:'gender'})
-    if (registerData.password !== registerData.confirmPassword) errors.push({fieldName: 'Passwords dont match', id:'confirmPassword'})
+    if (!registerData.username) errors.push({errorName: 'Username is not filled', id:'username'})
+    if (!registerData.email) errors.push({errorMessage: 'Email is not filled', id:'email'})
+    if (!registerData.fName) errors.push({errorMessage: 'First Name is not filled', id:'fName'})
+    if (!registerData.lName) errors.push({errorMessage: 'Last Name is not filled', id:'lName'})
+    if (!registerData.password) errors.push({errorMessage: 'Password is not filled', id:'password'})
+    if (!registerData.confirmPassword) errors.push({errorMessage: 'Confirm Password is not filled', id:'confirmPassword'})
+    if (!registerData.dob) errors.push({errorMessage: 'Date of Birth is not filled', id:'dob'})
+    if (!registerData.gender) errors.push({errorMessage: 'Gender is not filled', id:'gender'})
+    if (registerData.password !== registerData.confirmPassword) errors.push({errorMessage: 'Passwords dont match', id:'confirmPassword'})
     
     const checkEmail = /^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_-]+)(\.[a-zA-Z]{2,8}){1,2}$/;
     if (!checkEmail.test(registerData.email)) {
-      errors.push({fieldName: 'Email', id:'email'})
+      errors.push({errorMessage: 'Email', id:'email'})
     }
 
     const checkPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/;
     if (!checkPassword.test(registerData.password)) {
-      errors.push({fieldName:` Password must contain a number, a lower AND uppercase letter, must be over 8 characters long, and contain a symbol (&!./)`, id:'password'})
+      errors.push({errorMessage:` Password must contain a number, a lower AND uppercase letter, must be over 8 characters long, and contain a symbol (&!./)`, id:'password'})
     }
 
     setFormError(errors);
@@ -76,7 +76,7 @@ export default function RegisterForm() {
               <ul>
                 {formError.map((error, index) => (
                   <li key={index}>
-                  <a className='errorField' href={`#${error.id}`} >{error.fieldName}</a>
+                  <a className='errorField' href={`#${error.id}`} >{error.errorMessage}</a>
                   </li>
                   ))}
               </ul>
