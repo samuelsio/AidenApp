@@ -7,7 +7,7 @@ import "./RegisterPage.scss";
 export default function RegisterPage() {
   return (
     <>
-        <Header />
+        <Header activeItem={"loginPage"}/>
         <div className='RegisterPage'></div>
         <RegisterForm />
     </>
