@@ -6,7 +6,7 @@ import "./Social.scss";
 export default function Social() {
   return (
     <>
-    <Header />
+    <Header activeItem={"social"}/>
     <div className='Social'>
         <h1>Social</h1>
     </div>

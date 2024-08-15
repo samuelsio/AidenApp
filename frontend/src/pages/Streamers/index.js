@@ -7,7 +7,7 @@ import "./Streamers.scss";
 export default function Streamers() {
   return (
     <>
-    <Header />
+    <Header activeItem={"streamers"}/>
     <div className='Streamers'>
         <h1>Streamers</h1>
     </div>
