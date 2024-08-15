@@ -35,6 +35,7 @@ export default function StreamCard() {
                     </div>
 
                     
+                    
 
                 </div>
             </div>
