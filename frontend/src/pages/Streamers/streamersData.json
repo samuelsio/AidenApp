@@ -1,0 +1,225 @@
+{
+    "category": [
+      {
+        "id": 1,
+        "name": "Minecraft",
+        "type": "default",
+        "streams": [
+          {
+            "thumbnail": "https://via.placeholder.com/264x149",
+            "name": "MinecraftMaster",
+            "description": "Building the ultimate castle! Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "game": "Minecraft",
+            "viewerCount": 2345,
+            "id": 101
+          },
+          {
+            "thumbnail": "https://via.placeholder.com/264x149",
+            "name": "BlockBuilder",
+            "description": "Speedrun challenge! Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+            "game": "Minecraft",
+            "viewerCount": 1789,
+            "id": 102
+          },
+          {
+            "thumbnail": "https://via.placeholder.com/264x149",
+            "name": "CreeperHunter",
+            "description": "Surviving 100 days in Hardcore mode.",
+            "game": "Minecraft",
+            "viewerCount": 2560,
+            "id": 103
+          },
+          {
+            "thumbnail": "https://via.placeholder.com/264x149",
+            "name": "RedstoneWizard",
+            "description": "Creating complex redstone contraptions.",
+            "game": "Minecraft",
+            "viewerCount": 3123,
+            "id": 104
+          },
+          {
+            "thumbnail": "https://via.placeholder.com/264x149",
+            "name": "NetherExplorer",
+            "description": "Exploring the Nether and finding loot.",
+            "game": "Minecraft",
+            "viewerCount": 2901,
+            "id": 105
+          },
+          {
+            "thumbnail": "https://via.placeholder.com/264x149",
+            "name": "PvPChampion",
+            "description": "Taking on the toughest players in PvP!",
+            "game": "Minecraft",
+            "viewerCount": 3756,
+            "id": 106
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Fortnite",
+        "type": "default",
+        "streams": [
+          {
+            "thumbnail": "https://via.placeholder.com/264x149",
+            "name": "VictoryRoyale",
+            "description": "Going for another win!",
+            "game": "Fortnite",
+            "viewerCount": 5210,
+            "id": 201
+          },
+          {
+            "thumbnail": "https://via.placeholder.com/264x149",
+            "name": "BuildBattlePro",
+            "description": "Mastering build battles.",
+            "game": "Fortnite",
+            "viewerCount": 4723,
+            "id": 202
+          },
+          {
+            "thumbnail": "https://via.placeholder.com/264x149",
+            "name": "SniperAce",
+            "description": "Perfecting long-range shots.",
+            "game": "Fortnite",
+            "viewerCount": 4890,
+            "id": 203
+          },
+          {
+            "thumbnail": "https://via.placeholder.com/264x149",
+            "name": "DuoDestroyers",
+            "description": "Dominating in duos.",
+            "game": "Fortnite",
+            "viewerCount": 4302,
+            "id": 204
+          },
+          {
+            "thumbnail": "https://via.placeholder.com/264x149",
+            "name": "TrapMaster",
+            "description": "Setting up the ultimate traps.",
+            "game": "Fortnite",
+            "viewerCount": 3958,
+            "id": 205
+          },
+          {
+            "thumbnail": "https://via.placeholder.com/264x149",
+            "name": "StormSurvivor",
+            "description": "Navigating the storm and outlasting everyone.",
+            "game": "Fortnite",
+            "viewerCount": 4421,
+            "id": 206
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Hottest",
+        "type": "hottest",
+        "streams": [
+          {
+            "thumbnail": "https://via.placeholder.com/264x149",
+            "name": "SharpShooter",
+            "description": "Ace with every round!",
+            "game": "Valorant",
+            "viewerCount": 6802,
+            "id": 301
+          },
+          {
+            "thumbnail": "https://via.placeholder.com/264x149",
+            "name": "ClutchKing",
+            "description": "Pulling off incredible clutches.",
+            "game": "Valorant",
+            "viewerCount": 7423,
+            "id": 302
+          },
+          {
+            "thumbnail": "https://via.placeholder.com/264x149",
+            "name": "TacticalGenius",
+            "description": "Outsmarting opponents with tactics.",
+            "game": "Valorant",
+            "viewerCount": 7034,
+            "id": 303
+          },
+          {
+            "thumbnail": "https://via.placeholder.com/264x149",
+            "name": "SpikeMaster",
+            "description": "Planting and defending the spike.",
+            "game": "Valorant",
+            "viewerCount": 6230,
+            "id": 304
+          },
+          {
+            "thumbnail": "https://via.placeholder.com/264x149",
+            "name": "FlankExpert",
+            "description": "Executing flawless flanks.",
+            "game": "Valorant",
+            "viewerCount": 6912,
+            "id": 305
+          },
+          {
+            "thumbnail": "https://via.placeholder.com/264x149",
+            "name": "HeadshotHero",
+            "description": "Landing perfect headshots every time.",
+            "game": "Valorant",
+            "viewerCount": 7351,
+            "id": 306
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Followed",
+        "type": "followed",
+        "streams": [
+          {
+            "thumbnail": "https://via.placeholder.com/264x149",
+            "name": "MidLaneMaster",
+            "description": "Dominating the mid lane.",
+            "game": "League of Legends",
+            "viewerCount": 8523,
+            "id": 401
+          },
+          {
+            "thumbnail": "https://via.placeholder.com/264x149",
+            "name": "JungleKing",
+            "description": "Ruling the jungle with strategic plays.",
+            "game": "League of Legends",
+            "viewerCount": 8032,
+            "id": 402
+          },
+          {
+            "thumbnail": "https://via.placeholder.com/264x149",
+            "name": "ADCPro",
+            "description": "Carrying the team as ADC.",
+            "game": "League of Legends",
+            "viewerCount": 7901,
+            "id": 403
+          },
+          {
+            "thumbnail": "https://via.placeholder.com/264x149",
+            "name": "SupportSavior",
+            "description": "Saving the team with clutch supports.",
+            "game": "League of Legends",
+            "viewerCount": 8123,
+            "id": 404
+          },
+          {
+            "thumbnail": "https://via.placeholder.com/264x149",
+            "name": "TopLaneTerror",
+            "description": "Unstoppable in the top lane.",
+            "game": "League of Legends",
+            "viewerCount": 7789,
+            "id": 405
+          },
+          {
+            "thumbnail": "https://via.placeholder.com/264x149",
+            "name": "TeamFightTactician",
+            "description": "Leading the team to victory in team fights.",
+            "game": "League of Legends",
+            "viewerCount": 8234,
+            "id": 406
+          }
+        ]
+      }
+    ]
+  }
+  
