@@ -46,28 +46,35 @@
 
         .GamesCard__content{
             display: flex;
-            justify-content: flex-start;
+            justify-content: space-between;
             align-items: center;
             flex-direction: row;
             width: 100%;
-            .GamesCard__image{
-                width: 256px;
-                height: 256px;
-                padding: 13px;
-            }
-            .GamesCard__description{
-                    width: 130px;
-                    overflow-y: auto;
-                    scrollbar-color: #545454 #3f3f3f;
-                    .GamesCard__description__text{
-                        color: white;
+            padding: 8px;
+            .GamesCard__poster__container{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
 
-                    }
+                .GamesCard__image{
+                    width: 256px;
+                    height: 256px;
+                    padding: 13px;
+                }
+                .GamesCard__description{
+                        width: 130px;
+                        overflow-y: auto;
+                        scrollbar-color: #545454 #3f3f3f;
+                        .GamesCard__description__text{
+                            color: white;
+
+                        }
+                }
             }
             .GamesCard__twitter_handle{
                 .twitter-timeline{}
             }
-            .GamesCard__thumbnail{}
+            
             .GamesCard__store_wrapper{
                 display: flex;
                 text-decoration: none;

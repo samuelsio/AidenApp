@@ -29,19 +29,27 @@ export default function GamesCard() {
                             </div>
                         ))}
                     </div>
-                    <div className='GamesCard__content'>
-                        <div className='GamesCard__image'>
-                            <img src={game.img_url} alt={game.name} />
+                    <div className='GamesCard__content'> 
+
+                        <div className='GamesCard__poster__container'>
+                            <div className='GamesCard__image'>
+                                <img src={game.img_url} alt={game.name} />
+                            </div>
+                            <div className='GamesCard__description'>
+                                <p className='GamesCard__description__text'>{game.description}</p>
+                            </div>
                         </div>
-                        <div className='GamesCard__description'>
-                            <p className='GamesCard__description__text'>{game.description}</p>
-                        </div>
+                        
                         <div className='GamesCard__twitter_handle'>
                             <a className="twitter-timeline" data-width="400" data-height="256" data-theme="dark" href={`https://twitter.com/${game.twitter_handle}?ref_src=twsrc%5Etfw`}>Tweets by helldivers2</a>
                         </div>
-                        <div className='GamesCard__thumbnail'>
-                            <img src={game.thumbnail} alt={game.name} />
+                        <div className='GamesCard__twitch_handle'>
+                            {console.log(game.twitch_handle)}
+                            <iframe src={`https://player.twitch.tv/?channel=${game.twitch_handle}&parent=${window.location.hostname === 'localhost' ? 'localhost' : window.location.hostname}`} height="300" width="400"></iframe>
                         </div>
+                        {/* <div className='GamesCard__thumbnail'>
+                            <img src={game.thumbnail} alt={game.name} />
+                        </div> */}
                         <div className='GamesCard__store_wrapper'>
                             
                         </div>
