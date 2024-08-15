@@ -6,7 +6,7 @@ import "./Games.scss";
 export default function Games() {
   return (
     <>
-    <Header />
+    <Header activeItem={"games"}/>
     <div className='Games'>
         <h1>Games</h1>
     </div>

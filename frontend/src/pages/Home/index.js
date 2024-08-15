@@ -5,7 +5,7 @@ import "./Home.scss";
 export default function Home() {
     return (
         <div className="home">
-            <Header />
+            <Header activeItem={"home"}/>
             <h1>This is the homepage</h1>
             <p>This is a placeholder home page.</p>
             <a

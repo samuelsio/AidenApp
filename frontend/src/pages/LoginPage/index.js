@@ -6,7 +6,7 @@ import "./LoginPage.scss";
 export default function LoginPage() {
   return (
     <>
-    <Header />
+    <Header activeItem={"loginPage"}/>
     <div className='LoginPage'></div>
     <LoginForm />
     </>

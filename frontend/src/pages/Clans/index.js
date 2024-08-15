@@ -6,7 +6,7 @@ import "./Clans.scss";
 export default function Clans() {
   return (
     <>
-    <Header />
+    <Header activeItem={"clans"}/>
     <div className='Clans'>
         <h1>Clans</h1>
     </div>
