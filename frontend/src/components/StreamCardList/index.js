@@ -6,12 +6,12 @@ export default function StreamCardList() {
 
     return (
         streamersData.category.map((streamer) => (
-        <div className='streamCard__container'>
-            <div className='streamCard'>
-                <div className='streamCard__gameName' key={streamer.id}> 
+        <div className='streamCardList__container' key={streamer.id}>
+            <div className='streamCardList'>
+                <div className='streamCardList__gameName' > 
                     <h1 className={`gameName__Header ${streamer.type}`}>{streamer.name}</h1>
                 </div>
-                <div className='streamCard__list'>
+                <div className='streamCardList__list'>
                 {streamer.streams.map((streamer) => (
                     <StreamCard 
                     key={streamer.id}
