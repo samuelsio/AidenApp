@@ -13,7 +13,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-
+        max-width: 1230px;
             .GamesCard__name{
                 background-color: #383838;
                 width: 100%;
@@ -23,25 +23,32 @@
                 justify-content: space-between;
                 align-items: center;
                 flex-direction: row;
-
                 .GamesCard__name__header{
                     padding-left: 20px;
                 }
 
-                .GamesCard__store{
-                    border: 3px solid #B824D0;
-                    padding: 3px;
-                    border-radius: 12px;
-                    margin: 0;
-                    display: flex;
 
-                    .GamesCard__store__link{
-                        text-decoration: none;
-                        color: #B824D0;
-                        font-size: 24px;
+
+                .GamesCard__store__wrapper{
+                    display: flex;
+                    text-decoration: none;
+                    margin-right: 20px;
+                    .GamesCard__store{
+                        border: 4px solid #B824D0;
+                        padding: 4px;
+                        border-radius: 20px;
+                        margin: 10px;
+                        display: flex;
+                        .GamesCard__store__link{
+                            text-decoration: none;
+                            color: #B824D0;
+                            font-size: 24px;
+                        }
                     }
-                }
+                }              
             }
+
+
 
 
         .GamesCard__content{
@@ -50,38 +57,55 @@
             align-items: center;
             flex-direction: row;
             width: 100%;
-            padding: 8px;
+            overflow-x: auto;
             .GamesCard__poster__container{
                 display: flex;
                 flex-direction: row;
                 align-items: center;
-
                 .GamesCard__image{
                     width: 256px;
                     height: 256px;
                     padding: 13px;
                 }
-                .GamesCard__description{
-                        width: 130px;
-                        overflow-y: auto;
-                        scrollbar-color: #545454 #3f3f3f;
-                        .GamesCard__description__text{
-                            color: white;
 
-                        }
+
+
+                .GamesCard__description{
+                    width: 130px;
+                    overflow-y: auto;
+                    scrollbar-color: #545454 #3f3f3f;
+                    .GamesCard__description__text{
+                        color: white;
+                    }
                 }
             }
+
+
+
             .GamesCard__twitter_handle{
                 .twitter-timeline{}
             }
-            
-            .GamesCard__store_wrapper{
-                display: flex;
-                text-decoration: none;
-                padding: 4px;
-            }
-
-
         }
     }
+}
+
+::-webkit-scrollbar{
+width: 12px;
+height: 12px;
+border-radius: 12px;
+}
+
+
+::-webkit-scrollbar-track {
+background: #3F3F3F;
+border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+background: #8C8C8C;
+border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+background: #b1b1b1;
 }

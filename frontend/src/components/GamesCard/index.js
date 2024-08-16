@@ -23,11 +23,13 @@ export default function GamesCard() {
                 <div className='GamesCard'>
                     <div className='GamesCard__name'>
                     <h1 className='GamesCard__name__header'>{game.name}</h1>
+                    <div className='GamesCard__store__wrapper'>
                         {Object.entries(game.store).map(([storeName, storeUrl]) => (
                             <div className='GamesCard__store' key={storeName}>
                                 <a className='GamesCard__store__link' href={storeUrl} target="_blank" rel="noopener noreferrer">{storeName}</a>
                             </div>
                         ))}
+                    </div>
                     </div>
                     <div className='GamesCard__content'> 
 
