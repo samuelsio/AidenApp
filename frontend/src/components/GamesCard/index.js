@@ -43,7 +43,7 @@ export default function GamesCard() {
                         </div>
                         
                         <div className='GamesCard__twitter_handle'>
-                            <a className="twitter-timeline" data-width="400" data-height="256" data-theme="dark" href={`https://twitter.com/${game.twitter_handle}?ref_src=twsrc%5Etfw`}>Tweets by helldivers2</a>
+                            <a className="twitter-timeline" data-width="400" data-height="256" data-theme="dark" href={`https://twitter.com/${game.twitter_handle}?ref_src=twsrc%5Etfw`}>Tweets Loading</a>
                         </div>
                         <div className='GamesCard__twitch_handle'>
                             {console.log(game.twitch_handle)}
