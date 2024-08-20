@@ -17,7 +17,7 @@ return(
             <div className="FriendsCard__Active">
                 <p className="FriendsCard__playing">{activity}</p>
                 <div className="FriendsCard__button">
-                    {squad === "True" ? null : (
+                    {squad === "True" || status==="Offline" ? null : (
                     <Button variant="outline" large={false} label='Invite' type='submit' fontSize='12px' fullWidth="fullWidth"/> 
                     )}
                  </div>
