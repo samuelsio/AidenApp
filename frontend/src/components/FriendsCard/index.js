@@ -4,18 +4,6 @@ import Button from "../Button";
 
 export default function FriendsCard({username, status, activity, squad, profilePicture}){
 
-// 	FriendsListCard{
-// 	username: "aidentopshot"
-// 	Status: "Online"
-// 	Activity: "Browser Open" or "Playing Stardew Valley"
-// 	Squad: "True" or "False"
-// 	}
-
-// const username = "aidentopshot";
-// const status = "Online";
-// const activity = "In Browser";
-
-
 return(
     <div className="FriendsCard__wrapper">
         <div className="FriendsCard">
@@ -28,9 +16,11 @@ return(
             </div>
             <div className="FriendsCard__Active">
                 <p className="FriendsCard__playing">{activity}</p>
-                {squad === "True" ? null : (
-                 <Button variant="outline" large={false} label='Invite' type='submit' fontSize='12px' fullWidth={false}/> 
-                 )}
+                <div className="FriendsCard__button">
+                    {squad === "True" ? null : (
+                    <Button variant="outline" large={false} label='Invite' type='submit' fontSize='12px' fullWidth="fullWidth"/> 
+                    )}
+                 </div>
             </div>
         </div>
         

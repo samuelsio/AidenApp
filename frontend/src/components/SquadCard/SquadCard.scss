@@ -2,10 +2,13 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-around;
+    margin: 6px;
     .SquadCard__pfp{
-
+        border-radius: 50%;
     }   
     .SquadCard__username{
-
+        color: white;
+        text-align: center;
     }
 }

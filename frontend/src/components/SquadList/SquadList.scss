@@ -23,21 +23,26 @@
             }
         }
         .Profile__squad__container{
+            .Squad__name{
+                color: #ffffffad;
+            }
             .Squad__wrapper{
                 display: flex;
-                flex-direction: column;
-                justify-content: center;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-around;
                 align-items: center;
-                width: 100%;
                 .SquadCard__wrapper{
                     display: flex;
                     flex-direction: row;
                     flex-wrap: wrap;
-                    justify-content: center;
+                    justify-content: space-around;
                     align-items: center;
-                    width: 60%;
                     .Squad__container{
-                        width: 160px;
+                        background-color: #242424;
+                        border-radius: 16px;
+                        width: 280px;
+                        margin: 12px;
                     }
                 }
             }
