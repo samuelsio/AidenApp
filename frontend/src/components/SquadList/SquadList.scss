@@ -1,0 +1,46 @@
+.SquadProfile{
+    background-color: #2d2d2d;
+    border-radius: 16px;
+    width: 640px;
+
+    .SquadProfile__container{
+        .SquadProfile__user__wrapper{
+            padding: 12px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            .SquadProfile__user__pfp{
+                .SquadProfile__status{
+                    width: 50px;
+                    height: 50px;
+                }
+            }
+            .SquadProfile__user__status{
+                width: 100%;
+                .SquadProfile__Activity{
+                    width: 90%;
+                }
+            }
+        }
+        .Profile__squad__container{
+            .Squad__wrapper{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                .SquadCard__wrapper{
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    align-items: center;
+                    width: 60%;
+                    .Squad__container{
+                        width: 160px;
+                    }
+                }
+            }
+        }
+    }
+}

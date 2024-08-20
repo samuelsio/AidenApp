@@ -1,0 +1,67 @@
+{
+  "friends": [
+    {
+      "username": "aidentopshot",
+      "status": "Online",
+      "activity": "Playing Stardew Valley",
+      "squad": "True",
+      "profilePicture": "https://placeholder.com/50"
+    },
+    {
+      "username": "john_doe",
+      "status": "Offline for 4 hours",
+      "activity": "Browser Open",
+      "squad": "True",
+      "profilePicture": "https://placeholder.com/50"
+    },
+    {
+      "username": "jane_smith",
+      "status": "Online",
+      "activity": "Playing Stardew Valley",
+      "squad": "True",
+      "profilePicture": "https://placeholder.com/50"
+    },
+    {
+      "username": "mike_jones",
+      "status": "Offline for 3 hours",
+      "activity": "Browser Open",
+      "squad": "False",
+      "profilePicture": "https://placeholder.com/50"
+    },
+    {
+      "username": "sara_connor",
+      "status": "Online",
+      "activity": "Browser Open",
+      "squad": "False",
+      "profilePicture": "https://placeholder.com/50"
+    },
+    {
+      "username": "luke_skywalker",
+      "status": "Offline for 5 hours",
+      "activity": "Playing Stardew Valley",
+      "squad": "False",
+      "profilePicture": "https://placeholder.com/50"
+    },
+    {
+      "username": "harry_potter",
+      "status": "Online",
+      "activity": "Playing Stardew Valley",
+      "squad": "False",
+      "profilePicture": "https://placeholder.com/50"
+    },
+    {
+      "username": "tony_stark",
+      "status": "Offline for 6 hours",
+      "activity": "Browser Open",
+      "squad": "False",
+      "profilePicture": "https://placeholder.com/50"
+    },
+    {
+      "username": "bruce_wayne",
+      "status": "Online",
+      "activity": "Playing Stardew Valley",
+      "squad": "False",
+      "profilePicture": "https://placeholder.com/50"
+    }
+  ]
+}
