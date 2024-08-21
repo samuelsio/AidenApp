@@ -15,7 +15,7 @@ export default function FriendsList() {
                         status={friends.status}
                         activity={friends.activity}
                         squad={friends.squad}
-                        profilePicture={friends.profilePicture}
+                        profilePicture={friends.profilePic}
                     />
                 </div>
                 ))}

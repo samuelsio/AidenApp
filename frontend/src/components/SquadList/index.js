@@ -24,16 +24,17 @@ export default function SquadList(){
                         
                         <div className="SquadCard__wrapper">
                             <div className="Squad__container">
+                                
                                 <SquadCard 
                                 username="You"
-                                profilePicture="https://placeholder.com/50"
+                                profilePicture="https://placeholder.com/150"
                                 />
                             </div>
                             {squadMembers.map((friends) => (
                             <div className='Squad__container' key={friends.username}>
                                 <SquadCard 
                                 username={friends.username}
-                                profilePicture={friends.profilePicture}
+                                profilePicture={friends.profilePic}
                                 BtnLabel="Kick"
                                 />
                             </div>
@@ -42,7 +43,7 @@ export default function SquadList(){
                                 <div className='Squad__container' key={index}>
                                     <SquadCard 
                                     username="Search for Squad Members"
-                                    profilePicture="https://placeholder.com/50" 
+                                    profilePicture={"https://placeholder.com/150"} 
                                     BtnLabel="Search"
                                     />
                                 </div>

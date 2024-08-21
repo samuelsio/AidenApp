@@ -5,13 +5,8 @@ import SquadList from '../SquadList/index.js'
 import FriendsList from '../FriendsList/index.js';
 import Button from '../Button';
 
-export default function ProfileComponent() {
-    const name = "John Smith"
-    const username = "@twat"
-    const profileBackgroundPic = "https://placeholder.com/396x168"
-    const profilePic = "https://placeholder.com/116x116"
-    const followers = 12345
-    const following = 1234
+export default function ProfileComponent({user}) {
+    const { name, username, profileBackgroundPic, profilePic, followers, following} = user;
 
 
 

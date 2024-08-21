@@ -1,102 +1,158 @@
 {
   "friends": [
     {
+      "name": "Aiden Heath",
       "username": "aidentopshot",
-      "status": "Online",
-      "activity": "Playing Stardew Valley",
-      "squad": "True",
-      "profilePicture": "https://placeholder.com/50"
+      "profileBackgroundPic": "https://placeholder.com/396x168",
+      "profilePic": "https://placeholder.com/150",
+      "squad": "True", 
+      "followers": 1500,
+      "following": 300,
+      "status": "Online", 
+      "activity": "Playing Stardew Valley" 
     },
     {
+      "name": "John Doe",
       "username": "john_doe",
-      "status": "Offline",
-      "activity": "Offline for 4 hours",
-      "squad": "True",
-      "profilePicture": "https://placeholder.com/50"
+      "profileBackgroundPic": "https://placeholder.com/396x168",
+      "profilePic": "https://placeholder.com/150",
+      "squad": "False",
+      "followers": 1200,
+      "following": 250,
+      "status": "Offline", 
+      "activity": "Offline for 4 hours" 
     },
     {
+      "name": "Jane Smith",
       "username": "jane_smith",
-      "status": "Online",
-      "activity": "Playing Among Us",
+      "profileBackgroundPic": "https://placeholder.com/396x168",
+      "profilePic": "https://placeholder.com/150",
       "squad": "False",
-      "profilePicture": "https://placeholder.com/50"
+      "followers": 800,
+      "following": 150,
+      "status": "Online", 
+      "activity": "Playing Among Us" 
     },
     {
+      "name": "Mike Jones",
       "username": "mike_jones",
-      "status": "Offline",
-      "activity": "Offline for 3 hours",
+      "profileBackgroundPic": "https://placeholder.com/396x168",
+      "profilePic": "https://placeholder.com/150",
       "squad": "False",
-      "profilePicture": "https://placeholder.com/50"
+      "followers": 600,
+      "following": 100,
+      "status": "Offline", 
+      "activity": "Offline for 3 hours" 
     },
     {
+      "name": "Sara Connor",
       "username": "sara_connor",
-      "status": "Online",
-      "activity": "Playing Fortnite",
-      "squad": "False",
-      "profilePicture": "https://placeholder.com/50"
+      "profileBackgroundPic": "https://placeholder.com/396x168",
+      "profilePic": "https://placeholder.com/150",
+      "squad": "True", 
+      "followers": 900,
+      "following": 200,
+      "status": "Online", 
+      "activity": "Playing Fortnite" 
     },
     {
+      "name": "Luke Skywalker",
       "username": "luke_skywalker",
-      "status": "Offline",
-      "activity": "Offline for 5 hours",
+      "profileBackgroundPic": "https://placeholder.com/396x168",
+      "profilePic": "https://placeholder.com/150",
       "squad": "False",
-      "profilePicture": "https://placeholder.com/50"
+      "followers": 300,
+      "following": 50,
+      "status": "Offline", 
+      "activity": "Offline for 5 hours" 
     },
     {
+      "name": "Harry Potter",
       "username": "harry_potter",
-      "status": "Online",
-      "activity": "Playing Call of Duty",
-      "squad": "False",
-      "profilePicture": "https://placeholder.com/50"
+      "profileBackgroundPic": "https://placeholder.com/396x168",
+      "profilePic": "https://placeholder.com/150",
+      "squad": "True", 
+      "followers": 2000,
+      "following": 400,
+      "status": "Online", 
+      "activity": "Playing Call of Duty" 
     },
     {
+      "name": "Tony Stark",
       "username": "tony_stark",
-      "status": "Offline",
-      "activity": "Offline for 6 hours",
+      "profileBackgroundPic": "https://placeholder.com/396x168",
+      "profilePic": "https://placeholder.com/150",
       "squad": "False",
-      "profilePicture": "https://placeholder.com/50"
+      "followers": 1500,
+      "following": 300,
+      "status": "Offline", 
+      "activity": "Offline for 6 hours" 
     },
     {
+      "name": "Bruce Wayne",
       "username": "bruce_wayne",
-      "status": "Online",
-      "activity": "Playing Stardew Valley",
+      "profileBackgroundPic": "https://placeholder.com/396x168",
+      "profilePic": "https://placeholder.com/150",
       "squad": "False",
-      "profilePicture": "https://placeholder.com/50"
+      "followers": 1800,
+      "following": 350,
+      "status": "Online", 
+      "activity": "Playing Stardew Valley" 
     },
     {
+      "name": "Clark Kent",
       "username": "clark_kent",
-      "status": "Online",
-      "activity": "Playing Minecraft",
+      "profileBackgroundPic": "https://placeholder.com/396x168",
+      "profilePic": "https://placeholder.com/150",
       "squad": "False",
-      "profilePicture": "https://placeholder.com/50"
+      "followers": 1200,
+      "following": 250,
+      "status": "Online", 
+      "activity": "Playing Minecraft" 
     },
     {
+      "name": "Peter Parker",
       "username": "peter_parker",
-      "status": "Offline",
-      "activity": "Offline for 2 hours",
+      "profileBackgroundPic": "https://placeholder.com/396x168",
+      "profilePic": "https://placeholder.com/150",
       "squad": "False",
-      "profilePicture": "https://placeholder.com/50"
+      "followers": 700,
+      "following": 150,
+      "status": "Offline", 
+      "activity": "Offline for 2 hours" 
     },
     {
+      "name": "Natasha Romanoff",
       "username": "natasha_romanoff",
-      "status": "Online",
-      "activity": "Playing Apex Legends",
+      "profileBackgroundPic": "https://placeholder.com/396x168",
+      "profilePic": "https://placeholder.com/150",
       "squad": "False",
-      "profilePicture": "https://placeholder.com/50"
+      "followers": 1100,
+      "following": 220,
+      "status": "Online", 
+      "activity": "Playing Apex Legends" 
     },
     {
+      "name": "Steve Rogers",
       "username": "steve_rogers",
-      "status": "Offline",
-      "activity": "Offline for 1 hour",
+      "profileBackgroundPic": "https://placeholder.com/396x168",
+      "profilePic": "https://placeholder.com/150",
       "squad": "False",
-      "profilePicture": "https://placeholder.com/50"
+      "followers": 900,
+      "following": 180,
+      "status": "Offline", 
+      "activity": "Offline for 1 hour" 
     },
     {
+      "name": "Wanda Maximoff",
       "username": "wanda_maximoff",
-      "status": "Online",
-      "activity": "Playing Valorant",
+      "profileBackgroundPic": "https://placeholder.com/396x168",
+      "profilePic": "https://placeholder.com/150",
       "squad": "False",
-      "profilePicture": "https://placeholder.com/50"
+      "followers": 1300,
+      "following": 270,
+      "status": "Online", 
+      "activity": "Playing Valorant" 
     }
   ]
 }
