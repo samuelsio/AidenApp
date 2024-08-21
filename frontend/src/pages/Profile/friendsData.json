@@ -12,6 +12,17 @@
       "activity": "Playing Stardew Valley" 
     },
     {
+      "name": "John Smith",
+      "username": "@twat",
+      "profileBackgroundPic": "https://placeholder.com/396x168",
+      "profilePic": "https://placeholder.com/150",
+      "squad": "False", 
+      "followers": 1992,
+      "following": 2015,
+      "status": "Online", 
+      "activity": "In Browser" 
+    },
+    {
       "name": "John Doe",
       "username": "john_doe",
       "profileBackgroundPic": "https://placeholder.com/396x168",
