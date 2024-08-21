@@ -6,7 +6,7 @@ import FriendsList from '../FriendsList/index.js';
 import Button from '../Button';
 
 export default function ProfileComponent({user}) {
-    const { name, username, profileBackgroundPic, profilePic, followers, following} = user;
+    const { name, username, profileBackgroundPic, profilePic, followers, following, description} = user;
 
 
 
@@ -37,7 +37,7 @@ export default function ProfileComponent({user}) {
                         </div>
 
                         <div className='Description'>
-                            <p>🌟 Hello, I’m John. I usually only play with other people called john. 🌟</p>
+                            <p>{description}</p>
                         </div>
                         <Button variant={name === "John Smith" ? "primary" : "outline"} large={false} label={name === "John Smith" ? "Edit Profile" : "Add Friend"} type='submit' fontSize='large' fullWidth={false}/>
                     </div>

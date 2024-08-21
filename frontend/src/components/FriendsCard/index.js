@@ -10,7 +10,9 @@ return(
             <div className="FriendsCard__profile__header">
                 <img className="FriendsCard__pfp" src={profilePicture} alt="Profile" width="50" height="50" />
                 <div className="FriendsCard__header">
-                    <p className="FriendsCard__username">{username}</p>
+                    <a href={`/profile/${username}`} className="FriendsCard__link">
+                        <p className="FriendsCard__username">{username}</p>
+                    </a>
                     <p className="FriendsCard__status">{status}</p>
                 </div>
             </div>
