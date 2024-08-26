@@ -1,7 +1,7 @@
 import React from 'react';
 import './Button.scss';
 
-export default function Button({ variant, large, label, fullWidth, onClick, disabled, type }) {
+export default function Button({ variant, large, label, fullWidth, onClick, disabled, type, small }) {
     // Variant could be "Primary", "Secondary", "Outline"
 
     const btnClassName = [
@@ -9,6 +9,7 @@ export default function Button({ variant, large, label, fullWidth, onClick, disa
       variant,
       fullWidth,
       large,
+      small,
   ].join(' ');
 
 

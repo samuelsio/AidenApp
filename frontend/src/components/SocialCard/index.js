@@ -27,8 +27,11 @@ export default function SocialCard({displayName, username, clanName, clanImg, re
                         </div>
                     </div>
                     <div className="AddFriend">
-                        <p className="Reputation">{reputation}</p>
-                        <Button variant="outline" fullWidth="fullWidth" label="Add Friend" type="button"/>
+                        <div className="Rep">
+                            <p className="Reputation">Followers: </p>
+                            <p className="RepVal">{reputation}</p>
+                        </div>
+                        <Button variant="outline" label="Add Friend" type="button" small="small"/>
                     </div>
                 </div>
 

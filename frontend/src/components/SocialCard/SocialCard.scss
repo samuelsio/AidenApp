@@ -11,7 +11,8 @@
     .SocialCard__container {
         display: flex;
         flex-direction: row;
-        width: 120%;
+        width: 430px;
+        padding: 6px;
         background-color: #3d3d3d;
         border-radius: 19px;
         align-items: center;
@@ -25,11 +26,13 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            width: 200px;
         }
             .SocialCard__userInfo {
-                // Styles for user info
+                width: 100%;
                 .displayName {
                     margin: 2px;
+                    font-size: 20px;
                 }
 
                 .username {
@@ -52,8 +55,19 @@
                 display: flex;
                 flex-direction: row;
                 align-items: center;
-                .Reputation {
-                    // Styles for reputation
+                justify-content: space-between;
+                width: 100%;
+                .Rep {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    margin: 0px;
+                    .Reputation{
+                        margin: 0px;
+                    }
+                    .RepVal{
+                        margin: 0px;
+                    }
                 }
             }
         

@@ -1,0 +1,237 @@
+{ 
+    "users": [
+    {
+        "displayName": "Alice Johnson",
+        "username": "alicej",
+        "clanName": "Warriors",
+        "clanImg": "https://placeholder.com/25",
+        "reputation": "85",
+        "background": "https://placeholder.com/360x80",
+        "pfp": "https://placeholder.com/125"
+    },
+    {
+        "displayName": "Bob Smith",
+        "username": "bobsmith",
+        "clanName": "Knights",
+        "clanImg": "https://placeholder.com/25",
+        "reputation": "90",
+        "background": "https://placeholder.com/360x80",
+        "pfp": "https://placeholder.com/125"
+    },
+    {
+        "displayName": "Charlie Brown",
+        "username": "charlieb",
+        "clanName": "Mages",
+        "clanImg": "https://placeholder.com/25",
+        "reputation": "75",
+        "background": "https://placeholder.com/360x80",
+        "pfp": "https://placeholder.com/125"
+    },
+    {
+        "displayName": "Diana Prince",
+        "username": "dianap",
+        "clanName": "Archers",
+        "clanImg": "https://placeholder.com/25",
+        "reputation": "95",
+        "background": "https://placeholder.com/360x80",
+        "pfp": "https://placeholder.com/125"
+    },
+    {
+        "displayName": "Ethan Hunt",
+        "username": "ethanh",
+        "clanName": "Assassins",
+        "clanImg": "https://placeholder.com/25",
+        "reputation": "80",
+        "background": "https://placeholder.com/360x80",
+        "pfp": "https://placeholder.com/125"
+    },
+    {
+        "displayName": "Fiona Apple",
+        "username": "fionaapple",
+        "clanName": "Bards",
+        "clanImg": "https://placeholder.com/25",
+        "reputation": "88",
+        "background": "https://placeholder.com/360x80",
+        "pfp": "https://placeholder.com/125"
+    },
+    {
+        "displayName": "George Clooney",
+        "username": "georgec",
+        "clanName": "Sages",
+        "clanImg": "https://placeholder.com/25",
+        "reputation": "92",
+        "background": "https://placeholder.com/360x80",
+        "pfp": "https://placeholder.com/125"
+    },
+    {
+        "displayName": "Hannah Montana",
+        "username": "hannahm",
+        "clanName": "Healers",
+        "clanImg": "https://placeholder.com/25",
+        "reputation": "78",
+        "background": "https://placeholder.com/360x80",
+        "pfp": "https://placeholder.com/125"
+    },
+    {
+        "displayName": "Ian Malcolm",
+        "username": "ianm",
+        "clanName": "Scientists",
+        "clanImg": "https://placeholder.com/25",
+        "reputation": "85",
+        "background": "https://placeholder.com/360x80",
+        "pfp": "https://placeholder.com/125"
+    },
+    {
+        "displayName": "Julia Roberts",
+        "username": "juliar",
+        "clanName": "Explorers",
+        "clanImg": "https://placeholder.com/25",
+        "reputation": "90",
+        "background": "https://placeholder.com/360x80",
+        "pfp": "https://placeholder.com/125"
+    },
+    {
+        "displayName": "Kevin Spacey",
+        "username": "kevins",
+        "clanName": "Traders",
+        "clanImg": "https://placeholder.com/25",
+        "reputation": "70",
+        "background": "https://placeholder.com/360x80",
+        "pfp": "https://placeholder.com/125"
+    },
+    {
+        "displayName": "Laura Croft",
+        "username": "laurac",
+        "clanName": "Adventurers",
+        "clanImg": "https://placeholder.com/25",
+        "reputation": "95",
+        "background": "https://placeholder.com/360x80",
+        "pfp": "https://placeholder.com/125"
+    },
+    {
+        "displayName": "Michael Scott",
+        "username": "michaels",
+        "clanName": "Managers",
+        "clanImg": "https://placeholder.com/25",
+        "reputation": "60",
+        "background": "https://placeholder.com/360x80",
+        "pfp": "https://placeholder.com/125"
+    },
+    {
+        "displayName": "Nina Simone",
+        "username": "ninas",
+        "clanName": "Musicians",
+        "clanImg": "https://placeholder.com/25",
+        "reputation": "88",
+        "background": "https://placeholder.com/360x80",
+        "pfp": "https://placeholder.com/125"
+    },
+    {
+        "displayName": "Oscar Isaac",
+        "username": "oscari",
+        "clanName": "Actors",
+        "clanImg": "https://placeholder.com/25",
+        "reputation": "82",
+        "background": "https://placeholder.com/360x80",
+        "pfp": "https://placeholder.com/125"
+    },
+    {
+        "displayName": "Paula Patton",
+        "username": "paulap",
+        "clanName": "Dancers",
+        "clanImg": "https://placeholder.com/25",
+        "reputation": "76",
+        "background": "https://placeholder.com/360x80",
+        "pfp": "https://placeholder.com/125"
+    },
+    {
+        "displayName": "Quentin Tarantino",
+        "username": "quentint",
+        "clanName": "Directors",
+        "clanImg": "https://placeholder.com/25",
+        "reputation": "91",
+        "background": "https://placeholder.com/360x80",
+        "pfp": "https://placeholder.com/125"
+    },
+    {
+        "displayName": "Rachel Green",
+        "username": "rachelg",
+        "clanName": "Fashionistas",
+        "clanImg": "https://placeholder.com/25",
+        "reputation": "89",
+        "background": "https://placeholder.com/360x80",
+        "pfp": "https://placeholder.com/125"
+    },
+    {
+        "displayName": "Steve Jobs",
+        "username": "stevej",
+        "clanName": "Innovators",
+        "clanImg": "https://placeholder.com/25",
+        "reputation": "94",
+        "background": "https://placeholder.com/360x80",
+        "pfp": "https://placeholder.com/125"
+    },
+    {
+        "displayName": "Tina Fey",
+        "username": "tinaf",
+        "clanName": "Comedians",
+        "clanImg": "https://placeholder.com/25",
+        "reputation": "87",
+        "background": "https://placeholder.com/360x80",
+        "pfp": "https://placeholder.com/125"
+    },
+    {
+        "displayName": "Uma Thurman",
+        "username": "umath",
+        "clanName": "Heroes",
+        "clanImg": "https://placeholder.com/25",
+        "reputation": "90",
+        "background": "https://placeholder.com/360x80",
+        "pfp": "https://placeholder.com/125"
+    },
+    {
+        "displayName": "Vin Diesel",
+        "username": "vind",
+        "clanName": "Action Stars",
+        "clanImg": "https://placeholder.com/25",
+        "reputation": "93",
+        "background": "https://placeholder.com/360x80",
+        "pfp": "https://placeholder.com/125"
+    },
+    {
+        "displayName": "Will Smith",
+        "username": "wills",
+        "clanName": "Legends",
+        "clanImg": "https://placeholder.com/25",
+        "reputation": "96",
+        "background": "https://placeholder.com/360x80",
+        "pfp": "https://placeholder.com/125"
+    },
+    {
+        "displayName": "Xena Warrior",
+        "username": "xenaw",
+        "clanName": "Fighters",
+        "clanImg": "https://placeholder.com/25",
+        "reputation": "99",
+        "background": "https://placeholder.com/360x80",
+        "pfp": "https://placeholder.com/125"
+    },
+    {
+        "displayName": "Yoda",
+        "username": "yoda",
+        "clanName": "Jedi",
+        "clanImg": "https://placeholder.com/25",
+        "reputation": "100",
+        "background": "https://placeholder.com/360x80",
+        "pfp": "https://placeholder.com/125"
+    },
+    {
+        "displayName": "Zoe Saldana",
+        "username": "zoes",
+        "clanName": "Starfighters",
+        "clanImg": "https://placeholder.com/25",
+        "reputation": "91",
+        "background": "https://placeholder.com/360x80",
+        "pfp": "https://placeholder.com/125"
+    }
+]}
