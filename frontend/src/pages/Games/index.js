@@ -1,16 +1,22 @@
 import React from 'react';
 import Header from '../../components/Header';
-import GamesComponent from '../../components/GamesComponent';
+import GamesCard from '../../components/GamesCard';
 import "./Games.scss";
+import gamesData from "./dataGames.json";
+
 
 export default function Games() {
+
+
+  const {games} = gamesData;
+
   return (
     <>
     <Header activeItem={"games"}/>
     <div className='Games'>
-        <h1>Games</h1>
+      <h1>GamePage index.js</h1>
     </div>
-    <GamesComponent />
+    <GamesCard />
     </>
   )
 }
