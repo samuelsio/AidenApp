@@ -1,0 +1,52 @@
+.FriendsCard__wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 6px 0px;
+    .FriendsCard{
+        display: flex;
+        flex-direction: column;
+        align-content: space-around;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        background-color: #242424;
+        border-radius: 16px;
+        width: 90%;
+        padding: 6px;
+        .FriendsCard__profile__header{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 4px;
+            .FriendsCard__pfp{
+                border-radius: 50%;
+            }
+            .FriendsCard__status{
+                margin: 2px;
+                color: rgba(255, 255, 255, 0.612);
+            }
+            .FriendsCard__username{
+                color: white;
+                margin: 2px;
+            }
+        }
+        .FriendsCard__Active{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+            background-color: #121212;
+            width: 90%;
+            border-radius: 20px;
+            .FriendsCard__playing{
+                font-size: 13px;
+                color: rgba(255, 255, 255, 0.505);
+                .FriendsCard__button{
+                    width: 30%;
+                }
+            }
+        }
+    }
+}
