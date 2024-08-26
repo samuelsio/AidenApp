@@ -28,11 +28,31 @@ export default function SocialList() {
             <div className='SocialList__wrapper'>
                 <div className='SocialList__search'>
                     <input className='form-input' type='text' name='SocialSearch' id='SocialSearch' placeholder='Serach for a profile' value={searchTerm} onChange={handleSearchChange}></input>
-                    <img className='filter' src={filter} alt='filter' width='25px' height='25px' onClick={handleImageClick}/>
-                </div>
-                <div className='SocialList__filter'>
-                        <p className={`filter-text ${isVisible ? 'visible' : ''}`}>Tip tap</p>
+                    <div className='SocialList__filter'>
+                        <img className='filter' src={filter} alt='filter' width='25px' height='25px' onClick={handleImageClick}/>
+                        <div className={`filter-text ${isVisible ? '' : 'visible'}`}> 
+                            <div className='filter-mutual'>
+                                <p>Filter By: </p>
+                                <label> Mutual Friends
+                                    <input type='checkbox' label='Filter' placeholder='Filter' />
+                                </label>
+                                <label> Mutual Clans
+                                    <input type='checkbox' label='Filter' placeholder='Filter' />
+                                </label>
+                                <label> Mutual Games
+                                    <input type='checkbox' label='Filter' placeholder='Filter' />
+                                </label>
+                            </div>
+                            <div className='filter-rep'>
+                                <p>Order By: </p>
+                                <label> Followers
+                                    <input type='checkbox' label='Filter' placeholder='Filter' />
+                                </label>
+                            </div>
+                        </div>
                     </div>
+                </div>
+                
             </div>
             <div className='SocialCard__list'>
                 {filteredUsers.map(users =>(
