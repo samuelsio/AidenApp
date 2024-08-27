@@ -52,21 +52,23 @@
             transition: height 0.3s ease, z-index 0s 0.3s;
 
                 &.visible{
-                    height: auto;
+                    height: 116px;
                     z-index: 1;
                     transition: height 0.3s ease, z-index 0s;
                     display: flex;
                     flex-direction: row;
                     justify-content: space-between;
-                    align-items: center;
+                    align-items: flex-start;
                     .filter-mutual{
                         display: flex;
                         width: 100%;
                         flex-direction: column;
                         align-items: center;
+                        justify-content: flex-start;
+                        height: 100%;
                     }
                     .filter-rep{
-                        justify-content: flex-end;
+                        justify-content: flex-start;
                         display: flex;
                         flex-direction: column;
                         align-items: center;
