@@ -19,7 +19,7 @@ function App() {
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/streamers" element={<Streamers />} />
                 <Route path="/social" element={<Social />} />
-                <Route path="/profile" element={<Profile />} />
+                <Route path="/profile/:username" element={<Profile />} />
                 <Route path="/games" element={<Games />} />
                 <Route path="/clans" element={<Clans />} />
             </Routes>
