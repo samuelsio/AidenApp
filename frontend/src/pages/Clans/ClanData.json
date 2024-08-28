@@ -1,0 +1,774 @@
+{
+    "Clans": [
+      {
+        "ClanImage": "https://placeholder.com/200",
+        "ClanBackground": "https://placeholder.com/1600x700",
+        "Members": [
+          "Himbers",
+          "9GigsOfRam",
+          "twatimus",
+          "shadowhunter", "gamerchick", "frostbyte", "stealthninja", "dragonmaster", "pixelwarrior", "nightowl", "techwizard", "stormbringer", "cyberghost", "newMember1", "newMember2", "newMember3"
+        ],
+        "Friends": [
+          "John Smith"
+        ],
+        "ClanName": "Better Than You",
+        "ClanTag": "COCK",
+        "ClanHeader": "Strive to be better than everyone else",
+        "ClanBulletin": [
+          {
+            "Comment": "I love this place",
+            "Date": "12-03-15",
+            "DisplayName": "CheeseEnjoyer",
+            "Username": "GenericUsername69",
+            "UserProfilePic": "https://placeholder.com/50"
+          },
+          {
+            "Comment": "I hate all of you",
+            "Date": "16-04-16",
+            "DisplayName": "CheeseEnjoyer",
+            "Username": "GenericUsername69",
+            "UserProfilePic": "https://placeholder.com/50"
+          }
+        ],
+        "ClanGames": [
+          "GoatSim",
+          "Stardew",
+          "Warthunder",
+          "Rainbow6"
+        ],
+        "ClanEvents": [
+          {
+            "Game": "R6Siege",
+            "EventMembers": [4],
+            "EventTime": "16:15",
+            "EventDesc": "5v5 custom match",
+            "EventComments": [
+              {
+                "Comment": "Where is everyone, we should've started 12 minutes ago",
+                "Username": "Biscuit",
+                "UserProfilePic": "https://placeholder.com/50"
+              }
+            ],
+            "EventJoin": "True"
+          }
+        ]
+      },
+      {
+        "ClanImage": "https://placeholder.com/200",
+        "ClanBackground": "https://placeholder.com/1600x700",
+        "Members": [
+          "DarkKnight",
+          "LightBringer",
+          "SilverArrow",
+          "ShadowHunter",
+          "FlameWizard",
+          "newMember1", "newMember2", "newMember3"
+        ],
+        "Friends": [
+          "Alice",
+          "Bob"
+        ],
+        "ClanName": "Shadow Warriors",
+        "ClanTag": "SHDW",
+        "ClanHeader": "Masters of the unseen.",
+        "ClanBulletin": [
+          {
+            "Comment": "First blood in today's raid!",
+            "Date": "15-05-21",
+            "DisplayName": "DarkKnight",
+            "Username": "DarkKnight01",
+            "UserProfilePic": "https://placeholder.com/50"
+          },
+          {
+            "Comment": "Let's recruit more members.",
+            "Date": "20-06-21",
+            "DisplayName": "LightBringer",
+            "Username": "LightBringer89",
+            "UserProfilePic": "https://placeholder.com/50"
+          },
+          {
+            "Comment": "We need to upgrade our gear.",
+            "Date": "25-07-21",
+            "DisplayName": "SilverArrow",
+            "Username": "SilverArrow77",
+            "UserProfilePic": "https://placeholder.com/50"
+          }
+        ],
+        "ClanGames": [
+          "Diablo4",
+          "Overwatch",
+          "Valorant"
+        ],
+        "ClanEvents": [
+          {
+            "Game": "Valorant",
+            "EventMembers": [5],
+            "EventTime": "18:30",
+            "EventDesc": "Ranked match grind",
+            "EventComments": [
+              {
+                "Comment": "We need a healer!",
+                "Username": "ShadowHunter",
+                "UserProfilePic": "https://placeholder.com/50"
+              },
+              {
+                "Comment": "I'll be there.",
+                "Username": "FlameWizard",
+                "UserProfilePic": "https://placeholder.com/50"
+              }
+            ],
+            "EventJoin": "False"
+          }
+        ]
+      },
+      {
+        "ClanImage": "https://placeholder.com/200",
+        "ClanBackground": "https://placeholder.com/1600x700",
+        "Members": [
+          "MightyThor",
+          "IronHammer",
+          "LightningLass",
+          "newMember1", "newMember2", "newMember3", "newMember4", "newMember5"
+        ],
+        "Friends": [
+          "ThorOdinson"
+        ],
+        "ClanName": "Gods of Thunder",
+        "ClanTag": "GOT",
+        "ClanHeader": "Strike fast, strike hard.",
+        "ClanBulletin": [
+          {
+            "Comment": "The thunder rolls!",
+            "Date": "02-08-22",
+            "DisplayName": "MightyThor",
+            "Username": "Thor",
+            "UserProfilePic": "https://placeholder.com/50"
+          },
+          {
+            "Comment": "Another victory in the books!",
+            "Date": "12-09-22",
+            "DisplayName": "IronHammer",
+            "Username": "HammerTime",
+            "UserProfilePic": "https://placeholder.com/50"
+          },
+          {
+            "Comment": "We need to work on our strategy.",
+            "Date": "20-09-22",
+            "DisplayName": "LightningLass",
+            "Username": "Lassie",
+            "UserProfilePic": "https://placeholder.com/50"
+          },
+          {
+            "Comment": "Let's plan another raid this weekend.",
+            "Date": "25-09-22",
+            "DisplayName": "IronHammer",
+            "Username": "HammerTime",
+            "UserProfilePic": "https://placeholder.com/50"
+          }
+        ],
+        "ClanGames": [
+          "Fortnite",
+          "ApexLegends",
+          "Smite"
+        ],
+        "ClanEvents": [
+          {
+            "Game": "Smite",
+            "EventMembers": [3],
+            "EventTime": "21:00",
+            "EventDesc": "Conquest mode",
+            "EventComments": [
+              {
+                "Comment": "Ready to unleash the storm!",
+                "Username": "MightyThor",
+                "UserProfilePic": "https://placeholder.com/50"
+              }
+            ],
+            "EventJoin": "False"
+          }
+        ]
+      },
+      {
+        "ClanImage": "https://placeholder.com/200",
+        "ClanBackground": "https://placeholder.com/1600x700",
+        "Members": [
+          "FireDragon",
+          "IcePhoenix",
+          "EarthGolem",
+          "WaterSerpent",
+          "newMember1", "newMember2", "newMember3", "newMember4", "newMember5", "newMember6"
+        ],
+        "Friends": [
+          "MysticMage",
+          "AncientOne",
+          "WanderingSamurai"
+        ],
+        "ClanName": "Elemental Masters",
+        "ClanTag": "ELMS",
+        "ClanHeader": "Harnessing the power of the elements.",
+        "ClanBulletin": [
+          {
+            "Comment": "Fire and ice together!",
+            "Date": "10-11-23",
+            "DisplayName": "FireDragon",
+            "Username": "DragonFire",
+            "UserProfilePic": "https://placeholder.com/50"
+          },
+          {
+            "Comment": "Earthquake incoming!",
+            "Date": "15-11-23",
+            "DisplayName": "EarthGolem",
+            "Username": "Golem",
+            "UserProfilePic": "https://placeholder.com/50"
+          },
+          {
+            "Comment": "Our power is unmatched.",
+            "Date": "20-11-23",
+            "DisplayName": "IcePhoenix",
+            "Username": "PhoenixRising",
+            "UserProfilePic": "https://placeholder.com/50"
+          },
+          {
+            "Comment": "Water will wash away our enemies.",
+            "Date": "22-11-23",
+            "DisplayName": "WaterSerpent",
+            "Username": "Serpent",
+            "UserProfilePic": "https://placeholder.com/50"
+          },
+          {
+            "Comment": "Keep up the great work, team!",
+            "Date": "25-11-23",
+            "DisplayName": "FireDragon",
+            "Username": "DragonFire",
+            "UserProfilePic": "https://placeholder.com/50"
+          }
+        ],
+        "ClanGames": [
+          "League of Legends",
+          "Dota 2",
+          "Genshin Impact"
+        ],
+        "ClanEvents": [
+          {
+            "Game": "League of Legends",
+            "EventMembers": [5],
+            "EventTime": "19:00",
+            "EventDesc": "Ranked 5v5",
+            "EventComments": [
+              {
+                "Comment": "I'll take mid lane.",
+                "Username": "FireDragon",
+                "UserProfilePic": "https://placeholder.com/50"
+              },
+              {
+                "Comment": "I'm going jungle.",
+                "Username": "WaterSerpent",
+                "UserProfilePic": "https://placeholder.com/50"
+              },
+              {
+                "Comment": "Top is mine.",
+                "Username": "EarthGolem",
+                "UserProfilePic": "https://placeholder.com/50"
+              },
+              {
+                "Comment": "Let's do this!",
+                "Username": "IcePhoenix",
+                "UserProfilePic": "https://placeholder.com/50"
+              }
+            ],
+            "EventJoin": "False"
+            },
+            {
+            "Game": "Dota 2",
+            "EventMembers": [5],
+            "EventTime": "20:30",
+            "EventDesc": "Battle of the Ancients",
+            "EventComments": [
+              {
+                "Comment": "I'll take mid.",
+                "Username": "IcePhoenix",
+                "UserProfilePic": "https://placeholder.com/50"
+              },
+              {
+                "Comment": "I've got the safe lane.",
+                "Username": "FireDragon",
+                "UserProfilePic": "https://placeholder.com/50"
+              },
+              {
+                "Comment": "Let's get this win!",
+                "Username": "EarthGolem",
+                "UserProfilePic": "https://placeholder.com/50"
+              }
+            ],
+            "EventJoin": "False"
+        }
+        ]
+        },
+        {
+            "ClanImage": "https://placeholder.com/200",
+            "ClanBackground": "https://placeholder.com/1600x700",
+            "Members": [
+              "ShadowFox", "NightOwl","frostbyte", "stealthninja", "dragonmaster", "pixelwarrior", "nightowl", "techwizard", "stormbringer", "cyberghost", "newMember1"
+            ],
+            "Friends": ["LoneWolf"],
+            "ClanName": "Night Stalkers",
+            "ClanTag": "NITE",
+            "ClanHeader": "Masters of stealth and strategy.",
+            "ClanBulletin": [
+                {
+                    "Comment": "Stealth training session this Friday!",
+                    "Date": "01-12-23",
+                    "DisplayName": "ShadowFox",
+                    "Username": "ShadowFox01",
+                    "UserProfilePic": "https://placeholder.com/50"
+                }
+            ],
+            "ClanGames": ["Assassin's Creed", "Hitman"],
+            "ClanEvents": [
+                {
+                    "Game": "Assassin's Creed",
+                    "EventMembers": [4],
+                    "EventTime": "20:00",
+                    "EventDesc": "Co-op mission night",
+                    "EventComments": [],
+                    "EventJoin": "True"
+                }
+            ]
+        },
+        {
+            "ClanImage": "https://placeholder.com/200",
+            "ClanBackground": "https://placeholder.com/1600x700",
+            "Members": [
+              "FireFury", "BlazeKnight","shadowhunter", "gamerchick", "frostbyte", "newMember1", "newMember2", "newMember3"
+            ],
+            "Friends": ["Phoenix"],
+            "ClanName": "Flame Warriors",
+            "ClanTag": "FLAM",
+            "ClanHeader": "Burning bright in battle.",
+            "ClanBulletin": [
+                {
+                    "Comment": "Weekly raid on Saturday!",
+                    "Date": "02-12-23",
+                    "DisplayName": "FireFury",
+                    "Username": "FireFury01",
+                    "UserProfilePic": "https://placeholder.com/50"
+                }
+            ],
+            "ClanGames": ["Firewatch", "Flame of the West"],
+            "ClanEvents": [
+                {
+                    "Game": "Firewatch",
+                    "EventMembers": [5],
+                    "EventTime": "18:00",
+                    "EventDesc": "Exploration and teamwork",
+                    "EventComments": [],
+                    "EventJoin": "True"
+                }
+            ]
+        },
+        {
+            "ClanImage": "https://placeholder.com/200",
+            "ClanBackground": "https://placeholder.com/1600x700",
+            "Members": [
+              "IceQueen", "FrostBite", "newMember1", "newMember2"
+            ],
+            "Friends": ["SnowKing"],
+            "ClanName": "Frost Guardians",
+            "ClanTag": "FROZ",
+            "ClanHeader": "Chilling opponents to the bone.",
+            "ClanBulletin": [
+                {
+                    "Comment": "Ice skating event next week!",
+                    "Date": "03-12-23",
+                    "DisplayName": "IceQueen",
+                    "Username": "IceQueen01",
+                    "UserProfilePic": "https://placeholder.com/50"
+                }
+            ],
+            "ClanGames": ["Frostpunk", "Icewind Dale"],
+            "ClanEvents": [
+                {
+                    "Game": "Frostpunk",
+                    "EventMembers": [4],
+                    "EventTime": "19:00",
+                    "EventDesc": "Survival challenge",
+                    "EventComments": [],
+                    "EventJoin": "True"
+                }
+            ]
+        },
+        {
+            "ClanImage": "https://placeholder.com/200",
+            "ClanBackground": "https://placeholder.com/1600x700",
+            "Members": [
+              "EarthShaker", "RockGiant", "newMember1", "newMember2", "newMember3", "newMember4"
+            ],
+            "Friends": ["StoneWall"],
+            "ClanName": "Earth Defenders",
+            "ClanTag": "EART",
+            "ClanHeader": "Grounded in strength.",
+            "ClanBulletin": [
+                {
+                    "Comment": "Community cleanup event this weekend!",
+                    "Date": "04-12-23",
+                    "DisplayName": "EarthShaker",
+                    "Username": "EarthShaker01",
+                    "UserProfilePic": "https://placeholder.com/50"
+                }
+            ],
+            "ClanGames": ["Terraria", "Minecraft"],
+            "ClanEvents": [
+                {
+                    "Game": "Minecraft",
+                    "EventMembers": [5],
+                    "EventTime": "15:00",
+                    "EventDesc": "Building competition",
+                    "EventComments": [],
+                    "EventJoin": "True"
+                }
+            ]
+        },
+        {
+            "ClanImage": "https://placeholder.com/200",
+            "ClanBackground": "https://placeholder.com/1600x700",
+            "Members": [
+              "WindRider", "SkyDancer", "newMember1", "newMember2", "newMember3", "newMember4", "newMember5"
+            ],
+            "Friends": ["CloudSurfer"],
+            "ClanName": "Sky Warriors",
+            "ClanTag": "SKY",
+            "ClanHeader": "Soaring above the competition.",
+            "ClanBulletin": [
+                {
+                    "Comment": "Aerial training session on Sunday!",
+                    "Date": "05-12-23",
+                    "DisplayName": "WindRider",
+                    "Username": "WindRider01",
+                    "UserProfilePic": "https://placeholder.com/50"
+                }
+            ],
+            "ClanGames": ["Skyforge", "Aerial Assault"],
+            "ClanEvents": [
+                {
+                    "Game": "Skyforge",
+                    "EventMembers": [4],
+                    "EventTime": "17:00",
+                    "EventDesc": "Team battle",
+                    "EventComments": [],
+                    "EventJoin": "True"
+                }
+            ]
+        },
+        {
+            "ClanImage": "https://placeholder.com/200",
+            "ClanBackground": "https://placeholder.com/1600x700",
+            "Members": [
+              "TechGuru", "CodeMaster", "newMember1", "newMember2"
+            ],
+            "Friends": ["ByteKnight"],
+            "ClanName": "Digital Ninjas",
+            "ClanTag": "DIGI",
+            "ClanHeader": "Masters of the digital realm.",
+            "ClanBulletin": [
+                {
+                    "Comment": "Coding challenge this Friday!",
+                    "Date": "06-12-23",
+                    "DisplayName": "TechGuru",
+                    "Username": "TechGuru01",
+                    "UserProfilePic": "https://placeholder.com/50"
+                }
+            ],
+            "ClanGames": ["Hacknet", "Watch Dogs"],
+            "ClanEvents": [
+                {
+                    "Game": "Hacknet",
+                    "EventMembers": [3],
+                    "EventTime": "20:00",
+                    "EventDesc": "Hacking competition",
+                    "EventComments": [],
+                    "EventJoin": "True"
+                }
+            ]
+        },
+        {
+            "ClanImage": "https://placeholder.com/200",
+            "ClanBackground": "https://placeholder.com/1600x700",
+            "Members": [
+              "MysticMage", "ArcaneSorcerer", "newMember1", "newMember2", "newMember3"
+            ],
+            "Friends": ["EnchantedElf"],
+            "ClanName": "Arcane Brotherhood",
+            "ClanTag": "ARC",
+            "ClanHeader": "Wielders of ancient magic.",
+            "ClanBulletin": [
+                {
+                    "Comment": "Magic duel tournament next week!",
+                    "Date": "07-12-23",
+                    "DisplayName": "MysticMage",
+                    "Username": "MysticMage01",
+                    "UserProfilePic": "https://placeholder.com/50"
+                }
+            ],
+            "ClanGames": ["Skyrim", "Divinity: Original Sin"],
+            "ClanEvents": [
+                {
+                    "Game": "Skyrim",
+                    "EventMembers": [5],
+                    "EventTime": "19:30",
+                    "EventDesc": "Questing night",
+                    "EventComments": [],
+                    "EventJoin": "True"
+                }
+            ]
+        },
+        {
+            "ClanImage": "https://placeholder.com/200",
+            "ClanBackground": "https://placeholder.com/1600x700",
+            "Members": [
+              "WarriorPrincess", "KnightOfValor", "newMember1", "newMember2", "newMember3", "newMember4", "newMember5", "newMember6"
+            ],
+            "Friends": ["BattleMage"],
+            "ClanName": "Valor Knights",
+            "ClanTag": "VALR",
+            "ClanHeader": "Champions of honor and bravery.",
+            "ClanBulletin": [
+                {
+                    "Comment": "Training session on Monday!",
+                    "Date": "08-12-23",
+                    "DisplayName": "WarriorPrincess",
+                    "Username": "WarriorPrincess01",
+                    "UserProfilePic": "https://placeholder.com/50"
+                }
+            ],
+            "ClanGames": ["Dark Souls", "For Honor"],
+            "ClanEvents": [
+                {
+                    "Game": "For Honor",
+                    "EventMembers": [4],
+                    "EventTime": "21:00",
+                    "EventDesc": "Duel night",
+                    "EventComments": [],
+                    "EventJoin": "True"
+                }
+            ]
+        },
+        {
+            "ClanImage": "https://placeholder.com/200",
+            "ClanBackground": "https://placeholder.com/1600x700",
+            "Members": [
+              "StealthAssassin", "SilentBlade", "newMember1", "newMember2"
+            ],
+            "Friends": ["ShadowWalker"],
+            "ClanName": "Silent Shadows",
+            "ClanTag": "SHAD",
+            "ClanHeader": "Masters of stealth and precision.",
+            "ClanBulletin": [
+                {
+                    "Comment": "Stealth tactics workshop this Thursday!",
+                    "Date": "09-12-23",
+                    "DisplayName": "StealthAssassin",
+                    "Username": "StealthAssassin01",
+                    "UserProfilePic": "https://placeholder.com/50"
+                }
+            ],
+            "ClanGames": ["Dishonored", "Thief"],
+            "ClanEvents": [
+                {
+                    "Game": "Dishonored",
+                    "EventMembers": [3],
+                    "EventTime": "22:00",
+                    "EventDesc": "Stealth mission",
+                    "EventComments": [],
+                    "EventJoin": "True"
+                }
+            ]
+        },
+        {
+            "ClanImage": "https://placeholder.com/200",
+            "ClanBackground": "https://placeholder.com/1600x700",
+            "Members": [
+              "RogueHunter", "BountySeeker", "newMember1", "newMember2", "newMember3", "newMember4", "newMember5"
+            ],
+            "Friends": ["TreasureFinder"],
+            "ClanName": "Treasure Seekers",
+            "ClanTag": "TREAS",
+            "ClanHeader": "Adventurers in search of riches.",
+            "ClanBulletin": [
+                {
+                    "Comment": "Treasure hunt event this weekend!",
+                    "Date": "10-12-23",
+                    "DisplayName": "RogueHunter",
+                    "Username": "RogueHunter01",
+                    "UserProfilePic": "https://placeholder.com/50"
+                }
+            ],
+            "ClanGames": ["Sea of Thieves", "Uncharted"],
+            "ClanEvents": [
+                {
+                    "Game": "Sea of Thieves",
+                    "EventMembers": [5],
+                    "EventTime": "16:00",
+                    "EventDesc": "Sailing adventure",
+                    "EventComments": [],
+                    "EventJoin": "True"
+                }
+            ]
+        },
+        {
+            "ClanImage": "https://placeholder.com/200",
+            "ClanBackground": "https://placeholder.com/1600x700",
+            "Members": [
+              "CyberNinja", "TechWarrior", "newMember1", "newMember2", "newMember3", "newMember4", "newMember5", "newMember6", "newMember7"
+            ],
+            "Friends": ["DigitalSamurai"],
+            "ClanName": "Cyber Warriors",
+            "ClanTag": "CYBR",
+            "ClanHeader": "Fighting in the digital age.",
+            "ClanBulletin": [
+                {
+                    "Comment": "Cybersecurity workshop next week!",
+                    "Date": "11-12-23",
+                    "DisplayName": "CyberNinja",
+                    "Username": "CyberNinja01",
+                    "UserProfilePic": "https://placeholder.com/50"
+                }
+            ],
+            "ClanGames": ["Cyberpunk 2077", "Deus Ex"],
+            "ClanEvents": [
+                {
+                    "Game": "Cyberpunk 2077",
+                    "EventMembers": [4],
+                    "EventTime": "20:00",
+                    "EventDesc": "Night city exploration",
+                    "EventComments": [],
+                    "EventJoin": "True"
+                }
+            ]
+        },
+        {
+            "ClanImage": "https://placeholder.com/200",
+            "ClanBackground": "https://placeholder.com/1600x700",
+            "Members": [
+              "DragonSlayer", "BeastMaster", "newMember1", "newMember2", "newMember3", "newMember4", "newMember5"
+            ],
+            "Friends": ["MythicHero"],
+            "ClanName": "Mythical Beasts",
+            "ClanTag": "MYTH",
+            "ClanHeader": "Conquerors of legendary creatures.",
+            "ClanBulletin": [
+                {
+                    "Comment": "Dragon hunting expedition this Friday!",
+                    "Date": "12-12-23",
+                    "DisplayName": "DragonSlayer",
+                    "Username": "DragonSlayer01",
+                    "UserProfilePic": "https://placeholder.com/50"
+                }
+            ],
+            "ClanGames": ["Monster Hunter", "Dark Souls"],
+            "ClanEvents": [
+                {
+                    "Game": "Monster Hunter",
+                    "EventMembers": [5],
+                    "EventTime": "19:00",
+                    "EventDesc": "Hunt for the Elder Dragon",
+                    "EventComments": [],
+                    "EventJoin": "True"
+                }
+            ]
+        },
+        {
+            "ClanImage": "https://placeholder.com/200",
+            "ClanBackground": "https://placeholder.com/1600x700",
+            "Members": [
+              "TimeTraveler", "ChronoKnight", "newMember1", "newMember2", "newMember3"
+            ],
+            "Friends": ["FutureSeer"],
+            "ClanName": "Time Keepers",
+            "ClanTag": "TIME",
+            "ClanHeader": "Guardians of the timeline.",
+            "ClanBulletin": [
+                {
+                    "Comment": "Time travel theory discussion next week!",
+                    "Date": "13-12-23",
+                    "DisplayName": "TimeTraveler",
+                    "Username": "TimeTraveler01",
+                    "UserProfilePic": "https://placeholder.com/50"
+                }
+            ],
+            "ClanGames": ["Chrono Trigger", "TimeSplitters"],
+            "ClanEvents": [
+                {
+                    "Game": "TimeSplitters",
+                    "EventMembers": [4],
+                    "EventTime": "21:00",
+                    "EventDesc": "Time travel battle",
+                    "EventComments": [],
+                    "EventJoin": "True"
+                }
+            ]
+        },
+        {
+            "ClanImage": "https://placeholder.com/200",
+            "ClanBackground": "https://placeholder.com/1600x700",
+            "Members": [
+              "SpacePilot", "GalacticWarrior", "newMember1", "newMember2", "newMember3", "newMember4", "newMember5"
+            ],
+            "Friends": ["StarExplorer"],
+            "ClanName": "Galactic Alliance",
+            "ClanTag": "GALX",
+            "ClanHeader": "Explorers of the cosmos.",
+            "ClanBulletin": [
+                {
+                    "Comment": "Space exploration mission this weekend!",
+                    "Date": "14-12-23",
+                    "DisplayName": "SpacePilot",
+                    "Username": "SpacePilot01",
+                    "UserProfilePic": "https://placeholder.com/50"
+                }
+            ],
+            "ClanGames": ["No Man's Sky", "Star Wars: Squadrons"],
+            "ClanEvents": [
+                {
+                    "Game": "No Man's Sky",
+                    "EventMembers": [5],
+                    "EventTime": "18:00",
+                    "EventDesc": "Exploration and base building",
+                    "EventComments": [],
+                    "EventJoin": "True"
+                }
+            ]
+        },
+        {
+            "ClanImage": "https://placeholder.com/200",
+            "ClanBackground": "https://placeholder.com/1600x700",
+            "Members": [
+              "NatureGuardian", "WildSpirit", "newMember1", "newMember2", "newMember3", "newMember4", "newMember5", "newMember6", "newMember7", "newMember8"
+            ],
+            "Friends": ["EarthChild"],
+            "ClanName": "Nature's Protectors",
+            "ClanTag": "NATR",
+            "ClanHeader": "Defenders of the natural world.",
+            "ClanBulletin": [
+                {
+                    "Comment": "Nature conservation event next week!",
+                    "Date": "15-12-23",
+                    "DisplayName": "NatureGuardian",
+                    "Username": "NatureGuardian01",
+                    "UserProfilePic": "https://placeholder.com/50"
+                }
+            ],
+            "ClanGames": ["Stardew Valley", "Terraria"],
+            "ClanEvents": [
+                {
+                    "Game": "Terraria",
+                    "EventMembers": [4],
+                    "EventTime": "20:00",
+                    "EventDesc": "Building and exploration",
+                    "EventComments": [],
+                    "EventJoin": "True"
+                }
+            ]
+        }
+    ]
+}
