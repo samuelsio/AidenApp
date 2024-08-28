@@ -6,36 +6,57 @@ import ClansCard from '../ClansCard';
 
 
 export default function ClansList() {
-    const [isVisible, setIsVisible] = useState(false);
-    const [searchTerm, setSearchTerm] = useState('');
-    const [sortByMembers, setSortByMembers] = useState(true);    
+    const [isFilterVisible, setisFilterVisible] = useState(false);
+    const [searchTerm, setSearchTerm] = useState('');  
 
+    const [filterOptions, setFilterOptions] = useState({
+        "mutualFriends": false,
+        "mutualGames": false,
+        "ownedClans": false,
+        "orderBy": "members",
+    })
 
     const handleImageClick = () => {
-        setIsVisible(!isVisible)
+        setisFilterVisible(!isFilterVisible)
     };
 
 
     
-    const handleSortChange = () => {
-        setSortByMembers(!sortByMembers); 
-    };
+    const handleSortChange = (e) => {
+        const value = e.target.value;
+        setFilterOptions(prevOptions => ({
+            ...prevOptions,
+            orderBy: value // Update orderBy in filterOptions
+        }));
+    }
     const handleSearchChange = (e) => {
         setSearchTerm(e.target.value);
         console.log("Current search term:", e.target.value);
     };
 
+    const handleFilterChange = (e) => {
+        const { name, checked } = e.target;
+        setFilterOptions(prevOptions => ({
+            ...prevOptions,
+            [name]: checked
+        }));
+    };
 
-    const filteredClansData = ClansData.Clans.filter(clan => 
-        clan.ClanName.toLowerCase().includes(searchTerm.toLowerCase())
-    ).sort((a, b) => {
-        if (sortByMembers) {
+    // Update the filteredClansData to consider filter options
+    const filteredClansData = ClansData.Clans.filter(clan => {
+        const matchesSearch = clan.ClanName.toLowerCase().includes(searchTerm.toLowerCase());
+        const matchesMutualFriends = !filterOptions.mutualFriends || clan.MutualFriends; // Assuming clan has MutualFriends property
+        const matchesMutualGames = !filterOptions.mutualGames || clan.MutualGames; // Assuming clan has MutualGames property
+        const matchesOwnedClans = !filterOptions.ownedClans || clan.Owned; // Assuming clan has Owned property
+        return matchesSearch && matchesMutualFriends && matchesMutualGames && matchesOwnedClans;
+    }).sort((a, b) => {
+        if (filterOptions.orderBy === "members") { // Use orderBy from filterOptions
             return b.Members.length - a.Members.length; 
+        } else if (filterOptions.orderBy === "alphabetical") { // New condition for alphabetical sorting
+            return a.ClanName.localeCompare(b.ClanName);
         }
         return 0; 
     });
-
-
 
     return(
         <div className='ClansList'>
@@ -44,23 +65,26 @@ export default function ClansList() {
                     <input className='form-input' type='text' name='ClansSearch' id='ClansSearch' placeholder='Search for a clan' value={searchTerm} onChange={handleSearchChange}></input>
                     <div className='ClansList__filter'>
                     <img className='filter' src={filter} alt='filter' width='25px' height='25px' onClick={handleImageClick} />
-                        <div className={`filter-text ${isVisible ? '' : 'visible'}`}>
+                        <div className={`filter-text ${isFilterVisible ? 'visible' : ''}`}>
                             <div className='filter-mutual'>
                                 <p>Filter By: </p>
                                 <label> Mutual Friends
-                                    <input type='checkbox' label='Filter' placeholder='Filter' />
+                                    <input type='checkbox' name='mutualFriends' onChange={handleFilterChange} />
                                 </label>
                                 <label> Mutual Games
-                                    <input type='checkbox' label='Filter' placeholder='Filter' />
+                                    <input type='checkbox' name='mutualGames' onChange={handleFilterChange} />
                                 </label>
                                 <label> Owned Clans
-                                    <input type='checkbox' label='Filter' placeholder='Filter' />
+                                    <input type='checkbox' name='ownedClans' onChange={handleFilterChange} />
                                 </label>
                             </div>
                             <div className='filter-rep'>
                                 <p>Order By: </p>
                                 <label> Members
-                                    <input type='checkbox' label='Filter' placeholder='Filter' checked onChange={handleSortChange} />
+                                    <select onChange={handleSortChange} defaultValue={filterOptions.orderBy}>
+                                        <option value="alphabetical">Alphabetical</option>
+                                        <option value="members">Members</option>
+                                    </select>
                                 </label>
                             </div>
                         </div>

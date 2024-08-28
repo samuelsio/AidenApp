@@ -6,17 +6,17 @@ import ClanData from './ClanData.json'
 import { useParams } from 'react-router-dom';
 
 export default function Clans() {
-  const {ClanName} = useParams();
-  const clan = ClanData.Clans.find(clan => clan.ClanName === ClanName); // Find the clan by name
+  const {Clanname: ClanNameParam} = useParams();
+  const clan = ClanData.Clans.find(clan => clan.ClanName === ClanNameParam); // Find the clan by name
 
-    if (ClanName && !clan) {
+    if (ClanNameParam && !clan) {
       return (
         <>
           <Header activeItem={"clans"}/>
           <h1>Clan Not Found</h1>;
         </>)}; //If the url is clans/Not Valid Clan
     
-    if (!ClanName) {
+    if (!ClanNameParam) {
       return (
         <>
           <Header activeItem={"clans"}/>

@@ -22,7 +22,7 @@ function App() {
                 <Route path="/profile/:username" element={<Profile />} />
                 <Route path="/games" element={<Games />} />
                 <Route path="/clans/" element={<Clans />} />
-                <Route path="/clans/:ClanName" element={<Clans />} />
+                <Route path="/clans/:Clanname" element={<Clans />} />
 
             </Routes>
         </Router>
