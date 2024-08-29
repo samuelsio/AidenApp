@@ -4,6 +4,7 @@ import ClansList from '../../components/ClansList';
 import "./Clans.scss";
 import ClanData from './ClanData.json'
 import { useParams } from 'react-router-dom';
+import ClanDetailView from '../../components/ClanDetailView';
 
 export default function Clans() {
   const {Clanname: ClanNameParam} = useParams();
@@ -26,7 +27,7 @@ export default function Clans() {
   return (
     <>
       <Header activeItem={"clans"}/>
-      <div className='Clans'>
-          <h1>{clan.ClanName}</h1>
-      </div>
+      <ClanDetailView
+      clan={clan}
+      />
     </>)}; //If the url follows clans/Valid Clan

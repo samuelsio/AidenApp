@@ -1,0 +1,24 @@
+.EventList{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 1600px;
+    flex-direction: column;
+    
+    .EventList__header{
+        background-color: #2d2d2d;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        border-radius: 16px 16px 0 0;
+        .EventList__title{
+            
+        }
+        .EventList__btnContainer{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
