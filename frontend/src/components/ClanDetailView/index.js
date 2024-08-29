@@ -2,6 +2,8 @@ import React from "react";
 import Button from "../Button";
 import "./ClanDetailView.scss"
 import EventList from "../EventList";
+import ClanMembers from "../ClanMembers";
+import BulletinList from "../BulletinList";
 
 export default function ClanDetailView({clan}){
 
@@ -44,10 +46,15 @@ export default function ClanDetailView({clan}){
             </div>
             <div className="ClanDetailView__lowerbody">
                 <div className="ClanDetailView__members">
-
+                    <ClanMembers 
+                    Members={clan.Members}
+                    Friends={clan.Friends}
+                    />
                 </div>
                 <div className="ClanDetailView__bulletin">
-
+                    <BulletinList 
+                    ClanBulletin={clan.ClanBulletin}
+                    />
                 </div>
             </div>
         </div>
