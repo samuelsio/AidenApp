@@ -1,5 +1,5 @@
 import React, { useState} from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import regPoster from "../../images/RegisterPoster.jpg";
 import Button from '../Button';
 import "./RegisterForm.scss"
@@ -7,9 +7,10 @@ import "./RegisterForm.scss"
 
 
 export default function RegisterForm() {
+  const location = useLocation();
   const [registerData, setRegisterData] = useState({
     username:'',
-    email:'',
+    email: location.state?.email || '',
     fName:'',
     lName:'',
     password:'',

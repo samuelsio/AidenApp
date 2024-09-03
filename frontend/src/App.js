@@ -8,13 +8,14 @@ import Social from "./pages/Social";
 import Profile from "./pages/Profile";
 import Games from "./pages/Games";
 import Clans from "./pages/Clans";
+import LandingPage from "./pages/LandingPage";
 
 
 function App() {
     return (
         <Router>
             <Routes>
-                <Route path="/" element={<Home />} />
+                <Route path="/home" element={<Home />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/streamers" element={<Streamers />} />
@@ -23,7 +24,7 @@ function App() {
                 <Route path="/games" element={<Games />} />
                 <Route path="/clans/" element={<Clans />} />
                 <Route path="/clans/:Clanname" element={<Clans />} />
-
+                <Route path="/" element={<LandingPage />} />
             </Routes>
         </Router>
     );
