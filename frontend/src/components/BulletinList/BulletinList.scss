@@ -1,0 +1,89 @@
+.BulletinList{
+    margin: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 900px;
+    border-radius: 30px 30px 16px 16px;
+    background-color: #303030;;
+    .BulletinList__wrapper{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        .BulletinList__header{
+            background-color: #3b3b3b;
+            border-radius: 16px 16px 0 0;
+            .BulletinList__title{
+                margin-left: 12px;
+            }
+        }
+        .BulletinList__userInput{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            width: 100%;
+            justify-content: space-between;
+            background-color: #20202075;
+            
+            .BulletinList__userProfile{
+                display: flex;
+                align-items: center;
+                margin-left: 16px;
+                .UserProfilePic{
+                    width: 50px;
+                    height: 50px;
+                }
+                .UserProfileName{
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        margin-left: 6px;
+                    .Username{
+                        margin: 0;
+                        color: darkgrey;
+                        font-weight: 500;
+                    }
+                    .DisplayName{
+                        font-weight: 500;
+                        margin: 0;
+                    }
+                }
+            }
+            .BulletinList__post{
+                display: flex;
+                align-items: stretch;
+                flex-direction: row;
+                justify-content: space-between;
+                width: 75%;
+                .BulletinList__inputField{
+                    padding: 16px 4px;
+                    margin: 8px 0;
+                    display: block;
+                    border: 1px solid #ccc;
+                    border-radius: 14px;
+                    box-sizing: border-box;
+                    width: 60%;
+                }
+                .BulletinList__btnWrapper{
+                    width: 25%;
+                }
+            }
+        }
+    }
+    .BulletinList__card{
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        max-height: 350px;
+        overflow-y: auto;
+        .BulletinList__message{
+            width: 95%;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            padding: 16px;
+        }
+    }
+}

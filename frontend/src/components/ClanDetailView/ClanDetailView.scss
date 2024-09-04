@@ -1,0 +1,115 @@
+.ClanDetailView {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #1a1a1a;
+    color: white;
+    .ClanDetailView__header {
+        margin: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .ClanDetailView__background {
+            margin: 0;
+            height: 240px;
+            img {
+                width: 1600px;
+                height: 240px;
+                border-radius: 15px 15px 0 0;
+            }
+        }
+        .ClanDetailView__headerContainer {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: space-between;
+            width: 100%;
+            height: 230px;
+            .ClanDetailView__clanDetail {
+                padding: 15px;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                height: 200px;
+                width: 60%;
+                background-color: #3b3b3b;
+                border-radius: 0 0 16px 16px;
+                justify-content: space-between;
+                
+                .ClanDetailView__detailWrapper{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    img {
+                        
+                    }
+                    .ClanDetailView__clanDesc {
+                        height: 200px;
+                        .ClanDetailView__clanName {
+                            
+                        }
+                        .ClanDetailView__clanTag {
+                            
+                        }
+                        .ClanDetailView__clanHeader {
+                        
+                        }
+                    }
+                }
+                .ClanDetailView__members {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: flex-end;
+                    height: 100%;
+                    width: 230px;
+                    p {
+                        color: #ffffffbb;
+                        margin: 6px;
+                    }
+                }
+            }
+            .ClanDetailView__games {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                width: 34%;
+                height: 230px;
+                overflow-y: auto;
+                background-color: #3b3b3b;
+                border-radius: 0 0 16px 16px;
+                padding-left: 15px;
+                .ClanDetailView__GameHead {
+                    
+                }
+                .ClanDetailView__gameItem {
+                    padding: 0px;
+                    margin: 0;
+                    height: 100%;
+
+                    p {
+                        padding: 0;
+                        margin: 2px;
+                        
+                    }
+                }
+            }
+        }
+    }
+    .ClanDetailView__events{
+
+    }
+    .ClanDetailView__lowerbody{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 1600px;
+        .ClanDetailView__members{
+
+        }
+        .ClanDetailView__bulletin{
+
+        }
+    }
+}
