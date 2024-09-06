@@ -1,81 +1,66 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Sidebar.scss";
 
-export default function Sidebar(){
+export default function Sidebar({activeItem}){
 
     return (
-        
-        <div className="col-md-2 bg-dark text-white sidebar">
+        <div className="col-md-2 card rounded-start-0 bg-secondary text-white sidebar vh-100">
           <div className="text-center py-4">
             <h4>Web<span className="text-primary">Site</span></h4>
           </div>
-          <ul className="nav flex-column justify-content-evenly h-100">
-            <li className="nav-item">
-              <a href="#" className="nav-link text-white active">
-                <i className="bi bi-grid"></i> Dashboard
-              </a>
-            </li>
-            <li className="nav-item">
-              <a href="#" className="nav-link text-white">
-                Members
-              </a>
-            </li>
-            <li className="nav-item">
-              <a href="#" className="nav-link text-white">
-                Moderation Tools
-              </a>
-            </li>
-            <li className="nav-item">
-              <a href="#" className="nav-link text-white">
-                Inbox
-              </a>
-            </li>
-            <li className="nav-item">
-              <a href="#" className="nav-link text-white">
-                Order Lists
-              </a>
-            </li>
-            <li className="nav-item">
-              <a href="#" className="nav-link text-white">
-                Product Stock
-              </a>
-            </li>
-            <li className="nav-item mt-4">
-              <a href="#" className="nav-link text-white">
-                Pricing
-              </a>
-            </li>
-            <li className="nav-item">
-              <a href="#" className="nav-link text-white">
-                Calendar
-              </a>
-            </li>
-            <li className="nav-item">
-              <a href="#" className="nav-link text-white">
-                To-Do
-              </a>
-            </li>
-            <li className="nav-item">
-              <a href="#" className="nav-link text-white">
-                Contact
-              </a>
-            </li>
-            <li className="nav-item">
-              <a href="#" className="nav-link text-white">
-                Team
-              </a>
-            </li>
-            <li className="nav-item mt-4">
-              <a href="#" className="nav-link text-white">
-                Settings
-              </a>
-            </li>
-            <li className="nav-item">
-              <a href="#" className="nav-link text-white">
-                Logout
-              </a>
-            </li>
-          </ul>
+          <div className="d-flex justify-content-between flex-column " style={{height: "calc(100vh - 85px)"}}>
+            <ul className="nav flex-column bg-secondary justify-content-center">
+                <li className={`nav-item ${activeItem === "Dashboard" ? "border-start border-primary border-3" : ""}`}>
+                <Link to="/AdminDashboard" className={`nav-link text-white  ${activeItem === "Dashboard" ? "text-white active rounded m-1 bg-primary" : ""}`}>
+                    <i className="bi bi-grid"></i> Dashboard
+                </Link>
+                </li>
+                <li className={`nav-item ${activeItem === "Members" ? "border-start border-primary border-3" : ""}`}>
+                <Link to="/Members" className={`nav-link text-white  ${activeItem === "Members" ? "text-white active rounded m-1 bg-primary" : ""}`}>
+                    Members
+                </Link>
+                </li>
+                <li className={`nav-item ${activeItem === "ModTools" ? "border-start border-primary border-3" : ""}`}>
+                <Link to="/ModTools" className={`nav-link text-white  ${activeItem === "ModTools" ? "text-white active rounded m-1 bg-primary" : ""}`}>
+                    Moderation Tools
+                </Link>
+                </li>
+                <li className={`nav-item ${activeItem === "Reports" ? "border-start border-primary border-3" : ""}`}>
+                <Link to="/Reports" className={`nav-link text-white  ${activeItem === "Reports" ? "text-white active rounded m-1 bg-primary" : ""}`}>
+                    Reports
+                </Link>
+                </li>
+                <li className={`nav-item ${activeItem === "Tickets" ? "border-start border-primary border-3" : ""}`}>
+                <Link to="/Tickets" className={`nav-link text-white  ${activeItem === "Tickets" ? "text-white active rounded m-1 bg-primary" : ""}`}>
+                    Tickets
+                </Link>
+                </li>
+                <li className={`nav-item ${activeItem === "Inbox" ? "border-start border-primary border-3" : ""}`}>
+                <Link to="/Inbox" className={`nav-link text-white  ${activeItem === "Inbox" ? "text-white active rounded m-1 bg-primary" : ""}`}>
+                    Inbox
+                </Link>
+                </li>
+                
+                <li className={`nav-item ${activeItem === "ToDo" ? "border-start border-primary border-3" : ""}`}>
+                <Link to="/ToDo" className={`nav-link text-white  ${activeItem === "ToDo" ? "text-white active rounded m-1 bg-primary" : ""}`}>
+                    To-Do
+                </Link>
+                </li>
+            </ul>
+            <ul className="nav flex-column bg-secondary justify-content-center">
+                <li className={`nav-item mt-4 ${activeItem === "Settings" ? "border-start border-primary border-3" : ""}`}>
+                <Link to="/Settings" className={`nav-link text-white  ${activeItem === "Settings" ? "text-white active rounded m-1 bg-primary" : ""}`}>
+                    Settings
+                </Link>
+                </li>
+                <li className={`nav-item pb-3`}>
+                <Link to="/" className={`nav-link text-white rounded bg-danger`}>
+                    Logout
+                </Link>
+                </li>
+            </ul>
+            </div>
         </div>
     
     )
