@@ -1,11 +1,27 @@
 import React from "react";
-import "./AdminStreamers.scss"
+import "./AdminStreams.scss"
+import Sidebar from "../../components/sidebar";
+import PageHeader from "../../components/PageHeader";
 
-export default function AdminStreamers(){
+export default function AdminStreams(){
 
     return(
-        <div className="AdminStreamers">
-            <h1>AdminStreamers</h1>
+        <div className="AdminStreams">
+            <div className="container-fluid bg-primary text-white">
+                <div className="row">
+                    {/* Sidebar */}
+                    <Sidebar activeItem={"Manage Streams"}/>
+
+                    <div className="col-md-10 bg-primary">
+                        <PageHeader PageName={"Manage Streams"}
+                        AdminName={"Aiden"}
+                        AdminPFP={"https://placeholder.com/50"} />
+
+                        {/* Body */}
+                        <></>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }

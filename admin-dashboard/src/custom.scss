@@ -1,21 +1,17 @@
-// Import Bootstrap functions and variables first
-
 @import '../node_modules/bootstrap/scss/_functions.scss';
-
 @import '../node_modules/bootstrap/scss/_variables.scss';
- 
 // Override Bootstrap's color palette
-$theme-colors: (
-    "primary": rgb(0, 77, 124),  // Custom primary color
-    "secondary": rgb(0 49 80), // Custom secondary color
-    "success": #28a745, // Custom success color
-    "danger": #dc3545,  // Custom danger color
-    "warning": #ffc107, // Custom warning color
-    "info": #17a2b8,    // Custom info color
-    "light": #f8f9fa,   // Custom light color
-    "dark": rgba(0, 0, 0, 0.27) ,     // Custom dark color
-    );
 
+    $theme-colors: (
+        "primary":rgb(0, 77, 124),
+        "secondary": rgb(0 49 80),
+        "success": #28a745, // Custom success color
+        "danger": #dc3545,  // Custom danger color
+        "warning": #ffc107, // Custom warning color
+        "info": #17a2b8,    // Custom info color
+        "light": #f8f9fa,
+        "dark":rgba(0, 0, 0, 0.27)
+      );
  
 // // Override font settings
 // $font-family-sans-serif: 'Helvetica Neue', Arial, sans-serif;

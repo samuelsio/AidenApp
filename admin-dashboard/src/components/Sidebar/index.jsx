@@ -12,27 +12,33 @@ export default function Sidebar({activeItem}){
           <div className="d-flex justify-content-between flex-column " style={{height: "calc(100vh - 85px)"}}>
             <ul className="nav flex-column bg-secondary justify-content-center">
                 <li className={`nav-item ${activeItem === "Dashboard" ? "border-start border-primary border-3" : ""}`}>
-                <Link to="/AdminDashboard" className={`nav-link text-white  ${activeItem === "Dashboard" ? "text-white active rounded m-1 bg-primary" : ""}`}>
+                <Link to="/" className={`nav-link text-white  ${activeItem === "Dashboard" ? "text-white active rounded m-1 bg-primary" : ""}`}>
                     <i className="bi bi-grid"></i> Dashboard
                 </Link>
                 </li>
-                <li className={`nav-item ${activeItem === "Members" ? "border-start border-primary border-3" : ""}`}>
-                <Link to="/MembersDashboard" className={`nav-link text-white  ${activeItem === "Members" ? "text-white active rounded m-1 bg-primary" : ""}`}>
+                <li className={`nav-item ${activeItem === "Manage Members" ? "border-start border-primary border-3" : ""}`}>
+                <Link to="/MembersDashboard" className={`nav-link text-white  ${activeItem === "Manage Members" ? "text-white active rounded m-1 bg-primary" : ""}`}>
                     Manage Members
                 </Link>
                 </li>
-                <li className={`nav-item ${activeItem === "AdminClans" ? "border-start border-primary border-3" : ""}`}>
-                <Link to="/AdminClans" className={`nav-link text-white  ${activeItem === "AdminClans" ? "text-white active rounded m-1 bg-primary" : ""}`}>
+                <li className={`nav-item ${activeItem === "Manage Clans" ? "border-start border-primary border-3" : ""}`}>
+                <Link to="/AdminClans" className={`nav-link text-white  ${activeItem === "Manage Clans" ? "text-white active rounded m-1 bg-primary" : ""}`}>
                     Manage Clans
                 </Link>
-                <Link to="/AdminGames" className={`nav-link text-white  ${activeItem === "AdminGames" ? "text-white active rounded m-1 bg-primary" : ""}`}>
+                </li>
+                <li className={`nav-item ${activeItem === "Manage Games" ? "border-start border-primary border-3" : ""}`}>
+                <Link to="/AdminGames" className={`nav-link text-white  ${activeItem === "Manage Games" ? "text-white active rounded m-1 bg-primary" : ""}`}>
                     Manage Games
                 </Link>
-                <Link to="/AdminHome" className={`nav-link text-white  ${activeItem === "AdminHome" ? "text-white active rounded m-1 bg-primary" : ""}`}>
+                </li>
+                <li className={`nav-item ${activeItem === "Manage Home" ? "border-start border-primary border-3" : ""}`}>
+                <Link to="/AdminHome" className={`nav-link text-white  ${activeItem === "Manage Home" ? "text-white active rounded m-1 bg-primary" : ""}`}>
                     Manage Home
                 </Link>
-                <Link to="/AdminStreamers" className={`nav-link text-white  ${activeItem === "AdminStreamers" ? "text-white active rounded m-1 bg-primary" : ""}`}>
-                    Manage Streamers
+                </li>
+                <li className={`nav-item ${activeItem === "Manage Streams" ? "border-start border-primary border-3" : ""}`}>
+                <Link to="/AdminStreams" className={`nav-link text-white  ${activeItem === "Manage Streams" ? "text-white active rounded m-1 bg-primary" : ""}`}>
+                    Manage Streams
                 </Link>
                 </li>
                 <li className={`nav-item ${activeItem === "Reports" ? "border-start border-primary border-3" : ""}`}>
