@@ -1,0 +1,7 @@
+.selected{
+    background-color: rgb(81 160 208) !important; 
+}
+.table-responsive{
+    max-height: calc(-170px + 100vh);;
+    overflow-y: scroll;
+}
