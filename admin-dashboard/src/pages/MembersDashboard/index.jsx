@@ -2,6 +2,7 @@ import React from "react";
 import "./MembersDashboard.scss"
 import Sidebar from "../../components/sidebar";
 import PageHeader from "../../components/PageHeader";
+import MembersList from "../../components/MembersList";
 
 export default function MembersDashboard(){
 
@@ -18,7 +19,7 @@ export default function MembersDashboard(){
                         AdminPFP={"https://placeholder.com/50"} />
 
                         {/* Body */}
-                        <></>
+                        <MembersList />
                     </div>
                 </div>
             </div>

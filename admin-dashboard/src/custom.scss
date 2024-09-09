@@ -12,6 +12,10 @@
         "light": #f8f9fa,
         "dark":rgba(0, 0, 0, 0.27)
       );
+    $table-variants: (
+        "primary":    shift-color(rgb(0, 77, 124), +25%),
+        "secondary":  shift-color(rgb(0 49 80), 0),
+    );
  
 // // Override font settings
 // $font-family-sans-serif: 'Helvetica Neue', Arial, sans-serif;
