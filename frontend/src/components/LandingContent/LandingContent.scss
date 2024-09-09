@@ -1,0 +1,19 @@
+.LandingContent{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 100%;
+    color: white;
+    .LandingContentImg{
+        height: 465px;
+        max-width: 700px;
+        padding: 20px;
+        aspect-ratio: 4 / 3;
+        border-radius: 40px;
+    }
+    .ContentText{
+        width: 30%;
+        text-align: center;
+    }
+}

@@ -14,7 +14,7 @@ export default function Games() {
     <>
     <Header activeItem={"games"}/>
     <div className='Games'>
-      <h1>GamePage index.js</h1>
+      <h1>GamePage</h1>
     </div>
     <GamesCard />
     </>

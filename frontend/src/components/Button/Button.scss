@@ -10,10 +10,19 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
+    text-decoration: none;
+
 
     &.primary{
         background-color: #44A4DA;
-              font-weight: bold;
+        font-weight: bold;
+    }
+
+    &.secondary{
+        background-color: transparent;
+        border: 3px solid #44A4DA;
+        color: #44A4DA;
+        font-weight: bold;
     }
 
     &.outline{
