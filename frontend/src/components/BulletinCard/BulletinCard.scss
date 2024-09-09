@@ -1,0 +1,53 @@
+.BulletinCard{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #222222;
+    padding: 6px;
+    border-radius: 20px;
+    margin: 0;
+    .BulletinCard__profile{
+        display: flex;
+        align-items: center;
+        margin-left: 16px;
+        width: 300px;
+        .UserProfilePic{
+            width: 50px;
+            height: 50px;
+        }
+        .BulletinCard__user{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-left: 6px;
+            .Username{ 
+                margin: 0;
+                color: darkgrey;
+                font-weight: 500;
+            }
+            .DisplayName{
+                font-weight: 500;
+                margin: 0;
+            }
+        }
+    }
+    .BulletinCard__commentWrapper{
+        display: flex;
+        align-items: flex-end;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        .BulletinCard__comment{
+
+        }
+        .BulletinCard__date{
+            margin-left: 6px;
+            color: #ffffff73;
+            font-weight: 200;
+            font-size: 12px;
+
+        }
+    }
+}

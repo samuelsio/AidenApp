@@ -1,13 +1,19 @@
 .FriendsList{
     width: 300px;
-    height: 400px;
+    height: 465px;
     background-color: #383838;
     border-radius: 16px;
     color: #ffffffad;
+    &.dashboard{
+        width: 22%;
+    }
     .FriendsList__container{
     height: 400px;
     background-color: #2d2d2d; 
     border-radius: 0 16px 0px 16px;
     overflow-y: auto;
+    &.dashboard{
+        height: 550px;
+    }
     }
 }

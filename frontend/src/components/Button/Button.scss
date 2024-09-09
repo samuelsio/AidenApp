@@ -11,6 +11,8 @@
     align-items: center;
     text-align: center;
     text-decoration: none;
+
+
     &.primary{
         background-color: #44A4DA;
         font-weight: bold;
@@ -30,6 +32,13 @@
         font-size: 20px;
     }
     
+    &.revert{
+        background-color: transparent;
+        border: 3px solid #ff4343;
+        color: #ff4343;
+        font-size: 20px;
+    }
+
     &.large{
         font-size: 32px;
     }

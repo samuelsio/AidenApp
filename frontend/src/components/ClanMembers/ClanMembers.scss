@@ -1,0 +1,32 @@
+.ClanMembers{
+    display: flex;
+    flex-direction: column;
+    width: 340px;
+    margin: 16px;
+    .ClanMembers__header{
+        background: #2d2d2d;
+        border-radius: 16px 16px 0 0;
+        .ClanMembers__title{
+
+        }
+    }
+    .ClanMembers__members{
+        background-color: #3b3b3b;
+        .Friends__title{
+
+        }
+        .Members__title{
+
+        }
+        .member__container{
+            max-height: 132px;
+            background-color: #3b3b3b;
+            overflow-y: auto;
+            .member{
+                background-color: #2b2b2b;
+                margin: 0;
+                padding: 1em;
+            }
+        }
+    }
+}
