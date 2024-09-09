@@ -3,7 +3,7 @@ import "./GamesCard.scss"
 import gamesData from "../../pages/Games/dataGames.json";
 
 
-export default function GamesCard() {
+export default function GamesCard({filter}) {
     useEffect(() => {
         const loadTwitterWidget = (index) => {
             if(index >= gamesData.games.length) return;
@@ -16,9 +16,11 @@ export default function GamesCard() {
         };
         loadTwitterWidget(0);
         }, []);
-
+        const gamesToDisplay = filter === "random" 
+        ? gamesData.games.sort(() => 0.5 - Math.random()).slice(0, 3) // Select 3 random games
+        : gamesData.games;
         return(
-        gamesData.games.map((game) => (
+        gamesToDisplay.map((game) => (
             <div className='GamesCard__container' key={game.id}>
                 <div className='GamesCard'>
                     <div className='GamesCard__name'>
