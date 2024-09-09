@@ -1,0 +1,24 @@
+{
+    "TotalUsers": 850,
+    "TotalUsersByMonth": {
+      "January": 50,
+      "February": 180,
+      "March": 300,
+      "April": 401,
+      "May": 476,
+      "June": 653,
+      "July": 704,
+      "August": 781,
+      "September": 799,
+      "October": 806,
+      "November": 823,
+      "December": 850
+    },
+    "prevUsers": 800,
+    "TotalClans": 40,
+    "prevClans": 35,
+    "PremiumMembers": 300,
+    "prevMembers": 250,
+    "ActiveUsers": 600,
+    "prevActive": 550
+  }

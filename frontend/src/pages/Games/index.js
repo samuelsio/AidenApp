@@ -2,13 +2,9 @@ import React from 'react';
 import Header from '../../components/Header';
 import GamesCard from '../../components/GamesCard/index.js';
 import "./Games.scss";
-import gamesData from "./dataGames.json";
 
 
 export default function Games() {
-
-
-  const {games} = gamesData;
 
   return (
     <>
