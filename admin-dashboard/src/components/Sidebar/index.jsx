@@ -17,13 +17,22 @@ export default function Sidebar({activeItem}){
                 </Link>
                 </li>
                 <li className={`nav-item ${activeItem === "Members" ? "border-start border-primary border-3" : ""}`}>
-                <Link to="/Members" className={`nav-link text-white  ${activeItem === "Members" ? "text-white active rounded m-1 bg-primary" : ""}`}>
-                    Members
+                <Link to="/MembersDashboard" className={`nav-link text-white  ${activeItem === "Members" ? "text-white active rounded m-1 bg-primary" : ""}`}>
+                    Manage Members
                 </Link>
                 </li>
-                <li className={`nav-item ${activeItem === "ModTools" ? "border-start border-primary border-3" : ""}`}>
-                <Link to="/ModTools" className={`nav-link text-white  ${activeItem === "ModTools" ? "text-white active rounded m-1 bg-primary" : ""}`}>
-                    Moderation Tools
+                <li className={`nav-item ${activeItem === "AdminClans" ? "border-start border-primary border-3" : ""}`}>
+                <Link to="/AdminClans" className={`nav-link text-white  ${activeItem === "AdminClans" ? "text-white active rounded m-1 bg-primary" : ""}`}>
+                    Manage Clans
+                </Link>
+                <Link to="/AdminGames" className={`nav-link text-white  ${activeItem === "AdminGames" ? "text-white active rounded m-1 bg-primary" : ""}`}>
+                    Manage Games
+                </Link>
+                <Link to="/AdminHome" className={`nav-link text-white  ${activeItem === "AdminHome" ? "text-white active rounded m-1 bg-primary" : ""}`}>
+                    Manage Home
+                </Link>
+                <Link to="/AdminStreamers" className={`nav-link text-white  ${activeItem === "AdminStreamers" ? "text-white active rounded m-1 bg-primary" : ""}`}>
+                    Manage Streamers
                 </Link>
                 </li>
                 <li className={`nav-item ${activeItem === "Reports" ? "border-start border-primary border-3" : ""}`}>
