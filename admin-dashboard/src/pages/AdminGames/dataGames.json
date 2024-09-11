@@ -1,0 +1,297 @@
+{
+  "games": [
+    {
+      "id": 1,
+      "name": "Cosmic Explorers",
+      "twitter_handle": "@CosmicExplorers",
+      "twitch_handle": "CosmicExplorersOfficial",
+      "store": {
+        "Steam": "https://store.steampowered.com/app/cosmic-explorers",
+        "Epic": "https://www.epicgames.com/store/en-US/p/cosmic-explorers"
+      },
+      "created": "05/15/2023",
+      "status": "Featured"
+    },
+    {
+      "id": 2,
+      "name": "Neon Nights",
+      "twitter_handle": "@NeonNightsGame",
+      "twitch_handle": "NeonNightsTV",
+      "store": {
+        "Steam": "https://store.steampowered.com/app/neon-nights",
+        "GOG": "https://www.gog.com/game/neon_nights"
+      },
+      "created": "08/22/2023",
+      "status": "Trending"
+    },
+    {
+      "id": 3,
+      "name": "Pixel Pirate Adventure",
+      "twitter_handle": "@PixelPirates",
+      "twitch_handle": "PixelPiratesTwitch",
+      "store": {
+        "Steam": "https://store.steampowered.com/app/pixel-pirate-adventure"
+      },
+      "created": "03/10/2023",
+      "status": "Out of Loop"
+    },
+    {
+      "id": 4,
+      "name": "Quantum Quests",
+      "twitter_handle": "@QuantumQGame",
+      "twitch_handle": "QuantumQuestsLive",
+      "store": {
+        "Epic": "https://www.epicgames.com/store/en-US/p/quantum-quests",
+        "Itch.io": "https://quantumquests.itch.io/game"
+      },
+      "created": "11/30/2023",
+      "status": "Featured"
+    },
+    {
+      "id": 5,
+      "name": "Mystic Meadows",
+      "twitter_handle": "@MysticMeadows",
+      "twitch_handle": "MysticMeadowsGame",
+      "store": {
+        "Steam": "https://store.steampowered.com/app/mystic-meadows",
+        "GOG": "https://www.gog.com/game/mystic_meadows"
+      },
+      "created": "07/05/2023",
+      "status": "Trending"
+    },
+    {
+      "id": 6,
+      "name": "Robo Rumble",
+      "twitter_handle": "@RoboRumbleGame",
+      "twitch_handle": "RoboRumbleOfficial",
+      "store": {
+        "Steam": "https://store.steampowered.com/app/robo-rumble"
+      },
+      "created": "02/14/2023",
+      "status": "Push"
+    },
+    {
+      "id": 7,
+      "name": "Galactic Gladiators",
+      "twitter_handle": "@GalacticGlads",
+      "twitch_handle": "GalacticGladiatorsTwitch",
+      "store": {
+        "Epic": "https://www.epicgames.com/store/en-US/p/galactic-gladiators",
+        "Steam": "https://store.steampowered.com/app/galactic-gladiators"
+      },
+      "created": "09/18/2023",
+      "status": "Featured"
+    },
+    {
+      "id": 8,
+      "name": "Dungeon Delvers",
+      "twitter_handle": "@DungeonDelvers",
+      "twitch_handle": "DungeonDelversLive",
+      "store": {
+        "Steam": "https://store.steampowered.com/app/dungeon-delvers",
+        "GOG": "https://www.gog.com/game/dungeon_delvers"
+      },
+      "created": "04/02/2023",
+      "status": "Out of Loop"
+    },
+    {
+      "id": 9,
+      "name": "Sky Sailors",
+      "twitter_handle": "@SkySailorsGame",
+      "twitch_handle": "SkySailorsOfficial",
+      "store": {
+        "Steam": "https://store.steampowered.com/app/sky-sailors",
+        "Itch.io": "https://skysailors.itch.io/game"
+      },
+      "created": "10/11/2023",
+      "status": "Trending"
+    },
+    {
+      "id": 10,
+      "name": "Chrono Clash",
+      "twitter_handle": "@ChronoClashGame",
+      "twitch_handle": "ChronoClashTwitch",
+      "store": {
+        "Epic": "https://www.epicgames.com/store/en-US/p/chrono-clash"
+      },
+      "created": "06/27/2023",
+      "status": "Push"
+    },
+    {
+      "id": 11,
+      "name": "Frost Fables",
+      "twitter_handle": "@FrostFables",
+      "twitch_handle": "FrostFablesGame",
+      "store": {
+        "Steam": "https://store.steampowered.com/app/frost-fables",
+        "GOG": "https://www.gog.com/game/frost_fables"
+      },
+      "created": "01/08/2023",
+      "status": "Featured"
+    },
+    {
+      "id": 12,
+      "name": "Mecha Mayhem",
+      "twitter_handle": "@MechaMayhemGame",
+      "twitch_handle": "MechaMayhemOfficial",
+      "store": {
+        "Steam": "https://store.steampowered.com/app/mecha-mayhem",
+        "Epic": "https://www.epicgames.com/store/en-US/p/mecha-mayhem"
+      },
+      "created": "12/03/2023",
+      "status": "Trending"
+    },
+    {
+      "id": 13,
+      "name": "Astro Architects",
+      "twitter_handle": "@AstroArchitects",
+      "twitch_handle": "AstroArchitectsTV",
+      "store": {
+        "Steam": "https://store.steampowered.com/app/astro-architects"
+      },
+      "created": "05/29/2023",
+      "status": "Out of Loop"
+    },
+    {
+      "id": 14,
+      "name": "Mythic Monsters",
+      "twitter_handle": "@MythicMonsters",
+      "twitch_handle": "MythicMonstersGame",
+      "store": {
+        "Epic": "https://www.epicgames.com/store/en-US/p/mythic-monsters",
+        "Itch.io": "https://mythicmonsters.itch.io/game"
+      },
+      "created": "08/14/2023",
+      "status": "Featured"
+    },
+    {
+      "id": 15,
+      "name": "Cyber Chasers",
+      "twitter_handle": "@CyberChasers",
+      "twitch_handle": "CyberChasersLive",
+      "store": {
+        "Steam": "https://store.steampowered.com/app/cyber-chasers",
+        "GOG": "https://www.gog.com/game/cyber_chasers"
+      },
+      "created": "03/21/2023",
+      "status": "Push"
+    },
+    {
+      "id": 16,
+      "name": "Puzzle Paradox",
+      "twitter_handle": "@PuzzleParadox",
+      "twitch_handle": "PuzzleParadoxOfficial",
+      "store": {
+        "Steam": "https://store.steampowered.com/app/puzzle-paradox"
+      },
+      "created": "11/07/2023",
+      "status": "Trending"
+    },
+    {
+      "id": 17,
+      "name": "Steampunk Skylines",
+      "twitter_handle": "@SteampunkSky",
+      "twitch_handle": "SteampunkSkylinesTV",
+      "store": {
+        "Epic": "https://www.epicgames.com/store/en-US/p/steampunk-skylines",
+        "Steam": "https://store.steampowered.com/app/steampunk-skylines"
+      },
+      "created": "07/19/2023",
+      "status": "Featured"
+    },
+    {
+      "id": 18,
+      "name": "Wizard's War",
+      "twitter_handle": "@WizardsWarGame",
+      "twitch_handle": "WizardsWarTwitch",
+      "store": {
+        "Steam": "https://store.steampowered.com/app/wizards-war",
+        "GOG": "https://www.gog.com/game/wizards_war"
+      },
+      "created": "02/25/2023",
+      "status": "Out of Loop"
+    },
+    {
+      "id": 19,
+      "name": "Retro Racers",
+      "twitter_handle": "@RetroRacers",
+      "twitch_handle": "RetroRacersGame",
+      "store": {
+        "Steam": "https://store.steampowered.com/app/retro-racers",
+        "Itch.io": "https://retroracers.itch.io/game"
+      },
+      "created": "09/30/2023",
+      "status": "Trending"
+    },
+    {
+      "id": 20,
+      "name": "Lunar Legends",
+      "twitter_handle": "@LunarLegends",
+      "twitch_handle": "LunarLegendsOfficial",
+      "store": {
+        "Epic": "https://www.epicgames.com/store/en-US/p/lunar-legends"
+      },
+      "created": "04/16/2023",
+      "status": "Push"
+    },
+    {
+      "id": 21,
+      "name": "Zombie Zoo",
+      "twitter_handle": "@ZombieZooGame",
+      "twitch_handle": "ZombieZooTwitch",
+      "store": {
+        "Steam": "https://store.steampowered.com/app/zombie-zoo",
+        "GOG": "https://www.gog.com/game/zombie_zoo"
+      },
+      "created": "10/23/2023",
+      "status": "Featured"
+    },
+    {
+      "id": 22,
+      "name": "Gravity Gurus",
+      "twitter_handle": "@GravityGurus",
+      "twitch_handle": "GravityGurusGame",
+      "store": {
+        "Steam": "https://store.steampowered.com/app/gravity-gurus",
+        "Epic": "https://www.epicgames.com/store/en-US/p/gravity-gurus"
+      },
+      "created": "06/08/2023",
+      "status": "Trending"
+    },
+    {
+      "id": 23,
+      "name": "Pirate's Plunder",
+      "twitter_handle": "@PiratesPlunder",
+      "twitch_handle": "PiratesPlunderLive",
+      "store": {
+        "Steam": "https://store.steampowered.com/app/pirates-plunder"
+      },
+      "created": "01/31/2023",
+      "status": "Out of Loop"
+    },
+    {
+      "id": 24,
+      "name": "Dimension Divers",
+      "twitter_handle": "@DimensionDivers",
+      "twitch_handle": "DimensionDiversOfficial",
+      "store": {
+        "Epic": "https://www.epicgames.com/store/en-US/p/dimension-divers",
+        "Itch.io": "https://dimensiondivers.itch.io/game"
+      },
+      "created": "12/17/2023",
+      "status": "Featured"
+    },
+    {
+      "id": 25,
+      "name": "Techno Titans",
+      "twitter_handle": "@TechnoTitans",
+      "twitch_handle": "TechnoTitansGame",
+      "store": {
+        "Steam": "https://store.steampowered.com/app/techno-titans",
+        "GOG": "https://www.gog.com/game/techno_titans"
+      },
+      "created": "08/01/2023",
+      "status": "Push"
+    }
+  ]
+}
