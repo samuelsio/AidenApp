@@ -7,35 +7,31 @@ export default function GamesList(){
     const games = gamesData.games
     const [selectedFilter, setSelectedFilter] = useState(null);
     const [sortConfig, setSortConfig] = useState({ key: null, direction: "asc" });
-    const [statusFilter, setStatusFilter] = useState("Status Filter")
     const [filteredGames, setFilteredGames] = useState(games)
-    const [storeFilter, setStoreFilter] = useState("Store Filter")
+    const [filters, setFilters] = useState({
+        status: null,
+        sotre: null,
+    })
+    
 
     const applyFilters = () => {
-        let statusFiltered = games;
-        let storeFiltered = games;
+        const { status, store } = filters;
 
-        if (statusFilter && statusFilter !== "Status Filter") {
-            statusFiltered = games.filter(game => game.status === statusFilter);
-        }
-        if (storeFilter && storeFilter !== "Store Filter") {
-            if (storeFilter === "Everything Else") {
-                storeFiltered = games.filter(game => !game.store.Steam && !game.store.Epic && !game.store.GOG);
-            } else {
-                storeFiltered = games.filter(game => game.store[storeFilter])
-            }
-        }
-
-        const filteredData = games.filter(game => 
-            statusFiltered.includes(game) && storeFiltered.includes(game)
-        );
-        setFilteredGames(filteredData);
+        const filteredData = games.filter(game => {
+            const matchesStatus = !status || game.status === status;
+            const matchesStore = !store || 
+                (store === "Everything Else" ? !game.store.Steam && game.store.Epic && game.store.GOG 
+                    : game.store[store]);
+            
+            return matchesStatus && matchesStore // Return games that match both filters
+        });
+        setFilteredGames(filteredData) //updates filteredGames state
     }
 
     const sortTable = (key) => {
         let direction = "asc";
         if (sortConfig.key === key && sortConfig.direction === "asc") {
-        direction = "desc";
+        direction = "desc"; //toggles direction
         }
 
         const sortedGames = [...filteredGames].sort((a, b) => {
@@ -78,19 +74,18 @@ export default function GamesList(){
     
     
 
-    const handleStatusFilter = (event) => {
-            setStatusFilter(event.target.value)
+    const handleStatusFilter = (event) => { //...prevFilters keeps existing filters
+            setFilters(prevFilters => ({...prevFilters, status: event.target.value || null}))
     };
 
     const handleStoreFilter = (event) => {
-        
-            setStoreFilter(event.target.value)
+            setFilters(prevFilters => ({...prevFilters, store: event.target.value || null}))
     };
 
-
+// Apply filters whenever the filters state changes
     useEffect(() => {
         applyFilters();
-    }, [statusFilter, storeFilter]);
+    }, [filters]);
 
     useEffect(() => {
         const defaultSort = () => {
@@ -112,19 +107,19 @@ export default function GamesList(){
                         <p className={`card  text-white bg-primary p-3 m-0 rounded w-25 ${selectedFilter === 'twitter_handle' ? 'selected' : ''}`} onClick={() => sortTable("twitter_handle")}>Dev Twitter</p>
                         <p className={`card  text-white bg-primary p-3 m-0 rounded w-25 ${selectedFilter === 'twitch_handle' ? 'selected' : ''}`} onClick={() => sortTable("twitch_handle")}>Dev Twitch</p>
                         <p className={`card  text-white bg-primary p-3 m-0 rounded w-25 ${selectedFilter === 'created' ? 'selected' : ''}`} onClick={() => sortTable('created')}>Release Date</p>
-                        <select className="card text-white bg-primary p-3 m-0 rounded w-25" onChange={handleStoreFilter} value={storeFilter}>
+                        <select className="card text-white bg-primary p-3 m-0 rounded w-25" onChange={handleStoreFilter} value={filters.store || ""}>
                             <option value="">Store Filter</option>
                             <option value="Steam">Steam</option>
                             <option value="Epic">Epic Games</option>
                             <option value="GOG">GOG</option>
                             <option value="Everything Else">Everything Else</option>
                         </select>
-                        <select className="card  text-white bg-primary p-3 m-0 rounded w-25" onChange={handleStatusFilter} value={statusFilter}>
-                            <option>Status Filter</option>
-                            <option>Featured</option>
-                            <option>Trending</option>
-                            <option>Out of Loop</option>
-                            <option>Push</option>
+                        <select className="card  text-white bg-primary p-3 m-0 rounded w-25" onChange={handleStatusFilter} value={filters.status || ""}>
+                            <option value="">Status Filter</option>
+                            <option value="Featured">Featured</option>
+                            <option value="Trending">Trending</option>
+                            <option value="Out of Loop">Out of Loop</option>
+                            <option value="Push">Push</option>
                         </select>
                     </div>
                 </div>
