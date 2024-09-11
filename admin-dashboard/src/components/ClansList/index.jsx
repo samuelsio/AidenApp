@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react";
-import "./MembersList.scss";
-import membersData from "../../pages/MembersDashboard/MembersList.json"
+import {useState, useEffect} from "react";
+import "./ClansList.scss"
+import clansData from "../../pages/AdminClans/ClansList.json"
 
-export default function MembersList(){
-    const members = membersData.members
+export default function ClansList(){
+    const clans = clansData.clans
     const [selectedFilter, setSelectedFilter] = useState(null);
     const [sortConfig, setSortConfig] = useState({ key: null, direction: "asc" });
     const [statusFilter, setStatusFilter] = useState("Status Filter")
-    const [filteredMembers, setFilteredMembers] = useState(members)
+    const [filteredClans, setFilteredClans] = useState(clans)
 
     const sortTable = (key) => {
         let direction = "asc";
@@ -15,7 +15,7 @@ export default function MembersList(){
           direction = "desc";
         }
     
-        const sortedMembers = [...filteredMembers].sort((a, b) => {
+        const sortedClans = [...filteredClans].sort((a, b) => {
             const aValue = a[key];
             const bValue = b[key];
         
@@ -28,7 +28,7 @@ export default function MembersList(){
         }
     
             // For username, handle the numeric parts properly (Username10 appears after Username2 because 10 is > 2)
-        if (key === "username" || key === "displayName") {
+        if (key === "ClanName" || key === "displayName") {
             const numA = aValue.match(/\d+/g);
             const numB = bValue.match(/\d+/g);
 
@@ -40,14 +40,14 @@ export default function MembersList(){
             }
         }
 
-        //General sorting logic for ID
+        //General sorting logic for ID/ownerID
         if (aValue < bValue) return direction === "asc" ? -1 : 1;
         if (aValue > bValue) return direction === "asc" ? 1 : -1;
         return 0;
         });
         
         
-        setFilteredMembers(sortedMembers);
+        setFilteredClans(sortedClans);
         setSortConfig({ key, direction });
         setSelectedFilter(key); //Used to colour the currently selected filter
       };    
@@ -56,9 +56,9 @@ export default function MembersList(){
         const status = event.target.value
             setStatusFilter(status)
         if (status === "Status Filter" || status === "") {
-            setFilteredMembers(members);
+            setFilteredClans(clans);
         } else {
-            setFilteredMembers(members.filter(member => member.status === status))
+            setFilteredClans(clans.filter(member => member.status === status))
       }}
       
       useEffect(() => {
@@ -69,23 +69,24 @@ export default function MembersList(){
     }, []);
 
 
-
     return(
         <>
         <div className="row mt-4">
               <div className="col-md-8">
                 <div className="card bg-secondary text-white p-2">
-                    <div className="MembersList d-flex w-100 align-items-center justify-content-evenly">
-                        <p className={`card  text-white bg-primary p-3 m-0 rounded w-25 user-select-none ${selectedFilter === 'id' ? 'selected' : ''}`} onClick={() => sortTable('id')}>ID</p>
-                        <p className={`card  text-white bg-primary p-3 m-0 rounded w-25 user-select-none ${selectedFilter === 'username' ? 'selected' : ''}`} onClick={() => sortTable('username')}>Username</p>
-                        <p className={`card  text-white bg-primary p-3 m-0 rounded w-25 user-select-none ${selectedFilter === 'displayName' ? 'selected' : ''}`} onClick={() => sortTable("displayName")}>Display Name</p>
+                    <div className="ClansList d-flex w-100 align-items-center justify-content-evenly">
+                        <p className={`card  text-white bg-primary p-3 m-0 rounded w-25 user-select-none ${selectedFilter === 'id' ? 'selected' : ''}`} onClick={() => sortTable('id')}>Clan ID</p>
+                        <p className={`card  text-white bg-primary p-3 m-0 rounded w-25 user-select-none ${selectedFilter === 'ClanName' ? 'selected' : ''}`} onClick={() => sortTable('ClanName')}>Clan Name</p>
+                        <p className={`card  text-white bg-primary p-3 m-0 rounded w-25 user-select-none ${selectedFilter === 'ClanTag' ? 'selected' : ''}`} onClick={() => sortTable('ClanTag')}>Clan Tag</p>
                         <p className={`card  text-white bg-primary p-3 m-0 rounded w-25 user-select-none ${selectedFilter === 'created' ? 'selected' : ''}`} onClick={() => sortTable('created')}>Date Created</p>
+                        <p className={`card  text-white bg-primary p-3 m-0 rounded w-25 user-select-none ${selectedFilter === 'ownerID' ? 'selected' : ''}`} onClick={() => sortTable("ownerID")}>Owner ID</p>
+                        <p className={`card  text-white bg-primary p-3 m-0 rounded w-25 user-select-none ${selectedFilter === 'displayName' ? 'selected' : ''}`} onClick={() => sortTable("displayName")}>Owner Name</p>
                         <select className="card  text-white bg-primary p-3 m-0 rounded w-25" onChange={handleStatusFilter} value={statusFilter}>
                             <option>Status Filter</option>
                             <option>Active</option>
                             <option>Needs Attention</option>
                             <option>Suspended</option>
-                            <option>Banned</option>
+                            <option>Removed</option>
                         </select>
                     </div>
                 </div>
@@ -97,23 +98,27 @@ export default function MembersList(){
                     <table className="table table-primary table-hover">
                         <thead className="table-secondary">
                             <tr>
-                                <th>ID</th>
-                                <th>Username</th>
-                                <th>Display Name</th>
+                                <th>Clan ID</th>
+                                <th>Clan Name</th>
+                                <th>Clan Tag</th>
                                 <th>Created (mm/dd/yyyy)</th>
+                                <th>Owner ID</th>
+                                <th>Owner Name</th>
                                 <th>Status</th>
                             </tr>
                         </thead>
                         <tbody className="table-group-divider">
-                            {filteredMembers.map((member) => (
-                                <tr key={member.id}>
-                                    <td >{member.id}</td>
-                                    <td>{member.username}</td>
-                                    <td>{member.displayName}</td>
-                                    <td>{member.created}</td>
+                            {filteredClans.map((clan) => (
+                                <tr key={clan.id}>
+                                    <td >{clan.id}</td>
+                                    <td>{clan.ClanName}</td>
+                                    <td>{clan.ClanTag}</td>
+                                    <td>{clan.created}</td>
+                                    <td>{clan.ownerID}</td>
+                                    <td>{clan.displayName}</td>
                                     <td>
-                                    <span className={`badge bg-${member.status === "Active" ? "success" : member.status === "Banned" ? "danger" : member.status === "Needs Attention" ? "danger" : "warning"}`}>
-                                        {member.status} {/* Active=bg-green, Banned=bg-red, Needs Attention=bg-red, everything else=bg-orange */}
+                                    <span className={`badge bg-${clan.status === "Active" ? "success" : clan.status === "Removed" ? "danger" : clan.status === "Needs Attention" ? "danger" : "warning"}`}>
+                                        {clan.status} {/* Active=bg-green, Banned=bg-red, Needs Attention=bg-red, everything else=bg-orange */}
                                     </span>
                                     </td>
                                 </tr>
@@ -124,5 +129,6 @@ export default function MembersList(){
             </div>
         </div>
         </>
+
     )
 }

@@ -1,0 +1,20 @@
+{"clans":[
+    { "id": "0001", "ClanName": "Username", "ClanTag":"ABCD", "ownerID":"0001", "displayName": "DisplayName", "created": "01/01/24", "status": "Active" },
+    { "id": "0002", "ClanName": "Username2", "ClanTag":"GRAR", "ownerID":"0002", "displayName": "DisplayName2", "created": "02/01/24", "status": "Removed" },
+    { "id": "0003", "ClanName": "Username3", "ClanTag":"GRAD", "ownerID":"0003", "displayName": "DisplayName3", "created": "03/01/24", "status": "Suspended" },
+    { "id": "0004", "ClanName": "Username4", "ClanTag":"XDAZ", "ownerID":"0004", "displayName": "DisplayName4", "created": "05/03/24", "status": "Active" },
+    { "id": "0005", "ClanName": "Username5", "ClanTag":"AWSD", "ownerID":"0005", "displayName": "DisplayName5", "created": "05/04/24", "status": "Active" },
+    { "id": "0006", "ClanName": "Username6", "ClanTag":"WASD", "ownerID":"0006", "displayName": "DisplayName6", "created": "06/01/24", "status": "Removed" },
+    { "id": "0007", "ClanName": "Username7", "ClanTag":"ABCD", "ownerID":"0007", "displayName": "DisplayName7", "created": "07/01/24", "status": "Suspended" },
+    { "id": "0011", "ClanName": "Username11", "ClanTag":"ABCD", "ownerID":"0008", "displayName": "DisplayName11", "created": "11/01/24", "status": "Suspended" },
+    { "id": "0012", "ClanName": "Username12", "ClanTag":"SADW", "ownerID":"0009", "displayName": "DisplayName12", "created": "12/01/24", "status": "Active" },
+    { "id": "0013", "ClanName": "Username13", "ClanTag":"ASDW", "ownerID":"0010", "displayName": "DisplayName13", "created": "11/16/24", "status": "Removed" },
+    { "id": "0014", "ClanName": "Username14", "ClanTag":"ABCD", "ownerID":"0012", "displayName": "DisplayName14", "created": "10/21/24", "status": "Suspended" },
+    { "id": "0015", "ClanName": "Username15", "ClanTag":"AASD", "ownerID":"0013", "displayName": "DisplayName15", "created": "05/29/24", "status": "Active" },
+    { "id": "0008", "ClanName": "Username8", "ClanTag":"SASD", "ownerID":"0014", "displayName": "DisplayName8", "created": "08/01/24", "status": "Active" },
+    { "id": "0009", "ClanName": "Username9", "ClanTag":"FRES", "ownerID":"0015", "displayName": "DisplayName9", "created": "09/01/24", "status": "Removed" },
+    { "id": "0016", "ClanName": "Username16", "ClanTag":"AWEA", "ownerID":"0016", "displayName": "DisplayName16", "created": "08/15/24", "status": "Active" },
+    { "id": "0017", "ClanName": "Username17", "ClanTag":"QWER", "ownerID":"0017", "displayName": "DisplayName17", "created": "07/01/24", "status": "Needs Attention" },
+    { "id": "0018", "ClanName": "Username18", "ClanTag":"TGFD", "ownerID":"0018", "displayName": "DisplayName18", "created": "01/21/24", "status": "Active" },
+    { "id": "0010", "ClanName": "Username10", "ClanTag":"ZACE", "ownerID":"0019", "displayName": "DisplayName10", "created": "10/31/24", "status": "Needs Attention" }
+]}
