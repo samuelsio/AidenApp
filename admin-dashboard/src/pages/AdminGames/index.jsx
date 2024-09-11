@@ -2,6 +2,7 @@ import React from "react";
 import "./AdminGames.scss"
 import Sidebar from "../../components/sidebar";
 import PageHeader from "../../components/PageHeader";
+import GamesList from "../../components/GamesList";
 
 export default function AdminGames(){
 
@@ -18,7 +19,7 @@ export default function AdminGames(){
                         AdminPFP={"https://placeholder.com/50"} />
 
                         {/* Body */}
-                        <></>
+                        <GamesList />
                     </div>
                 </div>
             </div>
