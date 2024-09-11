@@ -2,6 +2,7 @@ import React from "react";
 import "./AdminStreams.scss"
 import Sidebar from "../../components/sidebar";
 import PageHeader from "../../components/PageHeader";
+import StreamersList from "../../components/StreamersList";
 
 export default function AdminStreams(){
 
@@ -18,7 +19,7 @@ export default function AdminStreams(){
                         AdminPFP={"https://placeholder.com/50"} />
 
                         {/* Body */}
-                        <></>
+                        <StreamersList />
                     </div>
                 </div>
             </div>

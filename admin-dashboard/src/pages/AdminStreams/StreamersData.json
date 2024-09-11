@@ -1,0 +1,436 @@
+{
+    "streamers": [
+      {
+        "id": 101,
+        "streamTitle": "Building the ultimate castle!",
+        "streamerName": "MinecraftMaster",
+        "genre": "Minecraft",
+        "viewerCount": 2345,
+        "status": "Featured"
+      },
+      {
+        "id": 102,
+        "streamTitle": "Speedrun challenge!",
+        "streamerName": "BlockBuilder",
+        "genre": "Minecraft",
+        "viewerCount": 1789,
+        "status": "Trending"
+      },
+      {
+        "id": 103,
+        "streamTitle": "Surviving 100 days in Hardcore mode.",
+        "streamerName": "CreeperHunter",
+        "genre": "Minecraft",
+        "viewerCount": 2560,
+        "status": "Needs Attention"
+      },
+      {
+        "id": 104,
+        "streamTitle": "Creating complex redstone contraptions.",
+        "streamerName": "RedstoneWizard",
+        "genre": "Minecraft",
+        "viewerCount": 3123,
+        "status": "Removed"
+      },
+      {
+        "id": 105,
+        "streamTitle": "Exploring the Nether and finding loot.",
+        "streamerName": "NetherExplorer",
+        "genre": "Minecraft",
+        "viewerCount": 2901,
+        "status": "Trending"
+      },
+      {
+        "id": 106,
+        "streamTitle": "Taking on the toughest players in PvP!",
+        "streamerName": "PvPChampion",
+        "genre": "Minecraft",
+        "viewerCount": 3756,
+        "status": "Removed"
+      },
+      {
+        "id": 201,
+        "streamTitle": "Going for another win!",
+        "streamerName": "VictoryRoyale",
+        "genre": "Fortnite",
+        "viewerCount": 5210,
+        "status": "Featured"
+      },
+      {
+        "id": 202,
+        "streamTitle": "Mastering build battles.",
+        "streamerName": "BuildBattlePro",
+        "genre": "Fortnite",
+        "viewerCount": 4723,
+        "status": "Removed"
+      },
+      {
+        "id": 203,
+        "streamTitle": "Perfecting long-range shots.",
+        "streamerName": "SniperAce",
+        "genre": "Fortnite",
+        "viewerCount": 4890,
+        "status": "Needs Attention"
+      },
+      {
+        "id": 204,
+        "streamTitle": "Dominating in duos.",
+        "streamerName": "DuoDestroyers",
+        "genre": "Fortnite",
+        "viewerCount": 4302,
+        "status": "Featured"
+      },
+      {
+        "id": 205,
+        "streamTitle": "Setting up the ultimate traps.",
+        "streamerName": "TrapMaster",
+        "genre": "Fortnite",
+        "viewerCount": 3958,
+        "status": "Removed"
+      },
+      {
+        "id": 206,
+        "streamTitle": "Navigating the storm and outlasting everyone.",
+        "streamerName": "StormSurvivor",
+        "genre": "Fortnite",
+        "viewerCount": 4421,
+        "status": "Needs Attention"
+      },
+      {
+        "id": 301,
+        "streamTitle": "Ace with every round!",
+        "streamerName": "SharpShooter",
+        "genre": "Valorant",
+        "viewerCount": 6802,
+        "status": "Removed"
+      },
+      {
+        "id": 302,
+        "streamTitle": "Pulling off incredible clutches.",
+        "streamerName": "ClutchKing",
+        "genre": "Valorant",
+        "viewerCount": 7423,
+        "status": "Trending"
+      },
+      {
+        "id": 303,
+        "streamTitle": "Outsmarting opponents with tactics.",
+        "streamerName": "TacticalGenius",
+        "genre": "Valorant",
+        "viewerCount": 7034,
+        "status": "Needs Attention"
+      },
+      {
+        "id": 304,
+        "streamTitle": "Planting and defending the spike.",
+        "streamerName": "SpikeMaster",
+        "genre": "Valorant",
+        "viewerCount": 6230,
+        "status": "Featured"
+      },
+      {
+        "id": 305,
+        "streamTitle": "Executing flawless flanks.",
+        "streamerName": "FlankExpert",
+        "genre": "Valorant",
+        "viewerCount": 6912,
+        "status": "Removed"
+      },
+      {
+        "id": 306,
+        "streamTitle": "Landing perfect headshots every time.",
+        "streamerName": "HeadshotHero",
+        "genre": "Valorant",
+        "viewerCount": 7351,
+        "status": "Needs Attention"
+      },
+      {
+        "id": 401,
+        "streamTitle": "Dominating the mid lane.",
+        "streamerName": "MidLaneMaster",
+        "genre": "League of Legends",
+        "viewerCount": 8523,
+        "status": "Featured"
+      },
+      {
+        "id": 402,
+        "streamTitle": "Ruling the jungle with strategic plays.",
+        "streamerName": "JungleKing",
+        "genre": "League of Legends",
+        "viewerCount": 8032,
+        "status": "Trending"
+      },
+      {
+        "id": 403,
+        "streamTitle": "Carrying the team as ADC.",
+        "streamerName": "ADCPro",
+        "genre": "League of Legends",
+        "viewerCount": 7901,
+        "status": "Needs Attention"
+      },
+      {
+        "id": 404,
+        "streamTitle": "Saving the team with clutch supports.",
+        "streamerName": "SupportSavior",
+        "genre": "League of Legends",
+        "viewerCount": 8123,
+        "status": "Featured"
+      },
+      {
+        "id": 405,
+        "streamTitle": "Unstoppable in the top lane.",
+        "streamerName": "TopLaneTerror",
+        "genre": "League of Legends",
+        "viewerCount": 7789,
+        "status": "Trending"
+      },
+      {
+        "id": 406,
+        "streamTitle": "Leading the team to victory in team fights.",
+        "streamerName": "TeamFightTactician",
+        "genre": "League of Legends",
+        "viewerCount": 8234,
+        "status": "Needs Attention"
+      },
+      {
+        "id": 501,
+        "streamTitle": "Exploring new worlds.",
+        "streamerName": "SpaceExplorer",
+        "genre": "No Man's Sky",
+        "viewerCount": 1234,
+        "status": "Removed"
+      },
+      {
+        "id": 502,
+        "streamTitle": "Building epic bases.",
+        "streamerName": "BaseBuilder",
+        "genre": "No Man's Sky",
+        "viewerCount": 2345,
+        "status": "Trending"
+      },
+      {
+        "id": 503,
+        "streamTitle": "Surviving harsh environments.",
+        "streamerName": "SurvivalExpert",
+        "genre": "No Man's Sky",
+        "viewerCount": 3456,
+        "status": "Needs Attention"
+      },
+      {
+        "id": 504,
+        "streamTitle": "Trading and making profits.",
+        "streamerName": "TraderJoe",
+        "genre": "No Man's Sky",
+        "viewerCount": 4567,
+        "status": "Featured"
+      },
+      {
+        "id": 505,
+        "streamTitle": "Exploring the deep sea.",
+        "streamerName": "DeepDiver",
+        "genre": "Subnautica",
+        "viewerCount": 5678,
+        "status": "Trending"
+      },
+      {
+        "id": 506,
+        "streamTitle": "Building underwater bases.",
+        "streamerName": "AquaArchitect",
+        "genre": "Subnautica",
+        "viewerCount": 6789,
+        "status": "Needs Attention"
+      },
+      {
+        "id": 507,
+        "streamTitle": "Surviving the ocean's dangers.",
+        "streamerName": "OceanSurvivor",
+        "genre": "Subnautica",
+        "viewerCount": 7890,
+        "status": "Featured"
+      },
+      {
+        "id": 508,
+        "streamTitle": "Exploring alien planets.",
+        "streamerName": "AlienExplorer",
+        "genre": "No Man's Sky",
+        "viewerCount": 8901,
+        "status": "Trending"
+      },
+      {
+        "id": 509,
+        "streamTitle": "Building futuristic cities.",
+        "streamerName": "CityBuilder",
+        "genre": "Cities: Skylines",
+        "viewerCount": 9012,
+        "status": "Needs Attention"
+      },
+      {
+        "id": 510,
+        "streamTitle": "Managing city resources.",
+        "streamerName": "ResourceManager",
+        "genre": "Cities: Skylines",
+        "viewerCount": 10123,
+        "status": "Featured"
+      },
+      {
+        "id": 511,
+        "streamTitle": "Creating efficient transport systems.",
+        "streamerName": "TransportTycoon",
+        "genre": "Cities: Skylines",
+        "viewerCount": 11234,
+        "status": "Trending"
+      },
+      {
+        "id": 512,
+        "streamTitle": "Designing beautiful parks.",
+        "streamerName": "ParkDesigner",
+        "genre": "Cities: Skylines",
+        "viewerCount": 12345,
+        "status": "Needs Attention"
+      },
+      {
+        "id": 513,
+        "streamTitle": "Exploring ancient ruins.",
+        "streamerName": "RuinsExplorer",
+        "genre": "Tomb Raider",
+        "viewerCount": 13456,
+        "status": "Removed"
+      },
+      {
+        "id": 514,
+        "streamTitle": "Solving ancient puzzles.",
+        "streamerName": "PuzzleSolver",
+        "genre": "Tomb Raider",
+        "viewerCount": 14567,
+        "status": "Trending"
+      },
+      {
+        "id": 515,
+        "streamTitle": "Surviving against the odds.",
+        "streamerName": "Survivalist",
+        "genre": "Tomb Raider",
+        "viewerCount": 15678,
+        "status": "Needs Attention"
+      },
+      {
+        "id": 516,
+        "streamTitle": "Exploring the wild west.",
+        "streamerName": "CowboyAdventurer",
+        "genre": "Red Dead Redemption",
+        "viewerCount": 16789,
+        "status": "Featured"
+      },
+      {
+        "id": 517,
+        "streamTitle": "Hunting legendary animals.",
+        "streamerName": "Hunter",
+        "genre": "Red Dead Redemption",
+        "viewerCount": 17890,
+        "status": "Trending"
+      },
+      {
+        "id": 518,
+        "streamTitle": "Robbing trains and banks.",
+        "streamerName": "Outlaw",
+        "genre": "Red Dead Redemption",
+        "viewerCount": 18901,
+        "status": "Needs Attention"
+      },
+      {
+        "id": 519,
+        "streamTitle": "Exploring the galaxy.",
+        "streamerName": "GalacticExplorer",
+        "genre": "Star Citizen",
+        "viewerCount": 19012,
+        "status": "Featured"
+      },
+      {
+        "id": 520,
+        "streamTitle": "Trading and making profits.",
+        "streamerName": "SpaceTrader",
+        "genre": "Star Citizen",
+        "viewerCount": 20123,
+        "status": "Trending"
+      },
+      {
+        "id": 521,
+        "streamTitle": "Fighting space pirates.",
+        "streamerName": "PirateHunter",
+        "genre": "Star Citizen",
+        "viewerCount": 21234,
+        "status": "Needs Attention"
+      },
+      {
+        "id": 522,
+        "streamTitle": "Exploring the universe.",
+        "streamerName": "UniverseExplorer",
+        "genre": "Elite Dangerous",
+        "viewerCount": 22345,
+        "status": "Featured"
+      },
+      {
+        "id": 523,
+        "streamTitle": "Trading and making profits.",
+        "streamerName": "EliteTrader",
+        "genre": "Elite Dangerous",
+        "viewerCount": 23456,
+        "status": "Removed"
+      },
+      {
+        "id": 524,
+        "streamTitle": "Fighting space battles.",
+        "streamerName": "SpaceWarrior",
+        "genre": "Elite Dangerous",
+        "viewerCount": 24567,
+        "status": "Needs Attention"
+      },
+      {
+        "id": 525,
+        "streamTitle": "Exploring the unknown.",
+        "streamerName": "UnknownExplorer",
+        "genre": "No Man's Sky",
+        "viewerCount": 25678,
+        "status": "Featured"
+      },
+      {
+        "id": 526,
+        "streamTitle": "Building epic bases.",
+        "streamerName": "EpicBuilder",
+        "genre": "No Man's Sky",
+        "viewerCount": 26789,
+        "status": "Trending"
+      },
+      {
+        "id": 527,
+        "streamTitle": "Surviving harsh environments.",
+        "streamerName": "HarshSurvivor",
+        "genre": "No Man's Sky",
+        "viewerCount": 27890,
+        "status": "Needs Attention"
+      },
+      {
+        "id": 528,
+        "streamTitle": "Trading and making profits.",
+        "streamerName": "ProfitTrader",
+        "genre": "No Man's Sky",
+        "viewerCount": 28901,
+        "status": "Featured"
+      },
+      {
+        "id": 529,
+        "streamTitle": "Exploring the deep sea.",
+        "streamerName": "DeepSeaDiver",
+        "genre": "Subnautica",
+        "viewerCount": 29012,
+        "status": "Removed"
+      },
+      {
+        "id": 530,
+        "streamTitle": "Building underwater bases.",
+        "streamerName": "UnderwaterArchitect",
+        "genre": "Subnautica",
+        "viewerCount": 30123,
+        "status": "Needs Attention"
+      }
+    ]
+  }
