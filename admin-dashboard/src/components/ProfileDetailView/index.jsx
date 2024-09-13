@@ -39,7 +39,7 @@ export default function ProfileDetailView({userProfile}){
                                 <button type="button" value="edit" label="edit"  className="btn btn-outline-danger btn-lg w-75">Edit</button>
                             )}
                         {userAction.group && (
-                            <Link className="w-100 h-100 d-flex text-decoration-none align-items-center justify-content-center" to={`/AdminClans/${userAction.group}`}>
+                            <Link className="w-100 h-100 d-flex text-decoration-none align-items-center justify-content-center"  to={`/AdminClans/${userAction.group}`}>
                             <button type="button" value="edit" label="edit"  className="btn btn-outline-danger btn-lg w-75">View Clan</button>
                         </Link>
                         )}
