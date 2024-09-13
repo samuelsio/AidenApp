@@ -2,6 +2,7 @@ import React from "react";
 import "./AdminClans.scss"
 import Sidebar from "../../components/sidebar";
 import PageHeader from "../../components/PageHeader";
+import ClansList from "../../components/ClansList";
 
 export default function AdminClans(){
 
@@ -18,7 +19,7 @@ export default function AdminClans(){
                         AdminPFP={"https://placeholder.com/50"} />
 
                         {/* Body */}
-                        <></>
+                        <ClansList/>
                     </div>
                 </div>
             </div>
