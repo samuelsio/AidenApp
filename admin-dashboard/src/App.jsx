@@ -20,7 +20,8 @@ function App() {
         <Route path="/AdminGames" element={<AdminGames />} />
         <Route path="/AdminHome" element={<AdminHome />} />
         <Route path="/AdminStreams" element={<AdminStreams />} />
-        <Route path="/MembersDashboard" element={<MembersDashboard />} />
+        <Route path="/MembersDashboard/" element={<MembersDashboard />} />
+        <Route path="/MembersDashboard/:username" element={<MembersDashboard />} />
       </Routes>
     </Router>
   )

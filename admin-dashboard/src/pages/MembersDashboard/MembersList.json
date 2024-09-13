@@ -1,20 +1,283 @@
-{"members":[
-    { "id": "0001", "username": "Username", "displayName": "DisplayName", "created": "01/01/24", "status": "Active" },
-    { "id": "0002", "username": "Username2", "displayName": "DisplayName2", "created": "02/01/24", "status": "Banned" },
-    { "id": "0003", "username": "Username3", "displayName": "DisplayName3", "created": "03/01/24", "status": "Suspended" },
-    { "id": "0004", "username": "Username4", "displayName": "DisplayName4", "created": "05/03/24", "status": "Active" },
-    { "id": "0005", "username": "Username5", "displayName": "DisplayName5", "created": "05/04/24", "status": "Active" },
-    { "id": "0006", "username": "Username6", "displayName": "DisplayName6", "created": "06/01/24", "status": "Banned" },
-    { "id": "0007", "username": "Username7", "displayName": "DisplayName7", "created": "07/01/24", "status": "Suspended" },
-    { "id": "0011", "username": "Username11", "displayName": "DisplayName11", "created": "11/01/24", "status": "Suspended" },
-    { "id": "0012", "username": "Username12", "displayName": "DisplayName12", "created": "12/01/24", "status": "Active" },
-    { "id": "0013", "username": "Username13", "displayName": "DisplayName13", "created": "11/16/24", "status": "Banned" },
-    { "id": "0014", "username": "Username14", "displayName": "DisplayName14", "created": "10/21/24", "status": "Suspended" },
-    { "id": "0015", "username": "Username15", "displayName": "DisplayName15", "created": "05/29/24", "status": "Active" },
-    { "id": "0008", "username": "Username8", "displayName": "DisplayName8", "created": "08/01/24", "status": "Active" },
-    { "id": "0009", "username": "Username9", "displayName": "DisplayName9", "created": "09/01/24", "status": "Banned" },
-    { "id": "0016", "username": "Username16", "displayName": "DisplayName16", "created": "08/15/24", "status": "Active" },
-    { "id": "0017", "username": "Username17", "displayName": "DisplayName17", "created": "07/01/24", "status": "Needs Attention" },
-    { "id": "0018", "username": "Username18", "displayName": "DisplayName18", "created": "01/21/24", "status": "Active" },
-    { "id": "0010", "username": "Username10", "displayName": "DisplayName10", "created": "10/31/24", "status": "Needs Attention" }
-]}
+{
+  "members": [
+    {
+      "id": "0001",
+      "username": "johnsmith92",
+      "displayName": "@JohnSmith",
+      "created": "01/01/24",
+      "status": "Active",
+      "email": "johnsmith92@example.com",
+      "interactions": [
+        { "id": "001", "type": "comment", "text": "Awesome game last night!", "date": "12/24/20", "time": "14:19" },
+        { "id": "002", "type": "comment", "text": "Can't wait for the next update!", "date": "11/24/20", "time": "11:51" },
+        { "id": "003", "type": "joined", "group": "DragonsLair", "date": "11/15/22", "time": "18:20" }
+      ],
+      "profileBackgroundPic": "https://placeholder.com/396x168",
+      "profilePic": "https://dummyimage.com/100/aaaa",
+      "name": "John Smith",
+      "description": "Avid gamer and tech enthusiast."
+    },
+    {
+      "id": "0002",
+      "username": "emilyjones",
+      "displayName": "@EmilyJones",
+      "created": "02/01/24",
+      "status": "Banned",
+      "email": "emilyjones@example.com",
+      "interactions": [
+        { "id": "004", "type": "comment", "text": "Nice to meet everyone!", "date": "02/01/24", "time": "08:00" }
+      ],
+      "profileBackgroundPic": "https://placeholder.com/396x168",
+      "profilePic": "https://dummyimage.com/100/aaaa",
+      "name": "Emily Jones",
+      "description": "Lover of books and coffee."
+    },
+    {
+      "id": "0003",
+      "username": "michaelbrown",
+      "displayName": "@MichaelBrown",
+      "created": "03/01/24",
+      "status": "Suspended",
+      "email": "michaelbrown@example.com",
+      "interactions": [
+        { "id": "005", "type": "joined", "group": "CyberWarriors", "date": "03/01/24", "time": "10:30" },
+        { "id": "006", "type": "comment", "text": "Looking forward to the discussions!", "date": "03/02/24", "time": "12:15" }
+      ],
+      "profileBackgroundPic": "https://placeholder.com/396x168",
+      "profilePic": "https://dummyimage.com/100/aaaa",
+      "name": "Michael Brown",
+      "description": "Tech enthusiast with a passion for coding."
+    },
+    {
+      "id": "0004",
+      "username": "sarahdavis",
+      "displayName": "@SarahDavis",
+      "created": "05/03/24",
+      "status": "Active",
+      "email": "sarahdavis@example.com",
+      "interactions": [
+        { "id": "007", "type": "comment", "text": "Great tips for productivity!", "date": "05/04/24", "time": "09:45" },
+        { "id": "008", "type": "comment", "text": "Thanks for the advice.", "date": "05/05/24", "time": "11:00" },
+        { "id": "009", "type": "joined", "group": "ValkyrieSquad", "date": "05/03/24", "time": "14:30" }
+      ],
+      "profileBackgroundPic": "https://placeholder.com/396x168",
+      "profilePic": "https://dummyimage.com/100/aaaa",
+      "name": "Sarah Davis",
+      "description": "Productivity expert and organization enthusiast."
+    },
+    {
+      "id": "0005",
+      "username": "davidmiller",
+      "displayName": "@DavidMiller",
+      "created": "05/04/24",
+      "status": "Active",
+      "email": "davidmiller@example.com",
+      "interactions": [
+        { "id": "010", "type": "joined", "group": "PhoenixRising", "date": "05/04/24", "time": "15:00" }
+      ],
+      "profileBackgroundPic": "https://placeholder.com/396x168",
+      "profilePic": "https://dummyimage.com/100/aaaa",
+      "name": "David Miller",
+      "description": "World traveler and photography lover."
+    },
+    {
+      "id": "0006",
+      "username": "lilywhite",
+      "displayName": "@LilyWhite",
+      "created": "06/01/24",
+      "status": "Banned",
+      "email": "lilywhite@example.com",
+      "interactions": [
+        { "id": "011", "type": "comment", "text": "Enjoying the new features!", "date": "06/02/24", "time": "16:00" },
+        { "id": "012", "type": "comment", "text": "Great update, thanks!", "date": "06/03/24", "time": "17:00" }
+      ],
+      "profileBackgroundPic": "https://placeholder.com/396x168",
+      "profilePic": "https://dummyimage.com/100/aaaa",
+      "name": "Lily White",
+      "description": "Tech fan with a knack for finding bugs."
+    },
+    {
+      "id": "0007",
+      "username": "jameswalker",
+      "displayName": "@JamesWalker",
+      "created": "07/01/24",
+      "status": "Suspended",
+      "email": "jameswalker@example.com",
+      "interactions": [
+        { "id": "014", "type": "comment", "text": "Can’t wait for the next event!", "date": "07/02/24", "time": "20:00" }
+      ],
+      "profileBackgroundPic": "https://placeholder.com/396x168",
+      "profilePic": "https://dummyimage.com/100/aaaa",
+      "name": "James Walker",
+      "description": "Event organizer and music lover."
+    },
+    {
+      "id": "0011",
+      "username": "nataliegreen",
+      "displayName": "@NatalieGreen",
+      "created": "11/01/24",
+      "status": "Suspended",
+      "email": "nataliegreen@example.com",
+      "interactions": [
+        { "id": "015", "type": "comment", "text": "Great to be here!", "date": "11/01/24", "time": "10:00" }
+      ],
+      "profileBackgroundPic": "https://placeholder.com/396x168",
+      "profilePic": "https://dummyimage.com/100/aaaa",
+      "name": "Natalie Green",
+      "description": "Creative writer and art enthusiast."
+    },
+    {
+      "id": "0012",
+      "username": "oliverbrown",
+      "displayName": "@OliverBrown",
+      "created": "12/01/24",
+      "status": "Active",
+      "email": "oliverbrown@example.com",
+      "interactions": [
+        { "id": "016", "type": "comment", "text": "Loving the new features!", "date": "12/01/24", "time": "09:30" },
+        { "id": "017", "type": "comment", "text": "Thanks for the update!", "date": "12/02/24", "time": "10:00" }
+      ],
+      "profileBackgroundPic": "https://placeholder.com/396x168",
+      "profilePic": "https://dummyimage.com/100/aaaa",
+      "name": "Oliver Brown",
+      "description": "Gamer and tech enthusiast."
+    },
+    {
+      "id": "0013",
+      "username": "avajohnson",
+      "displayName": "@AvaJohnson",
+      "created": "11/16/24",
+      "status": "Banned",
+      "email": "avajohnson@example.com",
+      "interactions": [
+        { "id": "018", "type": "comment", "text": "Excited for the next event!", "date": "11/17/24", "time": "12:00" }
+      ],
+      "profileBackgroundPic": "https://placeholder.com/396x168",
+      "profilePic": "https://dummyimage.com/100/aaaa",
+      "name": "Ava Johnson",
+      "description": "Event planner and travel enthusiast."
+    },
+    {
+      "id": "0014",
+      "username": "matthewclark",
+      "displayName": "@MatthewClark",
+      "created": "10/21/24",
+      "status": "Suspended",
+      "email": "matthewclark@example.com",
+      "interactions": [
+        { "id": "019", "type": "joined", "group": "DragonsLair", "date": "10/21/24", "time": "14:00" }
+      ],
+      "profileBackgroundPic": "https://placeholder.com/396x168",
+      "profilePic": "https://dummyimage.com/100/aaaa",
+      "name": "Matthew Clark",
+      "description": "Coding enthusiast and problem solver."
+    },
+    {
+      "id": "0015",
+      "username": "sophiawilliams",
+      "displayName": "@SophiaWilliams",
+      "created": "05/29/24",
+      "status": "Active",
+      "email": "sophiawilliams@example.com",
+      "interactions": [
+        { "id": "020", "type": "comment", "text": "Can't wait for the next release!", "date": "05/30/24", "time": "15:45" }
+      ],
+      "profileBackgroundPic": "https://placeholder.com/396x168",
+      "profilePic": "https://dummyimage.com/100/aaaa",
+      "name": "Sophia Williams",
+      "description": "Tech lover and game developer."
+    },
+    {
+      "id": "0008",
+      "username": "jackwilson",
+      "displayName": "@JackWilson",
+      "created": "08/01/24",
+      "status": "Active",
+      "email": "jackwilson@example.com",
+      "interactions": [
+        { "id": "021", "type": "joined", "group": "PhoenixRising", "date": "08/01/24", "time": "13:00" },
+        { "id": "022", "type": "comment", "text": "Loving the nature posts!", "date": "08/02/24", "time": "11:00" }
+      ],
+      "profileBackgroundPic": "https://placeholder.com/396x168",
+      "profilePic": "https://dummyimage.com/100/aaaa",
+      "name": "Jack Wilson",
+      "description": "Nature lover and hiking enthusiast."
+    },
+    {
+      "id": "0009",
+      "username": "masonlee",
+      "displayName": "@MasonLee",
+      "created": "09/01/24",
+      "status": "Banned",
+      "email": "masonlee@example.com",
+      "interactions": [
+        { "id": "023", "type": "comment", "text": "Can't wait for the next hiking event!", "date": "09/01/24", "time": "16:00" }
+      ],
+      "profileBackgroundPic": "https://placeholder.com/396x168",
+      "profilePic": "https://dummyimage.com/100/aaaa",
+      "name": "Mason Lee",
+      "description": "Adventurer and wildlife photographer."
+    },
+    {
+      "id": "0016",
+      "username": "emmawatson",
+      "displayName": "@EmmaWatson",
+      "created": "08/15/24",
+      "status": "Active",
+      "email": "emmalovesTrombone@example.com",
+      "interactions": [
+        { "id": "024", "type": "comment", "text": "Excited to join the community!", "date": "08/16/24", "time": "12:30" }
+      ],
+      "profileBackgroundPic": "https://placeholder.com/396x168",
+      "profilePic": "https://dummyimage.com/100/aaaa",
+      "name": "Emma Watson",
+      "description": "Food blogger and recipe creator."
+    },
+    {
+      "id": "0017",
+      "username": "lucasmartin",
+      "displayName": "@LucasMartin",
+      "created": "07/01/24",
+      "status": "Needs Attention",
+      "email": "lucasmartin@example.com",
+      "interactions": [
+        { "id": "025", "type": "comment", "text": "Looking forward to more discussions.", "date": "07/02/24", "time": "10:30" }
+      ],
+      "profileBackgroundPic": "https://placeholder.com/396x168",
+      "profilePic": "https://dummyimage.com/100/aaaa",
+      "name": "Lucas Martin",
+      "description": "Avid reader and aspiring writer."
+    },
+    {
+      "id": "0018",
+      "username": "gracehall",
+      "displayName": "@GraceHall",
+      "created": "01/21/24",
+      "status": "Active",
+      "email": "gracehall@example.com",
+      "interactions": [
+        { "id": "026", "type": "joined", "group": "ValkyrieSquad", "date": "01/21/24", "time": "07:00" },
+        { "id": "027", "type": "comment", "text": "Excited to start my fitness journey!", "date": "01/22/24", "time": "08:00" }
+      ],
+      "profileBackgroundPic": "https://placeholder.com/396x168",
+      "profilePic": "https://dummyimage.com/100/aaaa",
+      "name": "Grace Hall",
+      "description": "Fitness enthusiast and nutrition expert."
+    },
+    {
+      "id": "0010",
+      "username": "liamroberts",
+      "displayName": "@LiamRoberts",
+      "created": "10/31/24",
+      "status": "Needs Attention",
+      "email": "liamroberts@example.com",
+      "interactions": [
+        { "id": "028", "type": "comment", "text": "Hope this gets resolved soon!", "date": "11/01/24", "time": "14:45" }
+      ],
+      "profileBackgroundPic": "https://placeholder.com/396x168",
+      "profilePic": "https://dummyimage.com/100/aaaa",
+      "name": "Liam Roberts",
+      "description": "Developer focused on web apps and design."
+    }
+  ]
+}
