@@ -59,8 +59,12 @@ export default function MembersList(){
             setFilteredMembers(members);
         } else {
             setFilteredMembers(members.filter(member => member.status === status))
-      }}
+      }};
       
+      const handleRowClick = (username) =>{
+        window.location.href = `/MembersDashboard/${username}`; 
+      };
+
       useEffect(() => {
         const defaultSort = () => {
             sortTable('id');
@@ -106,9 +110,9 @@ export default function MembersList(){
                         </thead>
                         <tbody className="table-group-divider">
                             {filteredMembers.map((member) => (
-                                <tr key={member.id}>
+                                <tr onClick={() => handleRowClick(member.username)} style={{ cursor: "pointer" }} key={member.id}>
                                     <td >{member.id}</td>
-                                    <td>{member.username}</td>
+                                    <td >{member.username}</td>
                                     <td>{member.displayName}</td>
                                     <td>{member.created}</td>
                                     <td>

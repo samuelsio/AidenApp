@@ -15,14 +15,14 @@ export default function Clans() {
         <>
           <Header activeItem={"clans"}/>
           <h1>Clan Not Found</h1>;
-        </>)}; //If the url is clans/Not Valid Clan
+        </>)}; //If the url is clans/Not Valid Clan   Erranous page
     
     if (!ClanNameParam) {
       return (
         <>
           <Header activeItem={"clans"}/>
           <ClansList />
-        </>)}; //If the url follows clans/
+        </>)}; //If the url follows clans/  Search function
 
   return (
     <>
@@ -30,4 +30,4 @@ export default function Clans() {
       <ClanDetailView
       clan={clan}
       />
-    </>)}; //If the url follows clans/Valid Clan
+    </>)}; //If the url follows clans/Valid Clan  Individual Clan Details
