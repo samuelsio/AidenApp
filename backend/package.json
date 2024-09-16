@@ -4,7 +4,10 @@
     "main": "index.js",
     "scripts": {
         "start": "node src/index.js",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "db-start": "docker-compose up --build",
+        "db-init": "docker-compose exec db psql -U app_user -d testdb -f /docker-entrypoint-initdb.d/init.sql",
+        "db-save": "docker-compose exec db pg_dump -U app_user testdb > ./backend/db/init.sql"
     },
     "keywords": [],
     "author": "",
