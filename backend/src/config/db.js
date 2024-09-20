@@ -4,7 +4,7 @@ const pool = new Pool({
     user: "app_user",
     host: "localhost",
     database: "testdb",
-    password: "password",
+    password: "yourpassword",
     port: 5432,
 });
 
