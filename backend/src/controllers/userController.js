@@ -10,6 +10,21 @@ exports.getUsers = async (req, res) => {
     }
 };
 
+exports.getUserDetails = async (req, res) => {
+    try {
+        const { userId } = req.params;
+        const user = await userModel.getUserDetails(userId);
+        if (user.length === 0) {
+            return res.status(404).json({ message: "User not found" });  // Handle if user is not found
+        }
+
+        res.json(user[0])
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({error: "Server error"});
+    }
+}
+
 exports.createUser = async (req, res) => {
     try {
         const user = await userModel.createUser(req.body);
@@ -25,9 +40,15 @@ exports.createUser = async (req, res) => {
 
 exports.updateUser = async (req, res) => {
     try {
-        const id = parseInt(req.params.id);
+        const  user_id  = parseInt(req.params.userId);
+        if (isNaN(user_id)) {
+            return res.status(400).json({ error: `Invalid user ID: ${user_id}` });  // Handle invalid userId
+        }
         const updatedFields = req.body;
-        const rowCount = await userModel.updateUser(id, updatedFields);
+        const rowCount = await userModel.updateUser({
+            userId: user_id, 
+            updatedFields: updatedFields
+        });
 
         if (rowCount === 0) {
             return res.status(404).json({ error: "User not found" });
@@ -43,3 +64,4 @@ exports.updateUser = async (req, res) => {
         }
     }
 };
+

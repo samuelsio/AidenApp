@@ -8,25 +8,57 @@ exports.getAllUsers = async () => {
     return rows;
 };
 
-exports.createUser = async ({
-    email,
-    password,
-    first_name,
-    last_name,
-    gender,
-}) => {
-    const hashedPassword = await bcrypt.hash(password, 10);
-    const { rows } = await pool.query(
-        "INSERT INTO users (email, password, first_name, last_name, gender) VALUES ($1, $2, $3, $4, $5) RETURNING user_id",
-        [email, hashedPassword, first_name, last_name, gender]
-    );
-    return rows[0];
+exports.getUserDetails = async (userId) => { 
+    try {
+        const { rows } = await pool.query(
+            "SELECT user_id, email, first_name, last_name, gender, last_logged_in, username, displayname, date_of_birth, profilepic, profilebackgroundpic, followers, following, description FROM users WHERE user_id = $1",
+            [userId]
+        );
+        return rows;
+    } catch (err) {
+        console.error(`Error in getUserDetails: ${err.message}`);
+        throw err;
+    }
 };
 
-exports.updateUser = async (id, updatedFields) => {
+exports.createUser = async ({
+    username,
+    email,
+    first_name,
+    last_name,
+    password,
+    date_of_birth,
+    gender,
+}) => {
+    try {
+        // Input validation
+        if (!username || !email || !first_name || !last_name || !password || !date_of_birth) {
+            throw new Error('Missing required fields');
+        }
+
+        // Hash the password
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        // Insert user into the database
+        const { rows } = await pool.query(
+            `INSERT INTO users (username, email, password, first_name, last_name, date_of_birth, gender) 
+             VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING user_id`,
+            [username, email, hashedPassword, first_name, last_name, date_of_birth, gender]
+        );
+
+        return rows[0];
+    } catch (err) {
+        console.error(err);
+        throw new Error('Server error', err);
+    }
+};
+
+
+exports.updateUser = async ({userId, updatedFields}) => {
     const updates = [];
     const values = [];
     let queryIndex = 1;
+    console.log(`userId: ${userId}`);
 
     const allowedFields = [
         "email",
@@ -35,6 +67,11 @@ exports.updateUser = async (id, updatedFields) => {
         "last_name",
         "gender",
         "last_logged_in",
+        "username",
+        "displayname",
+        "profilepic",
+        "profilebackgroundpic",
+        "description",
     ];
 
     for (const [key, value] of Object.entries(updatedFields)) {
@@ -54,7 +91,7 @@ exports.updateUser = async (id, updatedFields) => {
         throw new Error("No valid fields provided for update");
     }
 
-    values.push(id);
+    values.push(userId);
     const query = `UPDATE users SET ${updates.join(
         ", "
     )} WHERE user_id = $${queryIndex} RETURNING *`;
