@@ -72,6 +72,9 @@ exports.updateUser = async ({userId, updatedFields}) => {
         "profilepic",
         "profilebackgroundpic",
         "description",
+        "date_of_birth",
+        "followers",
+        "following"
     ];
 
     for (const [key, value] of Object.entries(updatedFields)) {
@@ -99,3 +102,19 @@ exports.updateUser = async ({userId, updatedFields}) => {
     const { rows } = await pool.query(query, values);
     return rows.length;
 };
+
+exports.deleteUser = async ({userId}) => {
+    try {
+        if (!userId){
+            throw new Error(`Cant find user with id: ${userId}`)
+        }
+        const { rows } = await pool.query(
+            `DELETE FROM users WHERE user_id = $1 RETURNING user_id, first_name, username, displayname`,
+            [userId]
+        );
+        return rows;
+    } catch (err) {
+        console.error(err);
+        throw new Error('Server error', err);
+    }
+}

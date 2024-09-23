@@ -65,3 +65,18 @@ exports.updateUser = async (req, res) => {
     }
 };
 
+exports.deleteUser = async (req, res) => {
+    try {
+        const user_id = parseInt(req.params.userId);
+        if (isNaN(user_id)) {
+            return res.status(400).json({ error: `Invalid user ID: ${user_id}`});
+        }
+        const deletedUser = await userModel.deleteUser({userId: user_id})
+        return res.status(202).json({
+            message: `User deleted: `,
+            user: deletedUser
+        })
+    } catch (err){
+        res.status(500).json({ error: `Server error: ${err}`})
+    }
+}
