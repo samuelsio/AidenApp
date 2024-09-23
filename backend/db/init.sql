@@ -342,9 +342,6 @@ COPY public.users (user_id, email, password, first_name, last_name, gender, last
 17	wanda.maximoff@email.com	hashedpassword	Wanda	Maximoff	female	\N	wanda_maximoff	Wanda Maximoff	1993-03-02	https://placeholder.com/150	https://placeholder.com/396x168	1300	270	Wanda is a tactical player who loves competitive shooters.
 18	johndoe@example.com	yourpassword	John	Doe	male	\N	johndoe	\N	1985-05-01	\N	\N	0	0	\N
 26	21@example.com		Jane	Doe	female	\N	@newUser123456	\N	1985-05-01	\N	\N	0	0	\N
-28	22@example.com	wasd123	Jane	Doe	female	\N	@newUser123123456	\N	1985-05-01	\N	\N	0	0	\N
-30	29@example.com	$2b$10$zNldikmTI6Ig/MLthC271..EZ4ECSBWscA4E2jjfFe6InREpVVYIC	Jane	Doe	female	\N	@hashedPassword123	\N	1985-05-01	\N	\N	0	0	\N
-20	user18@example.com	yourpassword	mikey	Jeams	male	\N	@JaneDoe	mikey	1985-05-01	\N	\N	0	0	I have a description
 23	patched@email.com	$2b$10$jKtCuw722AxrBlmsd9M1DOQfIsOkXzIWwc2xAHWw2CIJQJ6iOfBrW	TestPatch2	TestPatch2	female	\N	@TestPatch2	TestPatch2	1985-05-01	\N	\N	0	0	I have a patched description description
 \.
 
@@ -381,7 +378,7 @@ SELECT pg_catalog.setval('public.events_event_id_seq', 13, true);
 -- Name: users_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: app_user
 --
 
-SELECT pg_catalog.setval('public.users_user_id_seq', 30, true);
+SELECT pg_catalog.setval('public.users_user_id_seq', 34, true);
 
 
 --
