@@ -10,5 +10,5 @@ router.post("/:clanName/event", clanController.createEvent)
 router.post("/:clanName/:eventId", clanController.createEventComment)
 router.post("/:clanName/bulletin/comment", clanController.createBulletinComment)
 router.patch("/:id", clanController.updateClan);
-
+router.patch("/:clanName/:eventId", clanController.updateEvent)
 module.exports = router;
