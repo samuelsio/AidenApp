@@ -14,13 +14,50 @@ exports.getClanByName = async (clan_id) => {
             "SELECT clan_id, clan_name, description, creation_date, leader_id, members_count, clan_background, clan_image FROM clans WHERE clan_name = $1",
             [clan_id]
         );
-        console.log(`Clan found:`, rows);
         return rows;
     } catch (err){
         console.error(`Error in getClanByName: ${err.message}`);
         throw err;
     }
 };
+
+exports.getAllEvents = async () => {
+    try {
+        const { rows } = await pool.query(
+            `SELECT event_id, title, description, event_date, creator_id, clan_id FROM events`
+        );
+        return rows;
+    } catch (err){
+        console.error(`Error finding events`);
+        throw err
+    }
+};
+
+exports.getEventDetails = async ({eventId}) => {
+    try {
+        const { rows } = await pool.query(
+            `SELECT event_id, title, description, event_date, creator_id, clan_id FROM events WHERE event_id = $1`,
+            [eventId]
+        );
+        return rows;
+    } catch (err){
+        console.error(`Error finding event`);
+        throw err
+    }
+};
+
+exports.deleteEvent = async ({clan_id, event_id}) => {
+    try {
+        const { rows } = await pool.query(
+            `DELETE FROM events WHERE clan_id = $1 AND event_id = $2 RETURNING *`,
+            [clan_id, event_id]
+        );
+        return rows;
+    } catch (err){
+        console.error(`Error deleting event`);
+        throw err
+    }
+}
 
 exports.createBulletinComment = async ({clan_id, content, author_id}) => {
     try {
