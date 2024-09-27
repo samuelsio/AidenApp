@@ -22,6 +22,68 @@ exports.getClanByName = async (clan_id) => {
     }
 };
 
+exports.getIndividualComment = async ({
+    event_id,
+    comment_id
+}) => {
+    try {
+        console.log(event_id, comment_id)
+        const { rows } = await pool.query(
+            `SELECT comment_id, content, creation_date, author_id, event_id FROM comments WHERE event_id = $1 AND comment_id = $2`,
+            [event_id, comment_id]
+        );
+        if (rows.length === 0){
+            throw new Error(`Comment does not exist`)
+        }
+        return rows;
+    } catch (err){
+        console.error(`Error getting individual comment: ${err.message}`);
+        throw err;
+    }
+};
+
+exports.patchIndividualComment = async ({
+    event_id,
+    comment_id,
+    updatedFields
+}) => {
+    const updates = [];
+    const values = [];
+    let queryIndex = 1;
+    console.log(`comment_id: ${comment_id}`);
+
+    const allowedFields = [
+        "comment_id",
+        "content",
+        "creation_date",
+        "author_id",
+        "event_id",
+    ];
+    for (const [key, value] of Object.entries(updatedFields)) {
+        if (allowedFields.includes(key) && value !== undefined) {
+            updates.push(`${key} = $${queryIndex++}`);
+            values.push(value);
+        }
+    }
+
+    if (updates.length === 0) {
+        throw new Error("No valid fields provided for update");
+    }
+
+    values.push(comment_id, event_id); 
+    const query = `
+        UPDATE comments 
+        SET ${updates.join(", ")} 
+        WHERE comment_id = $${queryIndex++} AND event_id = $${queryIndex}
+        RETURNING *`;
+
+    const { rows } = await pool.query(query, values);
+    if (rows.length === 0){
+        throw new Error("Clan has not been edited or found")
+    }
+    return rows;
+};
+
 exports.createBulletinComment = async ({clan_id, content, author_id}) => {
     try {
         if (!clan_id || !content || !author_id){
@@ -110,4 +172,24 @@ exports.createClan = async ({
         [clan_name, description, leader_id, members_count, clan_background, clan_image]
     )
     return rows[0];
+}
+
+exports.deleteIndividualComment = async ({
+    event_id,
+    comment_id
+}) => {
+    try {
+        if (!event_id || !comment_id){
+            throw new Error(`Error, missing fields: event:${event_id}, comment: ${comment_id}`)
+        }
+        const { rows } = await pool.query(
+            `DELETE FROM comments WHERE event_id = $1 AND comment_id = $2 RETURNING comment_id, content, creation_date, author_id, event_id`,
+            [event_id, comment_id]
+        )
+        return rows;
+
+    } catch (err){
+        console.error(`Error: ${err.message}`);
+        throw err;
+    }
 }
