@@ -5,6 +5,7 @@ const router = express.Router();
 router.get("/", clanController.getClans);
 router.get("/:clanName", clanController.getClanDetails)
 router.get("/:clanName/bulletin", clanController.getBulletinBoard)
+router.get("/:clanName/:eventId/comments", clanController.getEventComments)
 router.post("/", clanController.createClan);
 router.post("/:clanName/event", clanController.createEvent)
 router.post("/:clanName/:eventId", clanController.createEventComment)

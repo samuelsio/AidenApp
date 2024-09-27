@@ -27,6 +27,26 @@ exports.getBulletinBoard = async (req, res) => {
     }
 };
 
+exports.getEventComments = async (req, res) => {
+    try{
+        const { clanName } = req.params;
+        const eventId = parseInt(req.params.eventId)
+        const clan = await clanModel.getClanByName(clanName);
+        if (clan.length === 0) {
+            return res.status(404).json({ message: "Cannot create event for non-existent clan" });
+        }
+        const clanId = clan[0].clan_id;
+        const eventComments = await clanModel.getEventsComments({clan_id: clanId, event_id: eventId})
+
+        res.status(201).json({eventComments})
+
+
+    } catch (err){
+        console.error(err);
+        res.status(500).json({error: `server error`});
+    }
+};
+
 exports.createBulletinComment = async (req, res) => {
     try{
         const { clanName } = req.params;
