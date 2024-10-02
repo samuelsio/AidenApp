@@ -10,7 +10,8 @@ router.post("/", clanController.createClan);
 router.post("/:clanName/event", clanController.createEvent)
 router.post("/:clanName/:eventId", clanController.createEventComment)
 router.post("/:clanName/bulletin/comment", clanController.createBulletinComment)
-router.patch("/:id", clanController.updateClan);
+router.delete("/:clanId", clanController.deleteClan)
+router.patch("/:clanId", clanController.updateClan);
 router.patch("/:clanName/:eventId/:commentId", clanController.patchIndividualComment)
 router.delete("/:clanName/:eventId/:commentId", clanController.deleteIndividualComment)
 module.exports = router;
