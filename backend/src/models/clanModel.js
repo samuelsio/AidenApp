@@ -123,4 +123,45 @@ exports.createClan = async ({
         [clan_name, description, leader_id, members_count, clan_background, clan_image]
     )
     return rows[0];
-}
+};
+
+exports.updateClan = async({
+    clanId,
+    updatedFields
+}) => {
+    const updates = [];
+    const values = [];
+    let queryIndex = 1;
+    console.log(`clanId: ${clanId}`);
+
+    const allowedFields = [
+        "clan_name",
+        "description",
+        "creation_date",
+        "leader_id",
+        "members_count",
+        "clan_background",
+        "clan_image",
+        "clan_tag",
+    ];
+
+    for (const [key, value] of Object.entries(updatedFields)) {
+        if (allowedFields.includes(key) && value !== undefined) {
+                updates.push(`${key} = $${queryIndex++}`);
+                values.push(value);
+            }
+        }
+    
+
+    if (updates.length === 0) {
+        throw new Error("No valid fields provided for update");
+    }
+
+    values.push(clanId);
+    const query = `UPDATE clans SET ${updates.join(
+        ", "
+    )} WHERE clan_id = $${queryIndex} RETURNING *`;
+
+    const { rows } = await pool.query(query, values);
+    return rows.length;
+};
