@@ -8,6 +8,20 @@ exports.getAllUsers = async () => {
     return rows;
 };
 
+exports.getUserByEmail = async (email) => {
+    try { 
+        const { rows } = await pool.query(
+            `SELECT user_id, password, email, username, displayname FROM users WHERE email = $1`,
+            [email]
+        );
+        console.log(rows);
+        return rows;
+    } catch (err) {
+        console.error(`Error getting user`);
+        throw err;
+    }
+}
+
 exports.getUserDetails = async (userId) => { 
     try {
         const { rows } = await pool.query(
@@ -49,7 +63,12 @@ exports.createUser = async ({
         return rows[0];
     } catch (err) {
         console.error(err);
-        throw new Error('Server error', err);
+        if (err.code === '23505') {
+            // Try to extract the constraint name
+            const constraintName = err.detail
+            throw new Error(`Unique constraint violated: ${constraintName}`);
+        }
+        throw new Error('Server error');
     }
 };
 

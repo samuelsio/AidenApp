@@ -1,14 +1,17 @@
 import React, { useState} from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate} from 'react-router-dom';
 import regPoster from "../../images/RegisterPoster.jpg";
 import Button from '../Button';
 import "./RegisterForm.scss"
+import LoginForm from '../LoginForm';
 
 
 
 export default function RegisterForm() {
+  const navigate = useNavigate();
   const location = useLocation();
   const [registerData, setRegisterData] = useState({
+    displayName:'',
     username:'',
     email: location.state?.email || '',
     fName:'',
@@ -31,12 +34,13 @@ export default function RegisterForm() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const errors = [];
 
     if (!registerData.username) errors.push({errorName: 'Username is not filled', id:'username'})
+    if (!registerData.displayName) errors.push({errorName: 'Displayname is not filled', id:'displayName'})
     if (!registerData.email) errors.push({errorMessage: 'Email is not filled', id:'email'})
     if (!registerData.fName) errors.push({errorMessage: 'First Name is not filled', id:'fName'})
     if (!registerData.lName) errors.push({errorMessage: 'Last Name is not filled', id:'lName'})
@@ -59,9 +63,49 @@ export default function RegisterForm() {
     setFormError(errors);
 
     if (errors.length === 0) {
-      console.log('sucess', registerData)
+      try{
+        const parsedData = {
+        displayname: registerData.displayName,
+        username: registerData.username,
+        email: registerData.email,
+        first_name: registerData.fName,
+        last_name: registerData.lName,
+        password: registerData.password,
+        date_of_birth: registerData.dob,
+        gender: registerData.gender
+      };
+
+      const response = await fetch('http://localhost:3011/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(parsedData),
+      });
+
+        if (response.ok) {
+          const data = await response.json();
+          console.log('User registered successfully', data);
+          navigate('/login');
+        } else {
+          const errorData = await response.json();
+          console.error('Registration failed', errorData);
+          
+          // Check for specific error messages from the server
+          if (errorData.error.includes("email")) {
+            setFormError([{ errorMessage: 'User with matching email already exists', id: 'email' }]);
+          } else if (errorData.error.includes("username")) {
+            setFormError([{ errorMessage: 'User with matching username already exists', id: 'username' }]);
+          } else {
+            setFormError([{ errorMessage: 'Registration failed: Please contact an Admin' }]);
+          }
+        }
+      } catch (error) {
+        console.error('Error registering user: ', error);
+        setFormError([{ errorMessage: 'Error registering user, please try again.' }]);
+      }
     }
-  }
+  };
 
 
   return (
@@ -85,6 +129,7 @@ export default function RegisterForm() {
           )}
           <form className='register-form' onSubmit={handleSubmit}>
               <input className='form-input' type="text" name='username' id='username' placeholder='Username' value={registerData.username} onChange={handleChange} />
+              <input className='form-input' type="text" name='displayName' id='displayName' placeholder='displayname' value={registerData.displayName} onChange={handleChange} />
               <input className='form-input' type="text"  name='email' id='email' placeholder='Email' value={registerData.email} onChange={handleChange} />
               <input className='form-input' type='text' name='fName' id='fName' placeholder='First Name' value={registerData.fName} onChange={handleChange} />
               <input className='form-input' type='text' name='lName' id='lName' placeholder='Last Name' value={registerData.lName} onChange={handleChange} />
