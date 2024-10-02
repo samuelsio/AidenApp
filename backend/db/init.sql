@@ -69,7 +69,8 @@ CREATE TABLE public.clans (
     leader_id integer,
     members_count integer DEFAULT 0,
     clan_background character varying(250),
-    clan_image character varying(250)
+    clan_image character varying(250),
+    clan_tag character varying(4)
 );
 
 
@@ -265,6 +266,8 @@ COPY public.bulletinboard (post_id, content, creation_date, author_id, clan_id) 
 1	Looking for new members to join the Dragons clan. Apply now!	2024-09-17 11:52:33	3	1
 5	latest comment	2024-09-20 10:30:14.737675	6	1
 6	This is another test  comment on a different group	2024-09-20 10:32:44.579036	6	3
+10	another bulletin from ID 30	2024-09-23 14:03:58.859338	30	9
+11	another bulletin from ID 30	2024-09-23 14:03:59.994174	30	9
 \.
 
 
@@ -272,13 +275,13 @@ COPY public.bulletinboard (post_id, content, creation_date, author_id, clan_id) 
 -- Data for Name: clans; Type: TABLE DATA; Schema: public; Owner: app_user
 --
 
-COPY public.clans (clan_id, clan_name, description, creation_date, leader_id, members_count, clan_background, clan_image) FROM stdin;
-1	Dragons	A clan of fierce warriors.	2024-01-15	3	50	\N	\N
-2	Knights	Noble knights of the realm.	2023-06-22	5	35	\N	\N
-3	Wizards	Masters of magical arts.	2024-03-10	7	40	\N	\N
-5	wasd	Test Description	2024-09-19	6	5	wasd	wasd
-6	wasd	Test Description	2024-09-19	6	5	wasd	wasd
-7	wasd	Test Description	2024-09-20	6	5	wasd	wasd
+COPY public.clans (clan_id, clan_name, description, creation_date, leader_id, members_count, clan_background, clan_image, clan_tag) FROM stdin;
+1	Dragons	A clan of fierce warriors.	2024-01-15	3	50	\N	\N	\N
+2	Knights	Noble knights of the realm.	2023-06-22	5	35	\N	\N	\N
+3	Wizards	Masters of magical arts.	2024-03-10	7	40	\N	\N	\N
+5	wasd	Test Description	2024-09-19	6	5	wasd	wasd	\N
+9	TestForDelete user:30	Test Description	2024-09-23	30	1			\N
+10	DontDeleteMe user:30	Test Description	2024-09-23	30	1			\N
 \.
 
 
@@ -294,6 +297,9 @@ COPY public.comments (comment_id, content, creation_date, author_id, event_id) F
 5	This is a comment	2024-09-19 15:16:17.821768	6	12
 6	This is a comment	2024-09-19 15:16:18.864478	6	12
 7	This is a comment	2024-09-20 10:34:29.540706	6	12
+12	This is user: 30	2024-09-23 14:03:21.290476	30	15
+13	This is user: 30	2024-09-23 14:03:22.667042	30	15
+14	This is user: 30	2024-09-23 14:03:23.846332	30	15
 \.
 
 
@@ -315,6 +321,7 @@ COPY public.events (event_id, title, description, event_date, creator_id, clan_i
 11	epic gaming time	TestDescription	2024-09-19 14:13:39.972502	2	1
 12	epic gaming time	TestDescription	2024-09-19 14:13:42.272898	2	1
 13	epic gaming time	TestDescription	2024-09-20 09:58:33.011178	2	1
+15	user: 30	TestDescription	2024-09-23 14:03:12.991424	30	9
 \.
 
 
@@ -350,28 +357,28 @@ COPY public.users (user_id, email, password, first_name, last_name, gender, last
 -- Name: bulletinboard_post_id_seq; Type: SEQUENCE SET; Schema: public; Owner: app_user
 --
 
-SELECT pg_catalog.setval('public.bulletinboard_post_id_seq', 6, true);
+SELECT pg_catalog.setval('public.bulletinboard_post_id_seq', 11, true);
 
 
 --
 -- Name: clans_clan_id_seq; Type: SEQUENCE SET; Schema: public; Owner: app_user
 --
 
-SELECT pg_catalog.setval('public.clans_clan_id_seq', 7, true);
+SELECT pg_catalog.setval('public.clans_clan_id_seq', 10, true);
 
 
 --
 -- Name: comments_comment_id_seq; Type: SEQUENCE SET; Schema: public; Owner: app_user
 --
 
-SELECT pg_catalog.setval('public.comments_comment_id_seq', 7, true);
+SELECT pg_catalog.setval('public.comments_comment_id_seq', 14, true);
 
 
 --
 -- Name: events_event_id_seq; Type: SEQUENCE SET; Schema: public; Owner: app_user
 --
 
-SELECT pg_catalog.setval('public.events_event_id_seq', 13, true);
+SELECT pg_catalog.setval('public.events_event_id_seq', 15, true);
 
 
 --
@@ -414,6 +421,14 @@ ALTER TABLE ONLY public.events
 
 
 --
+-- Name: clans unique_clan_name; Type: CONSTRAINT; Schema: public; Owner: app_user
+--
+
+ALTER TABLE ONLY public.clans
+    ADD CONSTRAINT unique_clan_name UNIQUE (clan_name);
+
+
+--
 -- Name: users users_email_key; Type: CONSTRAINT; Schema: public; Owner: app_user
 --
 
@@ -442,7 +457,7 @@ ALTER TABLE ONLY public.users
 --
 
 ALTER TABLE ONLY public.bulletinboard
-    ADD CONSTRAINT fk_author FOREIGN KEY (author_id) REFERENCES public.users(user_id) ON DELETE SET NULL;
+    ADD CONSTRAINT fk_author FOREIGN KEY (author_id) REFERENCES public.users(user_id) ON DELETE CASCADE;
 
 
 --
@@ -450,7 +465,7 @@ ALTER TABLE ONLY public.bulletinboard
 --
 
 ALTER TABLE ONLY public.comments
-    ADD CONSTRAINT fk_author FOREIGN KEY (author_id) REFERENCES public.users(user_id) ON DELETE SET NULL;
+    ADD CONSTRAINT fk_author FOREIGN KEY (author_id) REFERENCES public.users(user_id) ON DELETE CASCADE;
 
 
 --
@@ -474,7 +489,7 @@ ALTER TABLE ONLY public.events
 --
 
 ALTER TABLE ONLY public.events
-    ADD CONSTRAINT fk_creator FOREIGN KEY (creator_id) REFERENCES public.users(user_id) ON DELETE SET NULL;
+    ADD CONSTRAINT fk_creator FOREIGN KEY (creator_id) REFERENCES public.users(user_id) ON DELETE CASCADE;
 
 
 --
@@ -490,7 +505,7 @@ ALTER TABLE ONLY public.comments
 --
 
 ALTER TABLE ONLY public.clans
-    ADD CONSTRAINT fk_leader FOREIGN KEY (leader_id) REFERENCES public.users(user_id) ON DELETE SET NULL;
+    ADD CONSTRAINT fk_leader FOREIGN KEY (leader_id) REFERENCES public.users(user_id) ON DELETE CASCADE;
 
 
 --

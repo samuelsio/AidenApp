@@ -8,11 +8,11 @@ exports.getAllClans = async () => {
     return rows;
 };
 
-exports.getClanByName = async (clan_id) => {
+exports.getClanByName = async (clan_name) => {
    try { 
         const { rows } = await pool.query(
             "SELECT clan_id, clan_name, description, creation_date, leader_id, members_count, clan_background, clan_image FROM clans WHERE clan_name = $1",
-            [clan_id]
+            [clan_name]
         );
         return rows;
     } catch (err){
@@ -75,6 +75,26 @@ exports.createBulletinComment = async ({clan_id, content, author_id}) => {
     }
 }
 
+exports.deleteBulletin = async(
+    clan_id,
+    post_id
+) => {
+    try {
+        if (!clan_id || !post_id){
+            throw new Error(`Whoops, missing fields: ${clan_id}, ${post_id}`)
+        }
+        console.log(clan_id, post_id)
+        const { rows } = await pool.query(
+            `DELETE FROM bulletinboard WHERE clan_id = $1 AND post_id = $2 RETURNING author_id, post_id, clan_id`,
+            [clan_id, post_id]
+        );
+        return rows;
+    } catch (err){
+        console.error(`Error: ${err.message}`);
+        throw err;
+    }
+}
+
 exports.getBulletinBoard = async (clanId) =>{
     const { rows } = await pool.query(
         "SELECT * FROM bulletinboard WHERE clan_id = $1 ORDER BY creation_date DESC",
@@ -82,6 +102,20 @@ exports.getBulletinBoard = async (clanId) =>{
     );
     return rows;
 };
+
+exports.getBulletinBoardPost = async (
+    clan_id,
+    post_id
+) => {
+    const { rows } = await pool.query(
+        `SELECT * FROM bulletinboard WHERE clan_id = $1 AND post_id = $2`,
+        [clan_id, post_id]
+    );
+    if (rows.length <= 0){
+        throw new Error(`Row is empty or does not exist`)
+    }
+    return  rows;
+}
 
 exports.getEventsByClan = async (clanId) => {
     const { rows } = await pool.query(
@@ -147,4 +181,45 @@ exports.createClan = async ({
         [clan_name, description, leader_id, members_count, clan_background, clan_image]
     )
     return rows[0];
-}
+};
+
+exports.updateClan = async({
+    clanId,
+    updatedFields
+}) => {
+    const updates = [];
+    const values = [];
+    let queryIndex = 1;
+    console.log(`clanId: ${clanId}`);
+
+    const allowedFields = [
+        "clan_name",
+        "description",
+        "creation_date",
+        "leader_id",
+        "members_count",
+        "clan_background",
+        "clan_image",
+        "clan_tag",
+    ];
+
+    for (const [key, value] of Object.entries(updatedFields)) {
+        if (allowedFields.includes(key) && value !== undefined) {
+                updates.push(`${key} = $${queryIndex++}`);
+                values.push(value);
+            }
+        }
+    
+
+    if (updates.length === 0) {
+        throw new Error("No valid fields provided for update");
+    }
+
+    values.push(clanId);
+    const query = `UPDATE clans SET ${updates.join(
+        ", "
+    )} WHERE clan_id = $${queryIndex} RETURNING *`;
+
+    const { rows } = await pool.query(query, values);
+    return rows.length;
+};
