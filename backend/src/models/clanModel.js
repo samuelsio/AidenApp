@@ -131,6 +131,44 @@ exports.getEventsByClan = async (clanId) => {
     return rows;
 };
 
+exports.updateEvent = async ({
+    clan_id,
+    event_id,
+    updatedFields
+}) => {
+    const updates = [];
+    const values = [];
+    let queryIndex = 1;
+    console.log(`event_id: ${event_id}`);
+
+    const allowedFields = [
+        "title",
+        "description",
+        "event_date",
+        "creator_id",
+        "clan_id",
+        "event_id"
+    ];
+    for (const [key, value] of Object.entries(updatedFields)) {
+        if (allowedFields.includes(key) && value !== undefined) {
+            updates.push(`${key} = $${queryIndex++}`);
+                values.push(value);
+        }
+    }
+    if (updates.length === 0) {
+        throw new Error("No valid fields provided for update");
+    }
+    values.push(event_id, clan_id);
+    const query = `
+        UPDATE events 
+        SET ${updates.join(", ")} 
+        WHERE event_id = $${queryIndex++} AND clan_id = $${queryIndex}
+        RETURNING *`;
+
+    const { rows } = await pool.query(query, values);
+    return rows;
+};
+
 exports.createEvent = async ({
     title,
     description,

@@ -177,6 +177,38 @@ exports.createEvent = async (req, res) => {
 };
 
 
+exports.updateEvent = async (req, res) => {
+    try {
+        const { clanName } = req.params;
+        const eventId = parseInt(req.params.eventId);
+        // Fetch clan by name
+        const clan = await clanModel.getClanByName(clanName);
+        if (clan.length === 0 || !eventId || isNaN(eventId)) {
+            return res.status(404).json({ message: "Cannot create event for non-existent clan or missing eventId" });
+        }
+        const clanId = clan[0].clan_id;
+        const updatedFields = req.body
+        
+        const updateEvent = await clanModel.updateEvent({
+            clan_id: clanId,
+            event_id: eventId,
+            updatedFields: updatedFields
+        })
+        if (updateEvent.length === 0){
+            return res.status(404).json({ error: "Event not found "});
+        }
+        return res.status(202).json({ message: `Updated event successfully: `, updatedEvent: updateEvent});
+
+    } catch (err) {
+        console.error(err);
+        if (err.message === "No valid fields provided for update") {
+            res.status(400).json({ error: err.message });
+        } else {
+            res.status(500).json({ error: "Server error" });
+        }
+    }
+};
+
 exports.createEventComment = async (req, res) => {
     try {
         const { eventId } = req.params;
