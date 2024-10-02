@@ -27,6 +27,26 @@ exports.getBulletinBoard = async (req, res) => {
     }
 };
 
+exports.getBulletinBoardPost = async (req, res) => {
+    try{
+        const { clanName } = req.params;
+        const post_id = parseInt(req.params.postId);
+        const clan = await clanModel.getClanByName(clanName);
+        
+        if (clanName === 0 || post_id.length === 0) {
+            return res.status(404).json({ message: `Clan OR Post not found: ${post_id}, ${clanName}` });
+        }
+
+        const clan_id = clan[0].clan_id;
+        const bulletinPost = await clanModel.getBulletinBoardPost(post_id, clan_id)
+        res.status(200).json({bulletinPost})
+
+    } catch (err){
+        console.error(err);
+        res.status(500).json({error: `server error: ${err}`})
+    }
+};
+
 exports.createBulletinComment = async (req, res) => {
     try{
         const { clanName } = req.params;
@@ -43,6 +63,28 @@ exports.createBulletinComment = async (req, res) => {
             console.error(err);
             res.status(500).json({error: `server error`});
         }
+};
+
+exports.deleteBulletin = async (req, res) => {
+    try{
+        
+        const { clanName } = req.params;
+        const post_id = parseInt(req.params.postId);
+        console.log(`clanName: ${clanName}, post_id: ${post_id}`)
+        const clan = await clanModel.getClanByName(clanName);
+        
+        if (!clanName || !post_id) {
+            return res.status(404).json({ message: `Clan OR Post not found: ${post_id}, ${clanName}` });
+        }
+
+        const clan_id = clan[0].clan_id;
+        const deleteBulletin = await clanModel.deleteBulletin(clan_id, post_id)
+        res.status(200).json({deleteBulletin})
+
+    } catch (err){
+        console.error(err);
+        res.status(500).json({error: `server error: ${err}`})
+    }
 };
 
 exports.getClanDetails = async (req, res) => {

@@ -8,11 +8,11 @@ exports.getAllClans = async () => {
     return rows;
 };
 
-exports.getClanByName = async (clan_id) => {
+exports.getClanByName = async (clan_name) => {
    try { 
         const { rows } = await pool.query(
             "SELECT clan_id, clan_name, description, creation_date, leader_id, members_count, clan_background, clan_image FROM clans WHERE clan_name = $1",
-            [clan_id]
+            [clan_name]
         );
         console.log(`Clan found:`, rows);
         return rows;
@@ -38,6 +38,26 @@ exports.createBulletinComment = async ({clan_id, content, author_id}) => {
     }
 }
 
+exports.deleteBulletin = async(
+    clan_id,
+    post_id
+) => {
+    try {
+        if (!clan_id || !post_id){
+            throw new Error(`Whoops, missing fields: ${clan_id}, ${post_id}`)
+        }
+        console.log(clan_id, post_id)
+        const { rows } = await pool.query(
+            `DELETE FROM bulletinboard WHERE clan_id = $1 AND post_id = $2 RETURNING author_id, post_id, clan_id`,
+            [clan_id, post_id]
+        );
+        return rows;
+    } catch (err){
+        console.error(`Error: ${err.message}`);
+        throw err;
+    }
+}
+
 exports.getBulletinBoard = async (clanId) =>{
     const { rows } = await pool.query(
         "SELECT * FROM bulletinboard WHERE clan_id = $1 ORDER BY creation_date DESC",
@@ -45,6 +65,20 @@ exports.getBulletinBoard = async (clanId) =>{
     );
     return rows;
 };
+
+exports.getBulletinBoardPost = async (
+    clan_id,
+    post_id
+) => {
+    const { rows } = await pool.query(
+        `SELECT * FROM bulletinboard WHERE clan_id = $1 AND post_id = $2`,
+        [clan_id, post_id]
+    );
+    if (rows.length <= 0){
+        throw new Error(`Row is empty or does not exist`)
+    }
+    return  rows;
+}
 
 exports.getEventsByClan = async (clanId) => {
     const { rows } = await pool.query(
