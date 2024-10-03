@@ -7,6 +7,7 @@ router.get("/events", clanController.getAllEvents)
 router.get("/events/:eventId", clanController.getEventDetails)
 router.get("/:clanName", clanController.getClanDetails)
 router.get("/:clanName/bulletin", clanController.getBulletinBoard)
+router.get("/:clanName/:eventId/comments", clanController.getEventComments)
 router.get("/:clanName/:postId", clanController.getBulletinBoardPost)
 router.post("/", clanController.createClan);
 router.post("/:clanName/event", clanController.createEvent)

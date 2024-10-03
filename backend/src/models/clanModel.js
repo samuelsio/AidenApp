@@ -59,6 +59,19 @@ exports.deleteEvent = async ({clan_id, event_id}) => {
     }
 }
 
+exports.getEventsComments = async (clan_id, event_id) => {
+    try { 
+        const { rows } = await pool.query(
+            `SELECT event_id, title, description, event_date, creator_id, clan_id FROM events WHERE clan_id = $1 AND event_id = $2`,
+            [clan_id, event_id]
+        );
+        return rows;
+    } catch (err){
+        console.error(`Error finding Event: ${err.message}`);
+        throw err;
+    }
+}
+
 exports.createBulletinComment = async ({clan_id, content, author_id}) => {
     try {
         if (!clan_id || !content || !author_id){

@@ -47,6 +47,26 @@ exports.getBulletinBoardPost = async (req, res) => {
     }
 };
 
+exports.getEventComments = async (req, res) => {
+    try{
+        const { clanName } = req.params;
+        const eventId = parseInt(req.params.eventId)
+        const clan = await clanModel.getClanByName(clanName);
+        if (clan.length === 0) {
+            return res.status(404).json({ message: "Cannot create event for non-existent clan" });
+        }
+        const clanId = clan[0].clan_id;
+        const eventComments = await clanModel.getEventsComments({clan_id: clanId, event_id: eventId})
+
+        res.status(201).json({eventComments})
+
+
+    } catch (err){
+        console.error(err);
+        res.status(500).json({error: `server error`});
+    }
+};
+
 exports.createBulletinComment = async (req, res) => {
     try{
         const { clanName } = req.params;
@@ -63,6 +83,28 @@ exports.createBulletinComment = async (req, res) => {
             console.error(err);
             res.status(500).json({error: `server error`});
         }
+};
+
+exports.deleteBulletin = async (req, res) => {
+    try{
+        
+        const { clanName } = req.params;
+        const post_id = parseInt(req.params.postId);
+        console.log(`clanName: ${clanName}, post_id: ${post_id}`)
+        const clan = await clanModel.getClanByName(clanName);
+        
+        if (!clanName || !post_id) {
+            return res.status(404).json({ message: `Clan OR Post not found: ${post_id}, ${clanName}` });
+        }
+
+        const clan_id = clan[0].clan_id;
+        const deleteBulletin = await clanModel.deleteBulletin(clan_id, post_id)
+        res.status(200).json({deleteBulletin})
+
+    } catch (err){
+        console.error(err);
+        res.status(500).json({error: `server error: ${err}`})
+    }
 };
 
 exports.deleteBulletin = async (req, res) => {
