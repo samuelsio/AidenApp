@@ -3,6 +3,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const userRoutes = require("./routes/userRoutes");
 const clanRoutes = require("./routes/clanRoutes");
+const squadRoutes = require("./routes/squadRoutes");
 const cors = require('cors');
 const app = express();
 
@@ -19,6 +20,7 @@ app.use(bodyParser.json());
 // User routes
 app.use("/users", userRoutes);
 app.use("/clans", clanRoutes);
+app.use("/squad", squadRoutes)
 
 // Default route for checking API health
 app.get("/", (req, res) => {

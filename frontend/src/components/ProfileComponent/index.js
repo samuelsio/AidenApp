@@ -4,11 +4,18 @@ import "../FriendsList/index.js"
 import SquadList from '../SquadList/index.js'
 import FriendsList from '../FriendsList/index.js';
 import Button from '../Button';
+import { signOut } from '../../utils/auth.js';
 
-export default function ProfileComponent({user}) {
-    const { name, username, profileBackgroundPic, profilePic, followers, following, description} = user;
+export default function ProfileComponent({user, currentUser}) {
+    const displayName = user.displayname, 
+    username = user.username, 
+    profileBackgroundPic = user.profilebackgroundpic, 
+    profilePic = user.profilepic, 
+    followers = user.followers, 
+    following = user.following, 
+    description = user.description
 
-
+    const currentUsername = currentUser?.user?.username; 
 
     return(
         <div>
@@ -16,7 +23,7 @@ export default function ProfileComponent({user}) {
                 <div className='Profile__container'>
                     <div className='Profile'>
                         <div className='Profile__image__background'>
-                        <img className='Profile__img__background' src={profileBackgroundPic} alt="profile" />
+                        <img className='Profile__img__background' src={profileBackgroundPic ? profileBackgroundPic : "https://placeholder.com/396x168"} alt="profile" />
                         </div>      
                         
                         <div className='Profile__image'>
@@ -24,7 +31,7 @@ export default function ProfileComponent({user}) {
                                 <p className='Follow'>{followers}</p>
                                 <p className='Follow__name'>Followers</p>
                             </div>
-                                <img className='Profile__img' src={profilePic} alt="profile" />
+                                <img className='Profile__img' src={profilePic ? profilePic : "https://placeholder.com/150"} alt="profile" />
                             <div className='Follow__wrapper'>
                                 <p className='Follow'>{following}</p>
                                 <p className='Follow__name'>Following</p>
@@ -32,14 +39,14 @@ export default function ProfileComponent({user}) {
                         </div>
                             
                         <div className='Profile__name__wrapper'>
-                            <h2 className='Profile__name'>{name}</h2>
+                            <h2 className='Profile__name'>{displayName}</h2>
                             <h1 className='Profile__username'>{username}</h1>
                         </div>
 
                         <div className='Description'>
                             <p>{description}</p>
                         </div>
-                        <Button variant={name === "John Smith" ? "primary" : "outline"} large={false} label={name === "John Smith" ? "Edit Profile" : "Add Friend"} type='submit' fontSize='large' fullWidth={false}/>
+                        <Button variant={username === currentUsername ? "revert" : "outline"} large={false} label={username === currentUsername ? "Log Out" : "Add Friend"} type='submit' fontSize='large' fullWidth={false} onClick={username === currentUsername ? signOut : () => {}}/>
                     </div>
                     <div className='SquadList'>
                     <SquadList />

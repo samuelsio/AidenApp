@@ -1,9 +1,28 @@
 const userModel = require("../models/userModel");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+require('dotenv').config(); 
+const SECRET_KEY = process.env.JWT_SECRET; 
 
-// Define a secret key for JWT (in production, store it in environment variables)
-const SECRET_KEY = process.env.JWT_SECRET || "your_jwt_secret_key";
+
+exports.token = async (req, res) => {
+    // This will be handled by the verifyToken middleware, which attaches the decoded token to req.user
+    if (!req.user) {
+        return res.status(401).json({ error: "Unauthorized" });
+    }
+
+    // If the token is valid, send the user details or any relevant info back to the client
+    res.status(200).json({
+        message: "Token is valid",
+        user: {
+            user_id: req.user.user_id,
+            email: req.user.email,
+            displayname: req.user.displayname,
+            username: req.user.username,
+            role: req.user.role,
+        },
+    });
+};
 
 exports.login = async (req, res) => {
     const { email, password } = req.body;
@@ -29,18 +48,24 @@ exports.login = async (req, res) => {
         if (!isPasswordValid) {
             return res.status(401).json({ error: "Invalid email or password" });
         }
+        const payload = {
+            user_id: user.user_id,
+            email: user.email,
+            displayname: user.displayname,
+            username: user.username,
+            role: user.role || 'user',
+            iat: Math.floor(Date.now() / 1000),
+            exp: Math.floor(Date.now() / 1000) + (60 * 60)
+        };
 
         // If the password is valid, generate a JWT token
-        const token = jwt.sign(
-            { userId: user.user_id, email: user.email }, // Payload data
-            SECRET_KEY, // Secret key
-            { expiresIn: "1h" } // Token expiration
-        );
+        const token = jwt.sign(payload, SECRET_KEY);
 
         // Send the token to the client
         res.status(200).json({
             message: "Login successful",
-            token: token, // Token can be used for future authenticated requests
+            token: token, 
+            username: user.username,// Token can be used for future authenticated requests
         });
     } catch (err) {
         console.error(err);
@@ -58,6 +83,21 @@ exports.getUsers = async (req, res) => {
     }
 };
 
+exports.getByUsername = async (req, res) => {
+    try {
+        const { username } = req.params;
+        const user = await userModel.getByUsername(username);
+
+        if (user.length === 0) {
+            return res.status(404).json({ message: "User not found" });
+        }
+        return res.status(200).json(user[0])
+    } catch (err) {
+        console.err(err);
+        res.status(500).json({ error: "Server error"});
+    }
+}
+
 exports.getUserDetails = async (req, res) => {
     try {
         const { userId } = req.params;
@@ -70,6 +110,20 @@ exports.getUserDetails = async (req, res) => {
     } catch (err) {
         console.error(err);
         res.status(500).json({error: "Server error"});
+    }
+}
+
+exports.addFriend = async (req, res) => {
+    try {
+        const friend = req.params.username;
+        const user = req.body.username;
+
+        const addedFriend = await userModel.addFriend({friend: friend, user: user})
+        res.status(201).json({
+            message: `Sent friend request: ${addedFriend}`
+        })
+    } catch (err) {
+        return res.status.json({ error: err.message })
     }
 }
 

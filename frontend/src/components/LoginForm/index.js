@@ -15,7 +15,7 @@ export default function LoginForm() {
     setError(''); // Clear any previous errors
 
     try {
-      const response = await fetch('http://localhost:3011/login', {
+      const response = await fetch('http://localhost:3011/users/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -28,10 +28,10 @@ export default function LoginForm() {
       if (response.ok) {
         // Store JWT token in localStorage or sessionStorage
         localStorage.setItem('token', data.token);
-        console.log('Login successful', data);
+        console.log('Login successful', {data});
         
         // Navigate to a protected page or dashboard
-        navigate('/profile'); // or any other protected route
+        navigate(`/profile/${data.username}`); // or any other protected route
       } else {
         setError(data.error || 'Login failed. Please try again.');
       }

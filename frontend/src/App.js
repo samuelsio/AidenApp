@@ -9,6 +9,7 @@ import Profile from "./pages/Profile";
 import Games from "./pages/Games";
 import Clans from "./pages/Clans";
 import LandingPage from "./pages/LandingPage";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 
 
 function App() {
@@ -18,13 +19,41 @@ function App() {
                 <Route path="/home" element={<Home />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/register" element={<RegisterPage />} />
-                <Route path="/streamers" element={<Streamers />} />
-                <Route path="/social" element={<Social />} />
-                <Route path="/profile/:username" element={<Profile />} />
-                <Route path="/games" element={<Games />} />
-                <Route path="/clans/" element={<Clans />} />
-                <Route path="/clans/:Clanname" element={<Clans />} />
-                <Route path="/" element={<LandingPage />} />
+                <Route path="/streamers" element={
+                    <ProtectedRoute>
+                        <Streamers/>
+                    </ProtectedRoute>
+                    }/>
+                <Route path="/social" element={
+                    <ProtectedRoute>
+                        <Social/>
+                    </ProtectedRoute>
+                    }/>
+                <Route path="/profile/:username" element={
+                    <ProtectedRoute>
+                        <Profile />
+                    </ProtectedRoute>
+                    }/>
+                <Route path="/games" element={
+                    <ProtectedRoute>
+                        <Games/>
+                    </ProtectedRoute>
+                    }/>
+                <Route path="/clans/" element={
+                    <ProtectedRoute>
+                        <Clans/>
+                    </ProtectedRoute>
+                    }/>
+                <Route path="/clans/:Clanname" element={
+                    <ProtectedRoute>
+                        <Clans/>
+                    </ProtectedRoute>
+                    }/>
+                <Route path="/" element={
+                    <ProtectedRoute>
+                        <LandingPage/>
+                    </ProtectedRoute>
+                    }/>
             </Routes>
         </Router>
     );

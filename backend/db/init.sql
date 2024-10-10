@@ -69,8 +69,7 @@ CREATE TABLE public.clans (
     leader_id integer,
     members_count integer DEFAULT 0,
     clan_background character varying(250),
-    clan_image character varying(250),
-    clan_tag character varying(4)
+    clan_image character varying(250)
 );
 
 
@@ -174,6 +173,42 @@ ALTER SEQUENCE public.events_event_id_seq OWNED BY public.events.event_id;
 
 
 --
+-- Name: membership; Type: TABLE; Schema: public; Owner: app_user
+--
+
+CREATE TABLE public.membership (
+    membership_id integer NOT NULL,
+    user_id integer NOT NULL,
+    clan_id integer NOT NULL,
+    joined_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP
+);
+
+
+ALTER TABLE public.membership OWNER TO app_user;
+
+--
+-- Name: membership_membership_id_seq; Type: SEQUENCE; Schema: public; Owner: app_user
+--
+
+CREATE SEQUENCE public.membership_membership_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.membership_membership_id_seq OWNER TO app_user;
+
+--
+-- Name: membership_membership_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: app_user
+--
+
+ALTER SEQUENCE public.membership_membership_id_seq OWNED BY public.membership.membership_id;
+
+
+--
 -- Name: users; Type: TABLE; Schema: public; Owner: app_user
 --
 
@@ -250,6 +285,13 @@ ALTER TABLE ONLY public.events ALTER COLUMN event_id SET DEFAULT nextval('public
 
 
 --
+-- Name: membership membership_id; Type: DEFAULT; Schema: public; Owner: app_user
+--
+
+ALTER TABLE ONLY public.membership ALTER COLUMN membership_id SET DEFAULT nextval('public.membership_membership_id_seq'::regclass);
+
+
+--
 -- Name: users user_id; Type: DEFAULT; Schema: public; Owner: app_user
 --
 
@@ -266,8 +308,6 @@ COPY public.bulletinboard (post_id, content, creation_date, author_id, clan_id) 
 1	Looking for new members to join the Dragons clan. Apply now!	2024-09-17 11:52:33	3	1
 5	latest comment	2024-09-20 10:30:14.737675	6	1
 6	This is another test  comment on a different group	2024-09-20 10:32:44.579036	6	3
-10	another bulletin from ID 30	2024-09-23 14:03:58.859338	30	9
-11	another bulletin from ID 30	2024-09-23 14:03:59.994174	30	9
 \.
 
 
@@ -275,13 +315,13 @@ COPY public.bulletinboard (post_id, content, creation_date, author_id, clan_id) 
 -- Data for Name: clans; Type: TABLE DATA; Schema: public; Owner: app_user
 --
 
-COPY public.clans (clan_id, clan_name, description, creation_date, leader_id, members_count, clan_background, clan_image, clan_tag) FROM stdin;
-1	Dragons	A clan of fierce warriors.	2024-01-15	3	50	\N	\N	\N
-2	Knights	Noble knights of the realm.	2023-06-22	5	35	\N	\N	\N
-3	Wizards	Masters of magical arts.	2024-03-10	7	40	\N	\N	\N
-5	wasd	Test Description	2024-09-19	6	5	wasd	wasd	\N
-9	TestForDelete user:30	Test Description	2024-09-23	30	1			\N
-10	DontDeleteMe user:30	Test Description	2024-09-23	30	1			\N
+COPY public.clans (clan_id, clan_name, description, creation_date, leader_id, members_count, clan_background, clan_image) FROM stdin;
+1	Dragons	A clan of fierce warriors.	2024-01-15	3	50	\N	\N
+2	Knights	Noble knights of the realm.	2023-06-22	5	35	\N	\N
+3	Wizards	Masters of magical arts.	2024-03-10	7	40	\N	\N
+5	wasd	Test Description	2024-09-19	6	5	wasd	wasd
+6	wasd	Test Description	2024-09-19	6	5	wasd	wasd
+7	wasd	Test Description	2024-09-20	6	5	wasd	wasd
 \.
 
 
@@ -295,11 +335,8 @@ COPY public.comments (comment_id, content, creation_date, author_id, event_id) F
 3	Can’t wait for the duel!	2024-09-17 11:52:52.382228	8	3
 4	This is a comment	2024-09-19 15:13:34.117251	6	12
 5	This is a comment	2024-09-19 15:16:17.821768	6	12
-6	This is a comment	2024-09-19 15:16:18.864478	6	12
 7	This is a comment	2024-09-20 10:34:29.540706	6	12
-12	This is user: 30	2024-09-23 14:03:21.290476	30	15
-13	This is user: 30	2024-09-23 14:03:22.667042	30	15
-14	This is user: 30	2024-09-23 14:03:23.846332	30	15
+6	This is a patched field	2024-09-19 15:16:18.864478	6	12
 \.
 
 
@@ -321,7 +358,27 @@ COPY public.events (event_id, title, description, event_date, creator_id, clan_i
 11	epic gaming time	TestDescription	2024-09-19 14:13:39.972502	2	1
 12	epic gaming time	TestDescription	2024-09-19 14:13:42.272898	2	1
 13	epic gaming time	TestDescription	2024-09-20 09:58:33.011178	2	1
-15	user: 30	TestDescription	2024-09-23 14:03:12.991424	30	9
+\.
+
+
+--
+-- Data for Name: membership; Type: TABLE DATA; Schema: public; Owner: app_user
+--
+
+COPY public.membership (membership_id, user_id, clan_id, joined_at) FROM stdin;
+1	1	1	2024-09-27 14:44:24.107425
+2	2	1	2024-09-27 14:44:24.107425
+4	4	2	2024-09-27 14:44:24.107425
+5	5	2	2024-09-27 14:44:24.107425
+6	6	2	2024-09-27 14:44:24.107425
+7	7	3	2024-09-27 14:44:24.107425
+8	8	3	2024-09-27 14:44:24.107425
+9	9	3	2024-09-27 14:44:24.107425
+10	10	1	2024-09-27 14:44:24.107425
+11	11	1	2024-09-27 14:44:24.107425
+12	12	2	2024-09-27 14:44:24.107425
+18	12	1	2024-09-27 15:05:35.157211
+3	3	1	2024-10-27 13:44:24.107
 \.
 
 
@@ -350,6 +407,13 @@ COPY public.users (user_id, email, password, first_name, last_name, gender, last
 18	johndoe@example.com	yourpassword	John	Doe	male	\N	johndoe	\N	1985-05-01	\N	\N	0	0	\N
 26	21@example.com		Jane	Doe	female	\N	@newUser123456	\N	1985-05-01	\N	\N	0	0	\N
 23	patched@email.com	$2b$10$jKtCuw722AxrBlmsd9M1DOQfIsOkXzIWwc2xAHWw2CIJQJ6iOfBrW	TestPatch2	TestPatch2	female	\N	@TestPatch2	TestPatch2	1985-05-01	\N	\N	0	0	I have a patched description description
+35	aidenheath4042@outlook.com	$2b$10$mDC0dR1SMKDiXTE5d.9xDuoBTCxml86FkODyEsSwUchgJgI6Yx5Mu	Aiden	Heath	Male	\N	aidentopshot	\N	2003-12-24	\N	\N	0	0	\N
+36	email@legitEmail.com	$2b$10$Kdu86xNGrIykk2ZgShWRquLY0538TGw9wXubr7RP9HkDHwyIiRkom	FirstName	LName	Other	\N	UsernameFromForm	\N	1980-12-16	\N	\N	0	0	\N
+38	29@example.com	$2b$10$Ai8DezEwNTPG3f/JzEvlJe5/9fv0b68WMlLUZgps10ebk/zwRV3FC	Jane	Doe	female	\N	@DeleteMe123	\N	1985-05-01	\N	\N	0	0	\N
+61	email69@legitEmail.com	$2b$10$KHXknnMACjczOYtQom70HOHTnD.JZaa8ZbmUt9EWYy9WaaQ0vkQKi	FirstName	LName	Other	\N	UsernameFromForm1	\N	1980-12-16	\N	\N	0	0	\N
+65	Random1234@Random1234.com	$2b$10$s4DjPiQfCmUIXBi1OzlTpOjhtAC9QXIPCHIeAYCRpTJTIkUW0515S	Random1234!	Random1234!	Other	\N	Random1234!	\N	0001-01-01	\N	\N	0	0	\N
+64	testLogin@testLogin.com	$2b$10$PweeYrA8bWLsb7aHYc0Ovunr5DtwnzVBOboAhZBe.VJHY24938hQ2	testLogin	testLogin	Male	\N	testLogin	@TestLogin	0001-01-01	\N	\N	0	0	\N
+66	email@email.com	$2b$10$/IxePPfTmrA1KmHbsGSCDudXdDhLjnCJyALv8L0DHocCf2UY8VDT.	First Name	Last Name	Other	\N	BrandNew	\N	1212-12-12	\N	\N	0	0	\N
 \.
 
 
@@ -357,35 +421,42 @@ COPY public.users (user_id, email, password, first_name, last_name, gender, last
 -- Name: bulletinboard_post_id_seq; Type: SEQUENCE SET; Schema: public; Owner: app_user
 --
 
-SELECT pg_catalog.setval('public.bulletinboard_post_id_seq', 11, true);
+SELECT pg_catalog.setval('public.bulletinboard_post_id_seq', 6, true);
 
 
 --
 -- Name: clans_clan_id_seq; Type: SEQUENCE SET; Schema: public; Owner: app_user
 --
 
-SELECT pg_catalog.setval('public.clans_clan_id_seq', 10, true);
+SELECT pg_catalog.setval('public.clans_clan_id_seq', 7, true);
 
 
 --
 -- Name: comments_comment_id_seq; Type: SEQUENCE SET; Schema: public; Owner: app_user
 --
 
-SELECT pg_catalog.setval('public.comments_comment_id_seq', 14, true);
+SELECT pg_catalog.setval('public.comments_comment_id_seq', 7, true);
 
 
 --
 -- Name: events_event_id_seq; Type: SEQUENCE SET; Schema: public; Owner: app_user
 --
 
-SELECT pg_catalog.setval('public.events_event_id_seq', 15, true);
+SELECT pg_catalog.setval('public.events_event_id_seq', 13, true);
+
+
+--
+-- Name: membership_membership_id_seq; Type: SEQUENCE SET; Schema: public; Owner: app_user
+--
+
+SELECT pg_catalog.setval('public.membership_membership_id_seq', 18, true);
 
 
 --
 -- Name: users_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: app_user
 --
 
-SELECT pg_catalog.setval('public.users_user_id_seq', 34, true);
+SELECT pg_catalog.setval('public.users_user_id_seq', 66, true);
 
 
 --
@@ -421,11 +492,19 @@ ALTER TABLE ONLY public.events
 
 
 --
--- Name: clans unique_clan_name; Type: CONSTRAINT; Schema: public; Owner: app_user
+-- Name: membership membership_pkey; Type: CONSTRAINT; Schema: public; Owner: app_user
 --
 
-ALTER TABLE ONLY public.clans
-    ADD CONSTRAINT unique_clan_name UNIQUE (clan_name);
+ALTER TABLE ONLY public.membership
+    ADD CONSTRAINT membership_pkey PRIMARY KEY (membership_id);
+
+
+--
+-- Name: membership membership_user_id_clan_id_key; Type: CONSTRAINT; Schema: public; Owner: app_user
+--
+
+ALTER TABLE ONLY public.membership
+    ADD CONSTRAINT membership_user_id_clan_id_key UNIQUE (user_id, clan_id);
 
 
 --
@@ -457,7 +536,7 @@ ALTER TABLE ONLY public.users
 --
 
 ALTER TABLE ONLY public.bulletinboard
-    ADD CONSTRAINT fk_author FOREIGN KEY (author_id) REFERENCES public.users(user_id) ON DELETE CASCADE;
+    ADD CONSTRAINT fk_author FOREIGN KEY (author_id) REFERENCES public.users(user_id) ON DELETE SET NULL;
 
 
 --
@@ -465,7 +544,7 @@ ALTER TABLE ONLY public.bulletinboard
 --
 
 ALTER TABLE ONLY public.comments
-    ADD CONSTRAINT fk_author FOREIGN KEY (author_id) REFERENCES public.users(user_id) ON DELETE CASCADE;
+    ADD CONSTRAINT fk_author FOREIGN KEY (author_id) REFERENCES public.users(user_id) ON DELETE SET NULL;
 
 
 --
@@ -489,7 +568,7 @@ ALTER TABLE ONLY public.events
 --
 
 ALTER TABLE ONLY public.events
-    ADD CONSTRAINT fk_creator FOREIGN KEY (creator_id) REFERENCES public.users(user_id) ON DELETE CASCADE;
+    ADD CONSTRAINT fk_creator FOREIGN KEY (creator_id) REFERENCES public.users(user_id) ON DELETE SET NULL;
 
 
 --
@@ -505,7 +584,23 @@ ALTER TABLE ONLY public.comments
 --
 
 ALTER TABLE ONLY public.clans
-    ADD CONSTRAINT fk_leader FOREIGN KEY (leader_id) REFERENCES public.users(user_id) ON DELETE CASCADE;
+    ADD CONSTRAINT fk_leader FOREIGN KEY (leader_id) REFERENCES public.users(user_id) ON DELETE SET NULL;
+
+
+--
+-- Name: membership membership_clan_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: app_user
+--
+
+ALTER TABLE ONLY public.membership
+    ADD CONSTRAINT membership_clan_id_fkey FOREIGN KEY (clan_id) REFERENCES public.clans(clan_id) ON DELETE CASCADE;
+
+
+--
+-- Name: membership membership_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: app_user
+--
+
+ALTER TABLE ONLY public.membership
+    ADD CONSTRAINT membership_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(user_id) ON DELETE CASCADE;
 
 
 --

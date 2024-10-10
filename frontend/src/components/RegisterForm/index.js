@@ -3,7 +3,6 @@ import { Link, useLocation, useNavigate} from 'react-router-dom';
 import regPoster from "../../images/RegisterPoster.jpg";
 import Button from '../Button';
 import "./RegisterForm.scss"
-import LoginForm from '../LoginForm';
 
 
 
