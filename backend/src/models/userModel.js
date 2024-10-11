@@ -3,7 +3,7 @@ const pool = require("../config/db");
 
 exports.getAllUsers = async () => {
     const { rows } = await pool.query(
-        "SELECT user_id, email, first_name, last_name, gender, last_logged_in FROM users"
+        "SELECT user_id, username, displayname, creation_date, status FROM users"
     );
     return rows;
 };
@@ -11,10 +11,10 @@ exports.getAllUsers = async () => {
 exports.getUserByEmail = async (email) => {
     try { 
         const { rows } = await pool.query(
-            `SELECT user_id, password, email, username, displayname FROM users WHERE email = $1`,
+            `SELECT user_id, password, email, username, displayname, profilepic, role FROM users WHERE email = $1`,
             [email]
         );
-        console.log(rows);
+        
         return rows;
     } catch (err) {
         console.error(`Error getting user`);

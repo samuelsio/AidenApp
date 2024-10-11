@@ -24,11 +24,82 @@ exports.token = async (req, res) => {
     });
 };
 
+exports.verifyAdmin = async (req, res) => {
+    if (!req.user) {
+        return res.status(401).json({ error: "Unauthorized" });
+    }
+    console.log(req.user)
+    if (req.user.role !== "admin"){
+        return res.status(401).json({error: "Unauthorized" });
+    }
+    res.status(200).json({
+        message: "Token is valid",
+        user: {
+            user_id: req.user.user_id,
+            email: req.user.email,
+            displayname: req.user.displayname,
+            username: req.user.username,
+            role: req.user.role,
+        },
+    });
+};
+
+
+exports.adminPortal = async (req, res) => {
+    const { email, password } = req.body;
+
+    try {
+        const userArray = await userModel.getUserByEmail(email);
+  
+        if (!userArray || userArray.length === 0) {
+            return res.status(401).json({ error: "Invalid email or password" });
+        }
+        const user = userArray[0]; 
+    
+        const hashedPassword = user.password;
+        if (!hashedPassword) {
+            return res.status(500).json({ error: "Password not found for the user" });
+        }
+
+        const isPasswordValid = await bcrypt.compare(password, hashedPassword);
+        if (!isPasswordValid) {
+            return res.status(401).json({ error: "Invalid email or password" });
+        }
+
+         if (user.role !== 'admin') {
+            return res.status(403).json({ error: "Access denied. Admins only." });
+        }
+        const payload = {
+            user_id: user.user_id,
+            email: user.email,
+            displayname: user.displayname,
+            username: user.username,
+            role: user.role || 'member',
+            iat: Math.floor(Date.now() / 1000),
+            exp: Math.floor(Date.now() / 1000) + (60 * 60)
+        };
+
+        // If the password is valid, generate a JWT token
+        const token = jwt.sign(payload, SECRET_KEY);
+
+        // Send the token to the client
+        res.status(200).json({
+            message: "Login successful",
+            token: token, 
+            username: user.username,
+            role: user.role
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "Server error" });
+    }
+};
+
 exports.login = async (req, res) => {
     const { email, password } = req.body;
 
     try {
-        const userArray = await userModel.getUserByEmail(email); // Assuming this returns an array of users
+        const userArray = await userModel.getUserByEmail(email);
         
         // Ensure that a user was found
         if (!userArray || userArray.length === 0) {
