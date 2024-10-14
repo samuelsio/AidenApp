@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Sidebar.scss";
+import { signOut } from "../../utils/auth";
 
 export default function Sidebar({activeItem}){
 
@@ -70,9 +71,7 @@ export default function Sidebar({activeItem}){
                 </Link>
                 </li>
                 <li className={`nav-item pb-3`}>
-                <Link to="/" className={`nav-link text-white rounded bg-danger`}>
-                    Logout
-                </Link>
+                  <button className="nav-link text-white rounded bg-danger w-100" onClick={signOut}>Log Out </button>    
                 </li>
             </ul>
             </div>

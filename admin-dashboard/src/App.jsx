@@ -8,6 +8,8 @@ import AdminGames from './pages/AdminGames';
 import AdminHome from './pages/AdminHome';
 import AdminStreams from './pages/AdminStreams';
 import MembersDashboard from './pages/MembersDashboard';
+import AdminLogin from './pages/AdminLogin';
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute.jsx";
 
 
 function App() {
@@ -15,13 +17,29 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<AdminDashboard />} />
-        <Route path="/AdminClans" element={<AdminClans />} />
-        <Route path="/AdminGames" element={<AdminGames />} />
-        <Route path="/AdminHome" element={<AdminHome />} />
-        <Route path="/AdminStreams" element={<AdminStreams />} />
-        <Route path="/MembersDashboard/" element={<MembersDashboard />} />
-        <Route path="/MembersDashboard/:username" element={<MembersDashboard />} />
+        <Route path="/login" element={<AdminLogin />} />
+        <Route path="/" element={
+          <ProtectedRoute>
+            <AdminDashboard/>
+          </ProtectedRoute>} />
+        <Route path="/AdminClans" element={<ProtectedRoute>
+            <AdminClans/>
+          </ProtectedRoute>} />
+        <Route path="/AdminGames" element={<ProtectedRoute>
+            <AdminGames/>
+          </ProtectedRoute>} />
+        <Route path="/AdminHome" element={<ProtectedRoute>
+            <AdminHome/>
+          </ProtectedRoute>} />
+        <Route path="/AdminStreams" element={<ProtectedRoute>
+            <AdminStreams/>
+          </ProtectedRoute>} />
+        <Route path="/MembersDashboard/" element={<ProtectedRoute>
+            <MembersDashboard/>
+          </ProtectedRoute>} />
+        <Route path="/MembersDashboard/:username" element={<ProtectedRoute>
+            <MembersDashboard/>
+          </ProtectedRoute>} />
       </Routes>
     </Router>
   )

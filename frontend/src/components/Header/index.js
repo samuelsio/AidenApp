@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./Header.scss";
 import logo from "../../images/logowhite.png";
 
-export default function Header({activeItem}) {
+export default function Header({activeItem, username}) {
     return (
         <header className="header">
             <div className="container">
@@ -26,7 +26,7 @@ export default function Header({activeItem}) {
                             </Link>
                         </li>
                         <li className="navbar-item">
-                            <Link to="/profile" className={`navbar-link ${activeItem === "profile" ? "active":""}`}>
+                            <Link to={`/profile/${username}`} className={`navbar-link ${activeItem === "profile" ? "active":""}`}>
                                 Profile
                             </Link>
                         </li>

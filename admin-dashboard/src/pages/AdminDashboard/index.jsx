@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './AdminDashboard.scss'; // For any custom CSS needed
 import Sidebar from '../../components/sidebar';
@@ -6,6 +6,51 @@ import PageHeader from '../../components/PageHeader';
 import DashboardComponent from '../../components/DashboardComponent';
 
 export default function AdminDashboard() {
+  const [currentUser, setCurrentUser] = useState(null);
+  const [error, setError] = useState(''); // State to store any error messages
+  
+  useEffect(() => {
+    async function fetchCurrentUser() {
+      try {
+        const token = localStorage.getItem('token'); // Get the token from localStorage
+  
+        // Fetch the current user's basic data using the token
+        const tokenResponse = await fetch(`http://localhost:3011/users/token`, {
+          method: 'GET',
+          headers: { Authorization: `Bearer ${token}` },
+        });
+  
+        if (tokenResponse.ok) {
+          const currentUserData = await tokenResponse.json();
+          const username = currentUserData.user.username;
+          // Now fetch the full user data using the username
+          const userResponse = await fetch(`http://localhost:3011/users/profile/${username}`, {
+            method: 'GET',
+            headers: { Authorization: `Bearer ${token}` }, 
+          });
+  
+          if (userResponse.ok) {
+            const fullUserData = await userResponse.json();
+            setCurrentUser(fullUserData); 
+          } else {
+            setError('Full user data not found.');
+          }
+        } else {
+          setError('User not found. Please check the spelling.');
+        }
+      } catch (err) {
+        console.error('Error fetching user profile:', err);
+        setError('An error occurred while fetching the user profile.');
+      }
+    };
+  
+    fetchCurrentUser(); // Call the function when the component mounts
+  }, []);
+  
+  if (error){
+    console.log(error)
+  };
+
   return (
     <>
     
@@ -17,8 +62,8 @@ export default function AdminDashboard() {
         {/* Header */}
         <div className="col-md-10 bg-primary">
             <PageHeader PageName={"Dashboard"}
-            AdminName={"Aiden"}
-            AdminPFP={"https://placeholder.com/50"} />
+            AdminName={currentUser?.username}
+            AdminPFP={currentUser?.profilepic || "https://placeholder.com/50"} />
 
             {/* Body */}
             <DashboardComponent />
@@ -28,37 +73,3 @@ export default function AdminDashboard() {
     </>
   );
 }
-//Load the page, page does a fetch request for DashboardComponent
-//The DashboardComponent example is:
-{/* <DashboardComponent 
-            TotalUsers = {12}
-            prevUsers = {8}
-            TotalClans = {3}
-            prevClans = {4}
-            PremiumMembers = {0}
-            prevMembers = {1}
-            ActiveUsers = {2}
-            prevActive = {1}
-            /> */}
-
-// Inside the DashboardComponent is the graph measuring TotalUsers over the year
-// fetch requires TotalUsers Per Month
-// Updated code:
-{/* <DashboardComponent 
-            TotalUsers = {12}
-            TotalUserMonth={{
-                January: 2,  
-                February: 3,  
-                March: 4,  
-                April: 1,   
-                May: 0,  
-                June: 2   
-            }} // Example data for the last 6 months
-            prevUsers = {8}
-            TotalClans = {3}
-            prevClans = {4}
-            PremiumMembers = {0}
-            prevMembers = {1}
-            ActiveUsers = {2}
-            prevActive = {1}
-            /> */}

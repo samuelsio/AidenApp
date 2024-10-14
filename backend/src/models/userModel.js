@@ -3,10 +3,35 @@ const pool = require("../config/db");
 
 exports.getAllUsers = async () => {
     const { rows } = await pool.query(
-        "SELECT user_id, email, first_name, last_name, gender, last_logged_in FROM users"
+        "SELECT user_id, username, displayname, creation_date, status FROM users"
     );
     return rows;
 };
+
+
+exports.getUserByEmail = async (email) => {
+    try { 
+        const { rows } = await pool.query(
+            `SELECT user_id, password, email, username, displayname, profilepic, role FROM users WHERE email = $1`,
+            [email]
+        );
+        
+        return rows;
+    } catch (err) {
+        console.error(`Error getting user`);
+        throw err;
+    }
+};
+
+exports.getByUsername = async(username) => {
+    try {
+        const { rows } = await pool.query(
+            `SELECT user_id, email, last_logged_in, username, displayname, profilepic, profilebackgroundpic, followers, following, description FROM users WHERE username = $1`,
+            [username]
+        );
+        return rows;
+    } catch (err) {
+        console.error(`Error Getting User: ${err.message}`);
 
 exports.getAllMemberships = async () => {
     const { rows } = await pool.query(
@@ -43,6 +68,7 @@ exports.getMembershipDetail = async ({clan_id, user_id}) => {
         }
     } catch (err){
         console.error(`Error getting membership detail: ${err.message}`);
+
         throw err;
     }
 };
@@ -59,6 +85,29 @@ exports.getUserDetails = async (userId) => {
         throw err;
     }
 };
+
+
+exports.addFriend = async ({ friendId, userId }) => {
+    try {
+        if (!friendId || !userId) {
+            throw new Error(`Missing fields`);
+        }
+
+        const { rows } = await pool.query(
+            `INSERT INTO friends (user_id, friend_user_id) VALUES ($1, $2)`,
+            [userId, friendId] 
+        );
+
+        if (rows.length === 0){
+            throw new Error(`error finding friend`)
+        }
+        return rows;
+    } catch (err) {
+        console.error(`Error in addFriend: ${err.message}`);
+        throw err; 
+    }
+};
+
 
 exports.getMembershipDetailedView = async ({
     user_id,
@@ -100,6 +149,7 @@ exports.createMembership = async({
     }
 }
 
+
 exports.createUser = async ({
     username,
     email,
@@ -128,7 +178,12 @@ exports.createUser = async ({
         return rows[0];
     } catch (err) {
         console.error(err);
-        throw new Error('Server error', err);
+        if (err.code === '23505') {
+            // Try to extract the constraint name
+            const constraintName = err.detail
+            throw new Error(`Unique constraint violated: ${constraintName}`);
+        }
+        throw new Error('Server error');
     }
 };
 
@@ -243,4 +298,4 @@ exports.deleteUser = async ({userId}) => {
         console.error(err);
         throw new Error('Server error', err);
     }
-}
+};
