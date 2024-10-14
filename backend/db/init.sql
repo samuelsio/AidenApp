@@ -337,6 +337,9 @@ COPY public.comments (comment_id, content, creation_date, author_id, event_id) F
 5	This is a comment	2024-09-19 15:16:17.821768	6	12
 7	This is a comment	2024-09-20 10:34:29.540706	6	12
 6	This is a patched field	2024-09-19 15:16:18.864478	6	12
+12	This is user: 30	2024-09-23 14:03:21.290476	30	15
+13	This is user: 30	2024-09-23 14:03:22.667042	30	15
+14	This is user: 30	2024-09-23 14:03:23.846332	30	15
 \.
 
 
@@ -379,6 +382,26 @@ COPY public.membership (membership_id, user_id, clan_id, joined_at) FROM stdin;
 12	12	2	2024-09-27 14:44:24.107425
 18	12	1	2024-09-27 15:05:35.157211
 3	3	1	2024-10-27 13:44:24.107
+\.
+
+
+--
+-- Data for Name: membership; Type: TABLE DATA; Schema: public; Owner: app_user
+--
+
+COPY public.membership (membership_id, user_id, clan_id, joined_at) FROM stdin;
+1	1	1	2024-09-27 14:44:24.107425
+2	2	1	2024-09-27 14:44:24.107425
+3	3	1	2024-09-27 14:44:24.107425
+4	4	2	2024-09-27 14:44:24.107425
+5	5	2	2024-09-27 14:44:24.107425
+6	6	2	2024-09-27 14:44:24.107425
+7	7	3	2024-09-27 14:44:24.107425
+8	8	3	2024-09-27 14:44:24.107425
+9	9	3	2024-09-27 14:44:24.107425
+10	10	1	2024-09-27 14:44:24.107425
+11	11	1	2024-09-27 14:44:24.107425
+12	12	2	2024-09-27 14:44:24.107425
 \.
 
 
@@ -453,6 +476,13 @@ SELECT pg_catalog.setval('public.membership_membership_id_seq', 18, true);
 
 
 --
+-- Name: membership_membership_id_seq; Type: SEQUENCE SET; Schema: public; Owner: app_user
+--
+
+SELECT pg_catalog.setval('public.membership_membership_id_seq', 1, false);
+
+
+--
 -- Name: users_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: app_user
 --
 
@@ -489,6 +519,22 @@ ALTER TABLE ONLY public.comments
 
 ALTER TABLE ONLY public.events
     ADD CONSTRAINT events_pkey PRIMARY KEY (event_id);
+
+
+--
+-- Name: membership membership_pkey; Type: CONSTRAINT; Schema: public; Owner: app_user
+--
+
+ALTER TABLE ONLY public.membership
+    ADD CONSTRAINT membership_pkey PRIMARY KEY (membership_id);
+
+
+--
+-- Name: membership membership_user_id_clan_id_key; Type: CONSTRAINT; Schema: public; Owner: app_user
+--
+
+ALTER TABLE ONLY public.membership
+    ADD CONSTRAINT membership_user_id_clan_id_key UNIQUE (user_id, clan_id);
 
 
 --
@@ -585,6 +631,22 @@ ALTER TABLE ONLY public.comments
 
 ALTER TABLE ONLY public.clans
     ADD CONSTRAINT fk_leader FOREIGN KEY (leader_id) REFERENCES public.users(user_id) ON DELETE SET NULL;
+
+
+--
+-- Name: membership membership_clan_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: app_user
+--
+
+ALTER TABLE ONLY public.membership
+    ADD CONSTRAINT membership_clan_id_fkey FOREIGN KEY (clan_id) REFERENCES public.clans(clan_id) ON DELETE CASCADE;
+
+
+--
+-- Name: membership membership_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: app_user
+--
+
+ALTER TABLE ONLY public.membership
+    ADD CONSTRAINT membership_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(user_id) ON DELETE CASCADE;
 
 
 --
