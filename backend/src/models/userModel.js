@@ -8,6 +8,45 @@ exports.getAllUsers = async () => {
     return rows;
 };
 
+exports.getAllMemberships = async () => {
+    const { rows } = await pool.query(
+        `SELECT membership_id, user_id, clan_id, joined_at FROM membership`
+    );
+    return rows;
+};
+
+exports.getMembershipDetail = async ({clan_id, user_id}) => {
+    try { 
+        if (!user_id && !clan_id){
+            throw new Error(`Missing userId and clanId`)
+        }
+
+        if (!user_id){
+            const { rows } = await pool.query(
+                `SELECT membership_id, user_id, clan_id, joined_at FROM membership WHERE clan_id = $1`,
+                [clan_id]
+            )
+            if (rows.length === 0) {
+                throw new Error(`Clan not found`)
+            }
+            return rows;
+        }
+        if (!clan_id){
+            const { rows } = await pool.query(
+                `SELECT membership_id, user_id, clan_id, joined_at FROM membership WHERE user_id = $1`,
+                [user_id]
+            )
+            if (rows.length === 0) {
+                throw new Error(`User not found`)
+            }
+            return rows;
+        }
+    } catch (err){
+        console.error(`Error getting membership detail: ${err.message}`);
+        throw err;
+    }
+};
+
 exports.getUserDetails = async (userId) => { 
     try {
         const { rows } = await pool.query(
@@ -20,6 +59,46 @@ exports.getUserDetails = async (userId) => {
         throw err;
     }
 };
+
+exports.getMembershipDetailedView = async ({
+    user_id,
+    clan_id
+}) => {
+    try { 
+        const { rows } = await pool.query(
+            `SELECT membership_id, user_id, clan_id, joined_at FROM membership WHERE user_id = $1 AND clan_id = $2`,
+            [user_id, clan_id]
+        );
+        if (rows.length === 0){
+            throw new Error(`No membership with userId: ${user_id} AND clanId: ${clan_id}`)
+        }
+        return rows;
+    } catch (err){
+        console.error(`Error getting membership : ${err}`);
+        throw err;
+    }
+}
+
+exports.createMembership = async({
+    user_id,
+    clan_id,
+}) => {
+    try {
+        if (!user_id || !clan_id){
+            throw new Error(`Missing fields: userId:${user_id}, clanId: ${clan_id}`)
+        }
+        const { rows } = await pool.query(
+            `INSERT INTO membership (user_id, clan_id, joined_at) 
+             VALUES ($1, $2, NOW()) RETURNING *`,
+            [user_id, clan_id]
+        );
+
+        return rows;
+    } catch (err) {
+        console.error(err);
+        throw new Error('Server error', err);
+    }
+}
 
 exports.createUser = async ({
     username,
@@ -52,6 +131,37 @@ exports.createUser = async ({
         throw new Error('Server error', err);
     }
 };
+
+exports.updateMembership = async({membership_id, updatedFields}) => {
+    const updates = [];
+    const values = [];
+    let queryIndex = 1;
+    console.log(`membership_id: ${membership_id}`);
+
+    const allowedFields = [
+        "membership_id",
+        "user_id",
+        "clan_id",
+        "joined_at"
+    ];
+    for (const [key, value] of Object.entries(updatedFields)) {
+        if (allowedFields.includes(key) && value !== undefined) {
+            updates.push(`${key} = $${queryIndex++}`);
+                values.push(value);
+        }
+    }
+    if (updates.length === 0) {
+        throw new Error("No valid fields provided for update");
+    }
+
+    values.push(membership_id);
+    const query = `UPDATE membership SET ${updates.join(
+        ", "
+    )} WHERE membership_id = $${queryIndex} RETURNING *`;
+
+    const { rows } = await pool.query(query, values);
+    return rows;
+}
 
 
 exports.updateUser = async ({userId, updatedFields}) => {
@@ -102,6 +212,22 @@ exports.updateUser = async ({userId, updatedFields}) => {
     const { rows } = await pool.query(query, values);
     return rows.length;
 };
+
+exports.deleteMembership = async ({membership_id}) => {
+    try {
+        if (!membership_id){
+            throw new Error(`Cant find membershipId: ${membership_id}`)
+        }
+        const { rows } = await pool.query(
+            `DELETE FROM membership WHERE membership_id = $1 RETURNING membership_id, user_id, clan_id, joined_at`,
+            [membership_id]
+        );
+        return rows;
+    } catch (err) {
+        console.error(err);
+        throw new Error(`Server Error: ${err}`)
+    }
+}
 
 exports.deleteUser = async ({userId}) => {
     try {
