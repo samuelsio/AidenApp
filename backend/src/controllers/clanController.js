@@ -1,3 +1,4 @@
+const e = require("express");
 const clanModel = require("../models/clanModel");
 
 exports.getClans = async (req, res) => {
@@ -7,6 +8,51 @@ exports.getClans = async (req, res) => {
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: "Server error clan-controller" });
+    }
+};
+
+exports.getIndividualComment= async (req, res) => {
+    try{
+        const { clanName } = req.params;
+        const clan = await clanModel.getClanByName(clanName);
+        const eventId = parseInt(req.params.eventId);
+        const commentId = parseInt(req.params.commentId);
+        if (clan.length === 0) {
+            return res.status(404).json({ message: `Error handling data: event: ${eventId}, comment: ${commentId}, clan: ${clanId}` });
+        }
+
+        const clanId = clan[0].clan_id;
+
+        const comment = await clanModel.getIndividualComment({event_id: eventId, comment_id: commentId})
+        res.json({comment})
+    } catch (err){
+        console.error(err);
+        res.status(500).json({error: `server error`});
+    }
+};
+
+exports.patchIndividualComment = async (req, res) => {
+    try {
+        const eventId = parseInt(req.params.eventId);
+        const commentId = parseInt(req.params.commentId);
+
+        if (!eventId || !commentId){
+            return res.status(404).json({ message: `missing fields for comment: event:${eventId}, comment: ${commentId}`});
+        }
+        const updatedFields = req.body;
+        const patchComment = await clanModel.patchIndividualComment({event_id: eventId, comment_id: commentId, updatedFields: updatedFields});
+
+        res.status(201).json({message: `Patched clan `, patchComment: patchComment})
+
+    } catch (err) {
+        console.error(err);
+        if (err.message === "No valid fields provided for update") {
+            res.status(400).json({ error: err.message });
+        } if (err.message == "Clan has not been edited or found") { 
+            res.status(404).json({error: err.message})
+        } else {
+            res.status(500).json({ error: "Server error" });
+        }
     }
 };
 
@@ -324,3 +370,24 @@ exports.deleteClan = async (req, res) => {
 };
 
 
+
+exports.deleteIndividualComment = async (req, res) => {
+    try {
+        const eventId = parseInt(req.params.eventId);
+        const commentId = parseInt(req.params.commentId);
+
+        if (!eventId || !commentId) {
+            return res.status(400).json({ error: `missing fields: event: ${eventId}, comment: ${commentId}`})
+        }
+
+        const deletedComment = await clanModel.deleteIndividualComment({event_id: eventId, comment_id: commentId})
+        return res.status(202).json({
+            message: `Comment deleted: `,
+            comment: deletedComment
+        })
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: `Server error: ${err}`})
+    }
+}
