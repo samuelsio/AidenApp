@@ -4,17 +4,17 @@ import "./MembersDashboard.scss"
 import Sidebar from "../../components/sidebar";
 import PageHeader from "../../components/PageHeader";
 import MembersList from "../../components/MembersList";
-import membersData from "./MembersList.json"
 import ProfileDetailView from "../../components/ProfileDetailView";
 
 export default function MembersDashboard(){
     
     const{username: usernameParam} = useParams();
-    const userProfile = membersData.members.find(member => member.username === usernameParam);
-    
+    // const userProfile = membersData.members.find(member => member.username === usernameParam);
+    const [userProfile, setUserProfile] = useState(null);
     const [currentUser, setCurrentUser] = useState(null);
     const [error, setError] = useState(''); // State to store any error messages
     
+
     useEffect(() => {
       async function fetchCurrentUser() {
         try {
@@ -26,7 +26,7 @@ export default function MembersDashboard(){
             headers: { Authorization: `Bearer ${token}` },
           });
     
-          if (tokenResponse.ok) {
+          if (tokenResponse.ok && !usernameParam || !userProfile) {
             const currentUserData = await tokenResponse.json();
             const username = currentUserData.user.username;
             // Now fetch the full user data using the username
@@ -41,6 +41,17 @@ export default function MembersDashboard(){
             } else {
               setError('Full user data not found.');
             }
+          } if (usernameParam) {
+            const UserDetail = await fetch(`http://localhost:3011/users/details/${usernameParam}`,{
+              method: 'GET',
+              headers: { Authorization: `Bearer ${token}`}
+          });
+          if (UserDetail.ok) {
+            const fullUserData = await UserDetail.json();
+            setUserProfile(fullUserData); 
+          } else {
+            setError('Full user data not found.');
+          }
           } else {
             setError('User not found. Please check the spelling.');
           }
@@ -52,9 +63,12 @@ export default function MembersDashboard(){
     
       fetchCurrentUser(); // Call the function when the component mounts
     }, []);
+
+
     if (error){
         console.log(error)
     };
+    console.log(userProfile)
     
     if (usernameParam && !userProfile){
         return(

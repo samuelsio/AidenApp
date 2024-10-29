@@ -6,7 +6,7 @@ import { signOut } from "../../utils/auth";
 export default function Sidebar({activeItem}){
 
     return (
-        <div className="col-md-2 card rounded-start-0 bg-secondary text-white sidebar vh-100">
+        <div className="col-md-2 card rounded-start-0 bg-secondary text-white sidebar sticky-top vh-100">
           <div className="text-center py-4">
             <h4>Web<span className="text-primary">Site</span></h4>
           </div>

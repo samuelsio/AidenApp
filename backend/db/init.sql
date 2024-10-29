@@ -173,6 +173,43 @@ ALTER SEQUENCE public.events_event_id_seq OWNED BY public.events.event_id;
 
 
 --
+-- Name: friends; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.friends (
+    friend_id integer NOT NULL,
+    user_id integer NOT NULL,
+    friend_user_id integer NOT NULL,
+    status character varying(20) DEFAULT 'pending'::character varying,
+    created_at timestamp without time zone DEFAULT now()
+);
+
+
+ALTER TABLE public.friends OWNER TO postgres;
+
+--
+-- Name: friends_friend_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.friends_friend_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.friends_friend_id_seq OWNER TO postgres;
+
+--
+-- Name: friends_friend_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.friends_friend_id_seq OWNED BY public.friends.friend_id;
+
+
+--
 -- Name: membership; Type: TABLE; Schema: public; Owner: app_user
 --
 
@@ -209,6 +246,80 @@ ALTER SEQUENCE public.membership_membership_id_seq OWNED BY public.membership.me
 
 
 --
+-- Name: squad_members; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.squad_members (
+    member_id integer NOT NULL,
+    squad_id integer,
+    user_id integer,
+    is_leader boolean DEFAULT false,
+    joined_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP
+);
+
+
+ALTER TABLE public.squad_members OWNER TO postgres;
+
+--
+-- Name: squad_members_member_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.squad_members_member_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.squad_members_member_id_seq OWNER TO postgres;
+
+--
+-- Name: squad_members_member_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.squad_members_member_id_seq OWNED BY public.squad_members.member_id;
+
+
+--
+-- Name: squadlist; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.squadlist (
+    squad_id integer NOT NULL,
+    squad_name character varying(100) NOT NULL,
+    created_by integer,
+    squad_size integer DEFAULT 4,
+    CONSTRAINT squadlist_squad_size_check CHECK ((squad_size <= 4))
+);
+
+
+ALTER TABLE public.squadlist OWNER TO postgres;
+
+--
+-- Name: squadlist_squad_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.squadlist_squad_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.squadlist_squad_id_seq OWNER TO postgres;
+
+--
+-- Name: squadlist_squad_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.squadlist_squad_id_seq OWNED BY public.squadlist.squad_id;
+
+
+--
 -- Name: users; Type: TABLE; Schema: public; Owner: app_user
 --
 
@@ -228,6 +339,9 @@ CREATE TABLE public.users (
     followers integer DEFAULT 0,
     following integer DEFAULT 0,
     description character varying(255),
+    role character varying(10) DEFAULT 'member'::character varying,
+    status character varying(15) DEFAULT 'active'::character varying,
+    creation_date date DEFAULT CURRENT_DATE,
     CONSTRAINT users_dateofbirth_check CHECK ((date_of_birth <= CURRENT_DATE))
 );
 
@@ -285,10 +399,31 @@ ALTER TABLE ONLY public.events ALTER COLUMN event_id SET DEFAULT nextval('public
 
 
 --
+-- Name: friends friend_id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.friends ALTER COLUMN friend_id SET DEFAULT nextval('public.friends_friend_id_seq'::regclass);
+
+
+--
 -- Name: membership membership_id; Type: DEFAULT; Schema: public; Owner: app_user
 --
 
 ALTER TABLE ONLY public.membership ALTER COLUMN membership_id SET DEFAULT nextval('public.membership_membership_id_seq'::regclass);
+
+
+--
+-- Name: squad_members member_id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.squad_members ALTER COLUMN member_id SET DEFAULT nextval('public.squad_members_member_id_seq'::regclass);
+
+
+--
+-- Name: squadlist squad_id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.squadlist ALTER COLUMN squad_id SET DEFAULT nextval('public.squadlist_squad_id_seq'::regclass);
 
 
 --
@@ -308,6 +443,8 @@ COPY public.bulletinboard (post_id, content, creation_date, author_id, clan_id) 
 1	Looking for new members to join the Dragons clan. Apply now!	2024-09-17 11:52:33	3	1
 5	latest comment	2024-09-20 10:30:14.737675	6	1
 6	This is another test  comment on a different group	2024-09-20 10:32:44.579036	6	3
+7	another bulletin from ID 64	2024-10-17 12:25:34.85293	64	2
+8	woah comment	2024-10-17 12:25:45.04404	64	2
 \.
 
 
@@ -337,9 +474,8 @@ COPY public.comments (comment_id, content, creation_date, author_id, event_id) F
 5	This is a comment	2024-09-19 15:16:17.821768	6	12
 7	This is a comment	2024-09-20 10:34:29.540706	6	12
 6	This is a patched field	2024-09-19 15:16:18.864478	6	12
-12	This is user: 30	2024-09-23 14:03:21.290476	30	15
-13	This is user: 30	2024-09-23 14:03:22.667042	30	15
-14	This is user: 30	2024-09-23 14:03:23.846332	30	15
+8	This is user: 64	2024-10-17 12:27:13.248729	64	14
+9	This is a comment from testLogin	2024-10-17 12:27:24.220487	64	14
 \.
 
 
@@ -361,6 +497,15 @@ COPY public.events (event_id, title, description, event_date, creator_id, clan_i
 11	epic gaming time	TestDescription	2024-09-19 14:13:39.972502	2	1
 12	epic gaming time	TestDescription	2024-09-19 14:13:42.272898	2	1
 13	epic gaming time	TestDescription	2024-09-20 09:58:33.011178	2	1
+14	64	TestDescription	2024-10-17 12:26:49.283675	64	2
+\.
+
+
+--
+-- Data for Name: friends; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.friends (friend_id, user_id, friend_user_id, status, created_at) FROM stdin;
 \.
 
 
@@ -382,26 +527,23 @@ COPY public.membership (membership_id, user_id, clan_id, joined_at) FROM stdin;
 12	12	2	2024-09-27 14:44:24.107425
 18	12	1	2024-09-27 15:05:35.157211
 3	3	1	2024-10-27 13:44:24.107
+19	64	2	2024-10-17 12:22:13.193031
 \.
 
 
 --
--- Data for Name: membership; Type: TABLE DATA; Schema: public; Owner: app_user
+-- Data for Name: squad_members; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.membership (membership_id, user_id, clan_id, joined_at) FROM stdin;
-1	1	1	2024-09-27 14:44:24.107425
-2	2	1	2024-09-27 14:44:24.107425
-3	3	1	2024-09-27 14:44:24.107425
-4	4	2	2024-09-27 14:44:24.107425
-5	5	2	2024-09-27 14:44:24.107425
-6	6	2	2024-09-27 14:44:24.107425
-7	7	3	2024-09-27 14:44:24.107425
-8	8	3	2024-09-27 14:44:24.107425
-9	9	3	2024-09-27 14:44:24.107425
-10	10	1	2024-09-27 14:44:24.107425
-11	11	1	2024-09-27 14:44:24.107425
-12	12	2	2024-09-27 14:44:24.107425
+COPY public.squad_members (member_id, squad_id, user_id, is_leader, joined_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: squadlist; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.squadlist (squad_id, squad_name, created_by, squad_size) FROM stdin;
 \.
 
 
@@ -409,34 +551,34 @@ COPY public.membership (membership_id, user_id, clan_id, joined_at) FROM stdin;
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: app_user
 --
 
-COPY public.users (user_id, email, password, first_name, last_name, gender, last_logged_in, username, displayname, date_of_birth, profilepic, profilebackgroundpic, followers, following, description) FROM stdin;
-2	admin@example.com	adminhash	Admin	User	Female	\N	\N	\N	\N	\N	\N	0	0	\N
-1	NewUser@email.com	passwordhash	Test	User	Male	\N	\N	\N	\N	\N	\N	0	0	\N
-3	email43234@email.com	hashedpassword	jared	herbert	male	\N	@atomicwaffles69420	AtomicWaffles	2003-06-30	https://placeholder.com/150	https://placeholder.com/396x168	1500	300	Aiden is an avid gamer and loves farming simulations.
-4	john.smith@email.com	hashedpassword	John	Smith	male	\N	@twat	John Smith	1989-12-15	https://placeholder.com/150	https://placeholder.com/396x168	1992	2015	John enjoys browsing the web and staying updated.
-5	john.doe@email.com	hashedpassword	John	Doe	male	\N	john_doe	John Doe	1985-05-01	https://placeholder.com/150	https://placeholder.com/396x168	1200	250	John is a casual gamer who takes breaks often.
-6	jane.smith@email.com	hashedpassword	Jane	Smith	female	\N	jane_smith	Jane Smith	1992-07-21	https://placeholder.com/150	https://placeholder.com/396x168	800	150	Jane loves playing social deduction games with friends.
-7	mike.jones@email.com	hashedpassword	Mike	Jones	male	\N	mike_jones	Mike Jones	1984-09-12	https://placeholder.com/150	https://placeholder.com/396x168	600	100	Mike enjoys single-player adventures and RPGs.
-8	sara.connor@email.com	hashedpassword	Sara	Connor	female	\N	sara_connor	Sara Connor	1995-02-18	https://placeholder.com/150	https://placeholder.com/396x168	900	200	Sara is a competitive player who loves battle royale games.
-9	luke.skywalker@email.com	hashedpassword	Luke	Skywalker	male	\N	luke_skywalker	Luke Skywalker	1977-04-14	https://placeholder.com/150	https://placeholder.com/396x168	300	50	Luke enjoys exploring vast open worlds.
-10	harry.potter@email.com	hashedpassword	Harry	Potter	male	\N	harry_potter	Harry Potter	1980-07-31	https://placeholder.com/150	https://placeholder.com/396x168	2000	400	Harry is a fan of first-person shooters and competitive play.
-11	tony.stark@email.com	hashedpassword	Tony	Stark	male	\N	tony_stark	Tony Stark	1970-05-29	https://placeholder.com/150	https://placeholder.com/396x168	1500	300	Tony enjoys strategy games and tech innovations.
-12	bruce.wayne@email.com	hashedpassword	Bruce	Wayne	male	\N	bruce_wayne	Bruce Wayne	1972-02-19	https://placeholder.com/150	https://placeholder.com/396x168	1800	350	Bruce is a night owl who enjoys relaxing games.
-13	clark.kent@email.com	hashedpassword	Clark	Kent	male	\N	clark_kent	Clark Kent	1978-06-18	https://placeholder.com/150	https://placeholder.com/396x168	1200	250	Clark loves building and creating in sandbox games.
-14	peter.parker@email.com	hashedpassword	Peter	Parker	male	\N	peter_parker	Peter Parker	1990-08-10	https://placeholder.com/150	https://placeholder.com/396x168	700	150	Peter enjoys superhero games and action adventures.
-15	natasha.romanoff@email.com	hashedpassword	Natasha	Romanoff	female	\N	natasha_romanoff	Natasha Romanoff	1984-11-22	https://placeholder.com/150	https://placeholder.com/396x168	1100	220	Natasha is a skilled player who excels in team-based games.
-16	steve.rogers@email.com	hashedpassword	Steve	Rogers	male	\N	steve_rogers	Steve Rogers	1918-07-04	https://placeholder.com/150	https://placeholder.com/396x168	900	180	Steve enjoys classic games and nostalgic experiences.
-17	wanda.maximoff@email.com	hashedpassword	Wanda	Maximoff	female	\N	wanda_maximoff	Wanda Maximoff	1993-03-02	https://placeholder.com/150	https://placeholder.com/396x168	1300	270	Wanda is a tactical player who loves competitive shooters.
-18	johndoe@example.com	yourpassword	John	Doe	male	\N	johndoe	\N	1985-05-01	\N	\N	0	0	\N
-26	21@example.com		Jane	Doe	female	\N	@newUser123456	\N	1985-05-01	\N	\N	0	0	\N
-23	patched@email.com	$2b$10$jKtCuw722AxrBlmsd9M1DOQfIsOkXzIWwc2xAHWw2CIJQJ6iOfBrW	TestPatch2	TestPatch2	female	\N	@TestPatch2	TestPatch2	1985-05-01	\N	\N	0	0	I have a patched description description
-35	aidenheath4042@outlook.com	$2b$10$mDC0dR1SMKDiXTE5d.9xDuoBTCxml86FkODyEsSwUchgJgI6Yx5Mu	Aiden	Heath	Male	\N	aidentopshot	\N	2003-12-24	\N	\N	0	0	\N
-36	email@legitEmail.com	$2b$10$Kdu86xNGrIykk2ZgShWRquLY0538TGw9wXubr7RP9HkDHwyIiRkom	FirstName	LName	Other	\N	UsernameFromForm	\N	1980-12-16	\N	\N	0	0	\N
-38	29@example.com	$2b$10$Ai8DezEwNTPG3f/JzEvlJe5/9fv0b68WMlLUZgps10ebk/zwRV3FC	Jane	Doe	female	\N	@DeleteMe123	\N	1985-05-01	\N	\N	0	0	\N
-61	email69@legitEmail.com	$2b$10$KHXknnMACjczOYtQom70HOHTnD.JZaa8ZbmUt9EWYy9WaaQ0vkQKi	FirstName	LName	Other	\N	UsernameFromForm1	\N	1980-12-16	\N	\N	0	0	\N
-65	Random1234@Random1234.com	$2b$10$s4DjPiQfCmUIXBi1OzlTpOjhtAC9QXIPCHIeAYCRpTJTIkUW0515S	Random1234!	Random1234!	Other	\N	Random1234!	\N	0001-01-01	\N	\N	0	0	\N
-64	testLogin@testLogin.com	$2b$10$PweeYrA8bWLsb7aHYc0Ovunr5DtwnzVBOboAhZBe.VJHY24938hQ2	testLogin	testLogin	Male	\N	testLogin	@TestLogin	0001-01-01	\N	\N	0	0	\N
-66	email@email.com	$2b$10$/IxePPfTmrA1KmHbsGSCDudXdDhLjnCJyALv8L0DHocCf2UY8VDT.	First Name	Last Name	Other	\N	BrandNew	\N	1212-12-12	\N	\N	0	0	\N
+COPY public.users (user_id, email, password, first_name, last_name, gender, last_logged_in, username, displayname, date_of_birth, profilepic, profilebackgroundpic, followers, following, description, role, status, creation_date) FROM stdin;
+2	admin@example.com	adminhash	Admin	User	Female	\N	\N	\N	\N	\N	\N	0	0	\N	member	active	2024-10-11
+1	NewUser@email.com	passwordhash	Test	User	Male	\N	\N	\N	\N	\N	\N	0	0	\N	member	active	2024-10-11
+3	email43234@email.com	hashedpassword	jared	herbert	male	\N	@atomicwaffles69420	AtomicWaffles	2003-06-30	https://placeholder.com/150	https://placeholder.com/396x168	1500	300	Aiden is an avid gamer and loves farming simulations.	member	active	2024-10-11
+5	john.doe@email.com	hashedpassword	John	Doe	male	\N	john_doe	John Doe	1985-05-01	https://placeholder.com/150	https://placeholder.com/396x168	1200	250	John is a casual gamer who takes breaks often.	member	active	2024-10-11
+6	jane.smith@email.com	hashedpassword	Jane	Smith	female	\N	jane_smith	Jane Smith	1992-07-21	https://placeholder.com/150	https://placeholder.com/396x168	800	150	Jane loves playing social deduction games with friends.	member	active	2024-10-11
+7	mike.jones@email.com	hashedpassword	Mike	Jones	male	\N	mike_jones	Mike Jones	1984-09-12	https://placeholder.com/150	https://placeholder.com/396x168	600	100	Mike enjoys single-player adventures and RPGs.	member	active	2024-10-11
+8	sara.connor@email.com	hashedpassword	Sara	Connor	female	\N	sara_connor	Sara Connor	1995-02-18	https://placeholder.com/150	https://placeholder.com/396x168	900	200	Sara is a competitive player who loves battle royale games.	member	active	2024-10-11
+9	luke.skywalker@email.com	hashedpassword	Luke	Skywalker	male	\N	luke_skywalker	Luke Skywalker	1977-04-14	https://placeholder.com/150	https://placeholder.com/396x168	300	50	Luke enjoys exploring vast open worlds.	member	active	2024-10-11
+10	harry.potter@email.com	hashedpassword	Harry	Potter	male	\N	harry_potter	Harry Potter	1980-07-31	https://placeholder.com/150	https://placeholder.com/396x168	2000	400	Harry is a fan of first-person shooters and competitive play.	member	active	2024-10-11
+11	tony.stark@email.com	hashedpassword	Tony	Stark	male	\N	tony_stark	Tony Stark	1970-05-29	https://placeholder.com/150	https://placeholder.com/396x168	1500	300	Tony enjoys strategy games and tech innovations.	member	active	2024-10-11
+12	bruce.wayne@email.com	hashedpassword	Bruce	Wayne	male	\N	bruce_wayne	Bruce Wayne	1972-02-19	https://placeholder.com/150	https://placeholder.com/396x168	1800	350	Bruce is a night owl who enjoys relaxing games.	member	active	2024-10-11
+13	clark.kent@email.com	hashedpassword	Clark	Kent	male	\N	clark_kent	Clark Kent	1978-06-18	https://placeholder.com/150	https://placeholder.com/396x168	1200	250	Clark loves building and creating in sandbox games.	member	active	2024-10-11
+14	peter.parker@email.com	hashedpassword	Peter	Parker	male	\N	peter_parker	Peter Parker	1990-08-10	https://placeholder.com/150	https://placeholder.com/396x168	700	150	Peter enjoys superhero games and action adventures.	member	active	2024-10-11
+15	natasha.romanoff@email.com	hashedpassword	Natasha	Romanoff	female	\N	natasha_romanoff	Natasha Romanoff	1984-11-22	https://placeholder.com/150	https://placeholder.com/396x168	1100	220	Natasha is a skilled player who excels in team-based games.	member	active	2024-10-11
+16	steve.rogers@email.com	hashedpassword	Steve	Rogers	male	\N	steve_rogers	Steve Rogers	1918-07-04	https://placeholder.com/150	https://placeholder.com/396x168	900	180	Steve enjoys classic games and nostalgic experiences.	member	active	2024-10-11
+17	wanda.maximoff@email.com	hashedpassword	Wanda	Maximoff	female	\N	wanda_maximoff	Wanda Maximoff	1993-03-02	https://placeholder.com/150	https://placeholder.com/396x168	1300	270	Wanda is a tactical player who loves competitive shooters.	member	active	2024-10-11
+18	johndoe@example.com	yourpassword	John	Doe	male	\N	johndoe	\N	1985-05-01	\N	\N	0	0	\N	member	active	2024-10-11
+26	21@example.com		Jane	Doe	female	\N	@newUser123456	\N	1985-05-01	\N	\N	0	0	\N	member	active	2024-10-11
+35	aidenheath4042@outlook.com	$2b$10$mDC0dR1SMKDiXTE5d.9xDuoBTCxml86FkODyEsSwUchgJgI6Yx5Mu	Aiden	Heath	Male	\N	aidentopshot	\N	2003-12-24	\N	\N	0	0	\N	member	active	2024-10-11
+36	email@legitEmail.com	$2b$10$Kdu86xNGrIykk2ZgShWRquLY0538TGw9wXubr7RP9HkDHwyIiRkom	FirstName	LName	Other	\N	UsernameFromForm	\N	1980-12-16	\N	\N	0	0	\N	member	active	2024-10-11
+38	29@example.com	$2b$10$Ai8DezEwNTPG3f/JzEvlJe5/9fv0b68WMlLUZgps10ebk/zwRV3FC	Jane	Doe	female	\N	@DeleteMe123	\N	1985-05-01	\N	\N	0	0	\N	member	active	2024-10-11
+23	patched@email.com	$2b$10$jKtCuw722AxrBlmsd9M1DOQfIsOkXzIWwc2xAHWw2CIJQJ6iOfBrW	AdminDashboardPatch	TestPatch2	female	\N	@TestPatch2	TestPatch2	1985-04-29	\N	\N	0	0	I have a patched description description	member	active	2024-10-11
+61	email69@legitEmail.com	$2b$10$KHXknnMACjczOYtQom70HOHTnD.JZaa8ZbmUt9EWYy9WaaQ0vkQKi	FirstName	LName	Other	\N	UsernameFromForm1	\N	1980-12-16	\N	\N	0	0	\N	member	active	2024-10-11
+65	Random1234@Random1234.com	$2b$10$s4DjPiQfCmUIXBi1OzlTpOjhtAC9QXIPCHIeAYCRpTJTIkUW0515S	Random1234!	Random1234!	Other	\N	Random1234!	\N	0001-01-01	\N	\N	0	0	\N	member	active	2024-10-11
+66	email@email.com	$2b$10$/IxePPfTmrA1KmHbsGSCDudXdDhLjnCJyALv8L0DHocCf2UY8VDT.	First Name	Last Name	Other	\N	BrandNew	\N	1212-12-12	\N	\N	0	0	\N	member	active	2024-10-11
+4	john.smith@email.com	hashedpassword	John	Smith	male	\N	@twat	John Smith	1989-12-15	https://placeholder.com/150	https://placeholder.com/396x168	1992	2015	John enjoys browsing the web and staying updated.	member	active	2024-10-11
+64	testLogin@testLogin.com	$2b$10$PweeYrA8bWLsb7aHYc0Ovunr5DtwnzVBOboAhZBe.VJHY24938hQ2	newName	testLogin	Male	\N	testLogin	@TestLogin	0001-01-01	\N	\N	0	0	\N	admin	active	2024-10-11
 \.
 
 
@@ -444,7 +586,7 @@ COPY public.users (user_id, email, password, first_name, last_name, gender, last
 -- Name: bulletinboard_post_id_seq; Type: SEQUENCE SET; Schema: public; Owner: app_user
 --
 
-SELECT pg_catalog.setval('public.bulletinboard_post_id_seq', 6, true);
+SELECT pg_catalog.setval('public.bulletinboard_post_id_seq', 8, true);
 
 
 --
@@ -458,28 +600,42 @@ SELECT pg_catalog.setval('public.clans_clan_id_seq', 7, true);
 -- Name: comments_comment_id_seq; Type: SEQUENCE SET; Schema: public; Owner: app_user
 --
 
-SELECT pg_catalog.setval('public.comments_comment_id_seq', 7, true);
+SELECT pg_catalog.setval('public.comments_comment_id_seq', 9, true);
 
 
 --
 -- Name: events_event_id_seq; Type: SEQUENCE SET; Schema: public; Owner: app_user
 --
 
-SELECT pg_catalog.setval('public.events_event_id_seq', 13, true);
+SELECT pg_catalog.setval('public.events_event_id_seq', 14, true);
+
+
+--
+-- Name: friends_friend_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.friends_friend_id_seq', 1, false);
 
 
 --
 -- Name: membership_membership_id_seq; Type: SEQUENCE SET; Schema: public; Owner: app_user
 --
 
-SELECT pg_catalog.setval('public.membership_membership_id_seq', 18, true);
+SELECT pg_catalog.setval('public.membership_membership_id_seq', 19, true);
 
 
 --
--- Name: membership_membership_id_seq; Type: SEQUENCE SET; Schema: public; Owner: app_user
+-- Name: squad_members_member_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.membership_membership_id_seq', 1, false);
+SELECT pg_catalog.setval('public.squad_members_member_id_seq', 1, false);
+
+
+--
+-- Name: squadlist_squad_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.squadlist_squad_id_seq', 1, false);
 
 
 --
@@ -522,6 +678,22 @@ ALTER TABLE ONLY public.events
 
 
 --
+-- Name: friends friends_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.friends
+    ADD CONSTRAINT friends_pkey PRIMARY KEY (friend_id);
+
+
+--
+-- Name: friends friends_user_id_friend_user_id_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.friends
+    ADD CONSTRAINT friends_user_id_friend_user_id_key UNIQUE (user_id, friend_user_id);
+
+
+--
 -- Name: membership membership_pkey; Type: CONSTRAINT; Schema: public; Owner: app_user
 --
 
@@ -538,19 +710,19 @@ ALTER TABLE ONLY public.membership
 
 
 --
--- Name: membership membership_pkey; Type: CONSTRAINT; Schema: public; Owner: app_user
+-- Name: squad_members squad_members_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.membership
-    ADD CONSTRAINT membership_pkey PRIMARY KEY (membership_id);
+ALTER TABLE ONLY public.squad_members
+    ADD CONSTRAINT squad_members_pkey PRIMARY KEY (member_id);
 
 
 --
--- Name: membership membership_user_id_clan_id_key; Type: CONSTRAINT; Schema: public; Owner: app_user
+-- Name: squadlist squadlist_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.membership
-    ADD CONSTRAINT membership_user_id_clan_id_key UNIQUE (user_id, clan_id);
+ALTER TABLE ONLY public.squadlist
+    ADD CONSTRAINT squadlist_pkey PRIMARY KEY (squad_id);
 
 
 --
@@ -634,6 +806,22 @@ ALTER TABLE ONLY public.clans
 
 
 --
+-- Name: friends friends_friend_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.friends
+    ADD CONSTRAINT friends_friend_user_id_fkey FOREIGN KEY (friend_user_id) REFERENCES public.users(user_id) ON DELETE CASCADE;
+
+
+--
+-- Name: friends friends_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.friends
+    ADD CONSTRAINT friends_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(user_id) ON DELETE CASCADE;
+
+
+--
 -- Name: membership membership_clan_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: app_user
 --
 
@@ -650,19 +838,27 @@ ALTER TABLE ONLY public.membership
 
 
 --
--- Name: membership membership_clan_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: app_user
+-- Name: squad_members squad_members_squad_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.membership
-    ADD CONSTRAINT membership_clan_id_fkey FOREIGN KEY (clan_id) REFERENCES public.clans(clan_id) ON DELETE CASCADE;
+ALTER TABLE ONLY public.squad_members
+    ADD CONSTRAINT squad_members_squad_id_fkey FOREIGN KEY (squad_id) REFERENCES public.squadlist(squad_id) ON DELETE CASCADE;
 
 
 --
--- Name: membership membership_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: app_user
+-- Name: squad_members squad_members_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.membership
-    ADD CONSTRAINT membership_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(user_id) ON DELETE CASCADE;
+ALTER TABLE ONLY public.squad_members
+    ADD CONSTRAINT squad_members_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(user_id) ON DELETE CASCADE;
+
+
+--
+-- Name: squadlist squadlist_created_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.squadlist
+    ADD CONSTRAINT squadlist_created_by_fkey FOREIGN KEY (created_by) REFERENCES public.users(user_id) ON DELETE CASCADE;
 
 
 --

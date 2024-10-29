@@ -26,12 +26,14 @@ exports.getUserByEmail = async (email) => {
 exports.getByUsername = async(username) => {
     try {
         const { rows } = await pool.query(
-            `SELECT user_id, email, last_logged_in, username, displayname, profilepic, profilebackgroundpic, followers, following, description FROM users WHERE username = $1`,
+            `SELECT * FROM users WHERE username = $1`,
             [username]
         );
         return rows;
     } catch (err) {
         console.error(`Error Getting User: ${err.message}`);
+    }
+};
 
 exports.getAllMemberships = async () => {
     const { rows } = await pool.query(
@@ -73,13 +75,58 @@ exports.getMembershipDetail = async ({clan_id, user_id}) => {
     }
 };
 
-exports.getUserDetails = async (userId) => { 
+exports.getUserDetails = async (username) => {
     try {
-        const { rows } = await pool.query(
-            "SELECT user_id, email, first_name, last_name, gender, last_logged_in, username, displayname, date_of_birth, profilepic, profilebackgroundpic, followers, following, description FROM users WHERE user_id = $1",
-            [userId]
+        const userProfileResult = await pool.query(
+            "SELECT user_id, email, first_name, last_name, gender, last_logged_in, username, displayname, date_of_birth, profilepic, profilebackgroundpic, followers, following, description FROM users WHERE username = $1",
+            [username]
         );
-        return rows;
+
+        const userProfile = userProfileResult.rows[0];
+        if (!userProfile) {
+            throw new Error('User not found');
+        }
+
+        const membershipsResult = await pool.query(
+            "SELECT * FROM membership WHERE user_id = $1",
+            [userProfile.user_id] //takes the user_id from prior query
+        );
+        const memberships = membershipsResult.rows;
+        const clanIds = memberships.map(membership => membership.clan_id); //gets clan_ids from relational table
+        //gets active clans from relational table
+        const clansResult = await pool.query(
+            "SELECT * FROM clans WHERE clan_id = ANY($1::int[])", //ANY($1::int[]) check if $1 is in the provided array of integers
+            [clanIds]
+        );
+        const clans = clansResult.rows;
+
+        const eventsResult = await pool.query(
+            "SELECT * FROM events WHERE creator_id = $1", //gets all events relating to user_id
+            [userProfile.user_id]
+        );
+        const events = eventsResult.rows;
+
+        const eventCommentsResult = await pool.query(
+            "SELECT * FROM comments WHERE author_id = $1",
+            [userProfile.user_id]
+        );
+        const eventComments = eventCommentsResult.rows;
+
+        const bulletinsResult = await pool.query(
+            "SELECT * FROM bulletinboard WHERE author_id = $1",
+            [userProfile.user_id]
+        );
+        const bulletins = bulletinsResult.rows;
+
+        return {
+            userProfile,
+            memberships,
+            clans,
+            events,
+            eventComments,
+            bulletins
+        };
+
     } catch (err) {
         console.error(`Error in getUserDetails: ${err.message}`);
         throw err;
@@ -126,7 +173,7 @@ exports.getMembershipDetailedView = async ({
         console.error(`Error getting membership : ${err}`);
         throw err;
     }
-}
+};
 
 exports.createMembership = async({
     user_id,
@@ -147,7 +194,7 @@ exports.createMembership = async({
         console.error(err);
         throw new Error('Server error', err);
     }
-}
+};
 
 
 exports.createUser = async ({
@@ -216,7 +263,7 @@ exports.updateMembership = async({membership_id, updatedFields}) => {
 
     const { rows } = await pool.query(query, values);
     return rows;
-}
+};
 
 
 exports.updateUser = async ({userId, updatedFields}) => {
@@ -224,7 +271,7 @@ exports.updateUser = async ({userId, updatedFields}) => {
     const values = [];
     let queryIndex = 1;
     console.log(`userId: ${userId}`);
-
+    console.log(`Body: ${updatedFields}`)
     const allowedFields = [
         "email",
         "password",

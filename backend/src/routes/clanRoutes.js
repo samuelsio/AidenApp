@@ -13,8 +13,8 @@ router.get("/:clanName/:postId", verifyToken, clanController.getBulletinBoardPos
 router.get("/:clanName/:eventId/:commentId", verifyToken, clanController.getIndividualComment)
 router.post("/", verifyToken, clanController.createClan);
 router.post("/:clanName/event", verifyToken, clanController.createEvent)
-router.post("/:clanName/:eventId", verifyToken, clanController.createEventComment)
 router.post("/:clanName/bulletin/comment", verifyToken, clanController.createBulletinComment)
+router.post("/:clanName/:eventId", verifyToken, clanController.createEventComment)
 router.patch("/:clanId", verifyToken, clanController.updateClan);
 router.patch("/:clanName/:eventId", verifyToken, clanController.updateEvent)
 router.delete("/:clanName/bulletin/:postId", verifyToken, clanController.deleteBulletin)

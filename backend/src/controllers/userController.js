@@ -168,7 +168,7 @@ exports.getByUsername = async (req, res) => {
         console.err(err);
         res.status(500).json({ error: "Server error"});
     }
-}
+};
 
 
 exports.getAllMemberships = async (req, res) => {
@@ -203,7 +203,7 @@ exports.getMembershipDetail = async (req, res) => {
         console.error(`Error getting MembershipDetail: ${err}`)
         throw err;
     }
-}
+};
 
 exports.getMembershipDetailedView = async (req, res) => {
     try { 
@@ -225,18 +225,18 @@ exports.getMembershipDetailedView = async (req, res) => {
 
 exports.getUserDetails = async (req, res) => {
     try {
-        const { userId } = req.params;
-        const user = await userModel.getUserDetails(userId);
+        const { username } = req.params;
+        const user = await userModel.getUserDetails(username);
         if (user.length === 0) {
             return res.status(404).json({ message: "User not found" });  // Handle if user is not found
         }
 
-        res.json(user[0])
+        res.json(user)
     } catch (err) {
         console.error(err);
         res.status(500).json({error: "Server error"});
     }
-}
+};
 
 
 exports.addFriend = async (req, res) => {
@@ -250,6 +250,8 @@ exports.addFriend = async (req, res) => {
         })
     } catch (err) {
         return res.status.json({ error: err.message })
+    }
+};
 
 exports.createMembership = async (req, res) => {
     try { 
@@ -262,7 +264,7 @@ exports.createMembership = async (req, res) => {
         console.error(err)
         res.status(500).json({ error: `Server error: ${err.message}`})
     }
-}
+};
 
 exports.createUser = async (req, res) => {
     try {
@@ -316,11 +318,12 @@ exports.updateUser = async (req, res) => {
             return res.status(400).json({ error: `Invalid user ID: ${user_id}` });  // Handle invalid userId
         }
         const updatedFields = req.body;
+        console.log("id: ", user_id, " updated fields: ", updatedFields)
         const rowCount = await userModel.updateUser({
             userId: user_id, 
             updatedFields: updatedFields
         });
-
+        console.log("id: ", user_id, " updated fields: ", updatedFields)
         if (rowCount === 0) {
             return res.status(404).json({ error: "User not found" });
         }
