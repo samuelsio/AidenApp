@@ -98,7 +98,7 @@ export default function ProfileDetailView({userProfile}){
                 {editedProfile.clans.map((userAction) =>(
                     <div key={userAction.id} className="d-flex flex-column justify-content-center bg-transparent card text-white rounded p-1 mt-1">
                         <div className="d-flex flex-row align-items-center justify-content-center bd-highlight mb-3 p-1 border rounded">
-                            <div className="flex-fill p-2">
+                            <div className="flex-fill ps-2">
                                 <h3>{userAction.clan_name}</h3>
                                 <p>{userAction.description}</p>
                             </div>
@@ -127,13 +127,13 @@ export default function ProfileDetailView({userProfile}){
                         <h3>Bulletin Board</h3>
                         {editedProfile.bulletins.map((bulletin) => (
                         <div key={bulletin.post_id} className="d-flex flex-row align-items-center justify-content-center bd-highlight mt-2 border rounded">
-                            <div className="flex-fill p-2">
+                            <div className="w-50 ps-2">
                                 <p>{bulletin.content}</p>
                             </div>
                             <div className="row w-25 text-center text-white-50 p-2">
                                 <p>{bulletin.creation_date}</p>
                             </div>
-                            <div className="d-flex flex-column align-items-center justify-content-center flex-fill p-1">
+                            <div className="d-flex flex-column align-items-center justify-content-center w-50 p-1">
                                 {bulletin.content && (
                                     <button type="button" value="delete" label="delete" className="btn btn-outline-danger btn-lg w-75">Delete</button>
                                 )}
@@ -147,13 +147,13 @@ export default function ProfileDetailView({userProfile}){
 
                 {editedProfile.events.map((events) => (
                     <div key={events.event_id} className="d-flex flex-row align-items-center justify-content-center bd-highlight mt-2 border rounded">
-                        <div className="flex-fill">
+                        <div className="w-50 ps-2">
                             <p>{events.description}</p>
                         </div>
                         <div className="row w-25 text-center text-white-50 p-2">
                             <p>{events.event_date}</p>
                         </div>
-                        <div className="d-flex flex-column align-items-center justify-content-center flex-fill p-1">
+                        <div className="d-flex flex-column align-items-center justify-content-center w-50 p-1">
                             <button type="button" value="delete" label="delete" className="btn btn-outline-danger btn-lg w-75">Delete</button>
                         </div>
                     </div>
@@ -162,13 +162,13 @@ export default function ProfileDetailView({userProfile}){
             <div className="col-md-4 card bg-transparent bg-gradient m-2 p-2 overflow-auto text-white" style={{height: "130px"}}>
                 {editedProfile.eventComments.map((comments) => (
                     <div key={comments.comments_id} className="d-flex flex-row align-items-center justify-content-center bd-highlight mt-2 border rounded">
-                        <div className="flex-fill">
+                        <div className="w-50 ps-2">
                             <p>{comments.content}</p>
                         </div>
                         <div className="row w-25 text-center text-white-50 p-2">
                             <p>{comments.creation_date}</p>
                         </div>
-                        <div className="d-flex flex-column align-items-center justify-content-center flex-fill p-1">
+                        <div className="d-flex flex-column align-items-center justify-content-center w-50 p-1">
                             <button type="button" value="delete" label="delete" className="btn btn-outline-danger btn-lg w-75">Delete</button>
                         </div>
                     </div>
